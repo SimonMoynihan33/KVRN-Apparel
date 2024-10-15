@@ -2,7 +2,10 @@ from django.db import models
 
 
 class Category(models.Model):
-    """ Category model to render """
+    """
+    Category model to render 
+    Boutique Ado Model 
+    """
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -14,7 +17,10 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    """ Product model for displaying each product and information """
+    """ 
+    Product model for displaying each product and information
+    Boutique Ado Model 
+    """
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
