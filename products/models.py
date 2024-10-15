@@ -7,6 +7,9 @@ class Category(models.Model):
     Category model to render 
     Boutique Ado Model 
     """
+    class Meta:
+        verbose_name_plural = 'Categories'
+        
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     gender = models.CharField(max_length=10, choices=[('men', 'Men'), ('women', 'Women')], null=True, blank=True)
