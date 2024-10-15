@@ -1,3 +1,4 @@
+/* Styles copied from Boutique Ado */
 html {
     height: 100%;
 }
@@ -53,6 +54,9 @@ body {
     border: 1px solid black !important;
 }
 
+.bg-black {
+    background: #ffaa00 !important;
+}
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
