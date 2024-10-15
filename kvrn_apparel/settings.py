@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    # Third party apps
+    'markdownx',
     # Project Apps
     'home',
     'products',
