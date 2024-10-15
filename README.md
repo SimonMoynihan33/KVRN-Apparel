@@ -6,4 +6,5 @@
 - **Fix**: Remove `'allauth.socialaccount',`, run migrations and then re-add and migrate again. 
 
 ## Credits
-- **Hero Image**: By [Jospeh C. Filer](https://www.josephfiler.com/photo/nevada-red-rock-canyon-black-and-white/)
+### Images
+- [Hero Image](https://modernartetc.com/products/photography-of-american-landscape-series) 
