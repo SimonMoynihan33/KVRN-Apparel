@@ -57,6 +57,35 @@ body {
 .bg-black {
     background: #ffaa00 !important;
 }
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #fff;
+    z-index: -1;
+}
+
+/* Custom CSS */
+/* Product Images */
+.image-container {
+    width: 100%;
+    padding-top: 100%; /* This creates a 1:1 aspect ratio */
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
