@@ -44,13 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'markdownx',
     # All Auth installed apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # Third party apps
-    
     # Project Apps
     'home',
     'products',

@@ -1,7 +1,6 @@
 asgiref==3.8.1
 Django==4.2
 django-allauth==65.0.2
-django-markdownx==4.0.7
 Markdown==3.7
 oauthlib==3.2.2
 pillow==10.4.0
