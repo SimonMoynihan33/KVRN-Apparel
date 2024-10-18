@@ -30,9 +30,9 @@
                 Accessories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="accessories-link">
-                <a href="" class="dropdown-item">Hats</a>
-                <a href="" class="dropdown-item">Face Masks</a>
-                <a href="" class="dropdown-item">All Accessories</a>
+                <a href="{% url 'products' %}?category=hats" class="dropdown-item">Hats</a>
+                <a href="{% url 'products' %}?category=face_masks" class="dropdown-item">Face Masks</a>
+                <a href="{% url 'products' %}?category=hats,face_masks" class="dropdown-item">All Accessories</a>
             </div>
         </li>
 
