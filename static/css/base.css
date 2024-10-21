@@ -120,6 +120,27 @@ a.category-badge > span.badge:hover {
     padding-top: 0px;
 }
 
+.banner-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;  /* Prevents text wrapping */
+    padding: 10px 0;
+    position: relative;
+    top: 0;
+    z-index: 1000;
+}
+
+.banner-content {
+    display: inline-block;
+    padding-left: 100%;  /* Start the text outside of the container */
+    /* Below found at: https://stackoverflow.com/questions/72092797/make-content-infinite-scroll-left-to-right */
+    animation: scroll-left 20s linear infinite;  /* Adjust time for speed */
+    font-size: 1rem;
+    white-space: nowrap;  /* Prevents text wrapping */
+    /* Below found at: https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow */
+    text-overflow: ellipsis;  /* Ensures text gets cut off and doesn't wrap */
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -152,5 +173,23 @@ a.category-badge > span.badge:hover {
 
     body {
         height: calc(100vh - 116px);
+    }
+}
+
+/* Keyframe animation to move text from right to left */
+/* Idea found on Reddit. Implemented with https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(10%);  /* Start off-screen to the right */
+    }
+    100% {
+        transform: translateX(-100%);  /* End off-screen to the left */
+    }
+}
+
+/* Mobile responsive adjustment */
+@media (max-width: 600px) {
+    .banner-content {
+        font-size: 14px;  /* Reduce font size on mobile for better fit */
     }
 }
