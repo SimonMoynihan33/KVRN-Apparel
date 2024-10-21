@@ -124,10 +124,8 @@ a.category-badge > span.badge:hover {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;  /* Prevents text wrapping */
-    padding: 10px 0;
     position: relative;
     top: 0;
-    z-index: 1000;
 }
 
 .banner-content {
@@ -135,7 +133,6 @@ a.category-badge > span.badge:hover {
     padding-left: 100%;  /* Start the text outside of the container */
     /* Below found at: https://stackoverflow.com/questions/72092797/make-content-infinite-scroll-left-to-right */
     animation: scroll-left 20s linear infinite;  /* Adjust time for speed */
-    font-size: 1rem;
     white-space: nowrap;  /* Prevents text wrapping */
     /* Below found at: https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow */
     text-overflow: ellipsis;  /* Ensures text gets cut off and doesn't wrap */
