@@ -4,7 +4,8 @@ html {
 }
 
 body {
-    background: url('/media/kvrn-hero.webp') no-repeat center center fixed;
+    /* background: url('/media/kvrn-hero.webp') no-repeat center center fixed; */
+    background-color: #f2eadf; 
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -23,7 +24,6 @@ body {
 .logo-font {
     text-transform: uppercase;
 }
-
 
 .shop-now-button {
     background: black;
@@ -68,7 +68,7 @@ body {
 }
 
 .bg-black {
-    background: #ffaa00 !important;
+    background: #d5cec4 !important;
 }
 
 .overlay {
@@ -77,7 +77,7 @@ body {
     top: 0;
     left: 0;
     position: fixed;
-    background: #fff;
+    background: #f2eadf;
     z-index: -1;
 }
 
@@ -99,6 +99,20 @@ a.category-badge > span.badge:hover {
 }
 
 /* Custom CSS */
+nav {
+    background-color: #f2eadf;
+}
+
+hr {
+    border: none;
+    height: 3px;
+    background-color: #333;
+}
+
+.bg-beige {
+    background-color: #f6ebdc;
+}
+
 /* Product Images */
 .image-container {
     width: 100%;
@@ -130,6 +144,7 @@ a.category-badge > span.badge:hover {
 
 .banner-content {
     display: inline-block;
+    color: #000;
     padding-left: 100%;  /* Start the text outside of the container */
     /* Below found at: https://stackoverflow.com/questions/72092797/make-content-infinite-scroll-left-to-right */
     animation: scroll-left 20s linear infinite;  /* Adjust time for speed */
