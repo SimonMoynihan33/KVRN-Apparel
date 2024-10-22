@@ -103,16 +103,23 @@ nav {
     background-color: #f2eadf;
 }
 
+/* Background of nav dropdowns */
+.dropdown-item, 
+.dropdown-menu {
+    background-color: #f2eadf;
+}
+
 .collapse {
     margin-top: 10px;
 }
 
 hr {
     border: none;
-    height: 3px;
-    background-color: #333;
+    height: 1.5px;
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
+/* General Style for Beige Background */
 .bg-beige {
     background-color: #f6ebdc;
 }
@@ -120,7 +127,7 @@ hr {
 /* Product Images */
 .image-container {
     width: 100%;
-    padding-top: 100%; /* This creates a 1:1 aspect ratio */
+    padding-top: 130%; /* This creates a 1:1 aspect ratio */
     position: relative;
     overflow: hidden;
 }
@@ -138,6 +145,18 @@ hr {
     padding-top: 0px;
 }
 
+/* Custom column class to ensure minimal space between images */
+.col-6, .col-md-4, .col-lg-3 {
+    padding-left: 2px; 
+    padding-right: 2px; 
+}
+
+/* Custom body class to avoid extra bottom padding */
+.card-body {
+    padding: 10px 5px;
+}
+
+/* Banner Styles */
 .banner-container {
     width: 100%;
     overflow: hidden;
@@ -157,6 +176,7 @@ hr {
     text-overflow: ellipsis;  /* Ensures text gets cut off and doesn't wrap */
 }
 
+/* Hero Text */
 .text-background {
     background-color: rgba(0, 0, 0, 0.85);
     padding: 20px 25px;
