@@ -16,8 +16,8 @@ body {
     align-items: center;
     display: inline-flex;
     justify-content: center;
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 1.2rem;
+    width: 1.2rem;
 }
 
 .logo-font {
@@ -151,28 +151,37 @@ hr {
     height: 700px;
     background-size: cover;
     background-position: center;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for effect */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
 }
 
 .men-card {
     background-image: url('/media/shop-mens-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .women-card {
     background-image: url('/media/shop-womens-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .shop-graphics-card {
     background-image: url('/media/shop-graphics-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 700px;
     margin-right: 15px;
     margin-left: 15px;
-    background-position: center 5%; /* Center horizontally, and move down vertically */
-    background-size: cover; /* Ensure the image covers the container */
+    background-position: center 5%;
 }
 
 /* Shop Button styles */
@@ -196,7 +205,7 @@ hr {
 /* Product Images */
 .image-container {
     width: 100%;
-    padding-top: 130%; /* This creates a 1:1 aspect ratio */
+    padding-top: 130%;
     position: relative;
     overflow: hidden;
 }
@@ -290,6 +299,18 @@ hr {
 
     body {
         height: calc(100vh - 116px);
+    }
+}
+
+/* Responsiveness for hero text */
+@media (max-width: 767px) {
+    .logo-font {
+        font-size: 2rem; /* Scale down heading on mobile */
+    }
+
+    .shop-now-button {
+        font-size: 1rem; /* Reduce button size */
+        padding: 10px 20px; /* Reduce padding on the button */
     }
 }
 
