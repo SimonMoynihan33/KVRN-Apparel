@@ -4,7 +4,6 @@ html {
 }
 
 body {
-    background: url('/media/billboard-hero-img.png') no-repeat center center fixed;
     background-color: #f2eadf; 
     height: calc(100vh - 164px);
     color: #555;
@@ -23,12 +22,14 @@ body {
 
 .logo-font {
     text-transform: uppercase;
+    margin-left: 50px;
 }
 
 .shop-now-button {
     background: black;
     color: white;
     min-width: 260px;
+    margin-left: 50px;
 }
 
 .btn-black {
@@ -103,8 +104,19 @@ nav {
     background-color: #f2eadf;
 }
 
+/* Hero section */
+section {
+    overflow-x: hidden;
+}
+
 .hero-img {
-    background: url('/media/billboard-hero-img.png') no-repeat center center fixed;
+    width: 100vw;
+    background-image: url('/media/billboard-hero-img.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-right: 0px !important;
+    padding-right: 0px !important;
 }
 
 /* Background of nav dropdowns */
@@ -123,7 +135,7 @@ hr {
     background-color: rgba(0, 0, 0, 0.85);
 }
 
-.card {
+.shop-now-cards {
     margin-top: 50px;
     margin-bottom: 50px;
     border: none; /* Remove default card border */
@@ -156,6 +168,11 @@ hr {
 
 .shop-graphics-card {
     background-image: url('/media/shop-graphics-bg.png');
+    height: 700px;
+    margin-right: 15px;
+    margin-left: 15px;
+    background-position: center 5%; /* Center horizontally, and move down vertically */
+    background-size: cover; /* Ensure the image covers the container */
 }
 
 /* Shop Button styles */

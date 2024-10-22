@@ -74,7 +74,6 @@
                             <div class="card-footer bg-beige pt-0 border-0 text-left">
                                 <div class="row">
                                     <div class="col">
-                                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
                                         {% for category in product.categories.all %}
                                         {% if category.name in 'hoodies,t_shirts,sweatshirts,leggings,hats,face_masks' %}
                                         <p class="small mt-1 mb-0">
@@ -84,6 +83,7 @@
                                         </p>
                                         {% endif %}
                                         {% endfor %}
+                                        <p class="lead mb-0 text-right font-weight-bold">${{ product.price }}</p>
                                     </div>
                                 </div>
                             </div>
