@@ -37,13 +37,13 @@
 
         <li class="nav-item dropdown">
             <a class="logo-font font-weight-bold nav-link text-black" href="#" id="specials-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Special Offers
+                Graphic Apparel
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">Graphic T-Shirts</a>
-                <a href="" class="dropdown-item">Graphic Hoodies</a>
-                <a href="" class="dropdown-item">Graphic Sweatshirts</a>
-                <a href="" class="dropdown-item">All Graphic Apparel</a>
+                <a href="{% url 'products' %}?category=graphic_tshirts" class="dropdown-item">Graphic T-Shirts</a>
+                <a href="{% url 'products' %}?category=graphic_hoodies" class="dropdown-item">Graphic Hoodies</a>
+                <a href="{% url 'products' %}?category=graphic_sweatshirts" class="dropdown-item">Graphic Sweatshirts</a>
+                <a href="{% url 'products' %}?category=graphic_tshirts,graphic_hoodies,graphic_sweatshirts" class="dropdown-item">All Graphic Apparel</a>
             </div>
         </li>
     </ul>

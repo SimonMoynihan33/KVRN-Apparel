@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Product, Category
+from django.utils.html import format_html 
 
 
 @admin.register(Category)

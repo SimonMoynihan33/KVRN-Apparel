@@ -16,14 +16,6 @@
         }
     },
     {
-        "pk": 3,
-        "model": "products.category",
-        "fields": {
-            "name": "special_offers",
-            "friendly_name": "Special Offers"
-        }
-    },
-    {
         "pk": 5,
         "model": "products.category",
         "fields": {
