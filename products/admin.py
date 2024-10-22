@@ -23,7 +23,8 @@ class ProductAdmin(admin.ModelAdmin):
         'get_categories', # Method to display categories
         'price',
         'rating',
-        'image',
+        'image_tag',
+        'image2_tag',
     )
     ordering = ('sku',)
     list_filter = ('categories',)
@@ -36,4 +37,27 @@ class ProductAdmin(admin.ModelAdmin):
         Used in the ProductAdmin list_display to handle the Many-to-Many relationship for categories.
         """
         return ", ".join([category.name for category in obj.categories.all()])
-    get_categories.short_description = 'Categories' 
+    get_categories.short_description = 'Categories'
+
+
+    def image_tag(self, obj):
+        """
+        Returns an HTML image tag for the main product image.
+        Displayed in the admin list_display as a small thumbnail.
+        Created with AI.
+        """
+        if obj.image:  # Check if there is a main image
+            return format_html('<img src="{}" style="height:50px;"/>'.format(obj.image.url))  # Display image as thumbnail
+        return "No Image"  # Fallback if no image is available
+    image_tag.short_description = 'Image'  # Set column name in admin
+    
+    def image2_tag(self, obj):
+        """
+        Returns an HTML image tag for the second product image.
+        Displayed in the admin list_display as a small thumbnail.
+        Created with AI.
+        """
+        if obj.image2:  # Check if there is a second image
+            return format_html('<img src="{}" style="height:50px;"/>'.format(obj.image2.url))  # Display second image as thumbnail
+        return "No Image"  # Fallback if no second image is available
+    image2_tag.short_description = 'Image 2'  # Set column name in admin
