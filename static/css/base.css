@@ -6,10 +6,10 @@ html {
 body {
     background: url('/media/billboard-hero-img.png') no-repeat center center fixed;
     background-color: #f2eadf; 
-    background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
+    overflow-x: hidden; 
 }
 
 /* from Bulma */
@@ -103,6 +103,10 @@ nav {
     background-color: #f2eadf;
 }
 
+.hero-img {
+    background: url('/media/billboard-hero-img.png') no-repeat center center fixed;
+}
+
 /* Background of nav dropdowns */
 .dropdown-item, 
 .dropdown-menu {
@@ -117,6 +121,54 @@ hr {
     border: none;
     height: 1.5px;
     background-color: rgba(0, 0, 0, 0.85);
+}
+
+.card {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: none; /* Remove default card border */
+}
+
+/* Shop cards */
+.shop-now-cards {
+    margin-right: 0px;
+    width: 100vw;
+}
+
+.shop-card {
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.men-card {
+    background-image: url('/media/shop-mens-bg.png');
+}
+
+.women-card {
+    background-image: url('/media/shop-womens-bg.png');
+}
+
+.shop-graphics-card {
+    background-image: url('/media/shop-graphics-bg.png');
+}
+
+/* Shop Button styles */
+.shop-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 30px;
+    font-size: 18px;
+    border: none;
+}
+
+.shop-btn:hover {
+    background-color: #333; /* Darker black on hover */
 }
 
 /* General Style for Beige Background */
@@ -154,6 +206,11 @@ hr {
 /* Custom body class to avoid extra bottom padding */
 .card-body {
     padding: 10px 5px;
+}
+
+.g-0 {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 /* Banner Styles */

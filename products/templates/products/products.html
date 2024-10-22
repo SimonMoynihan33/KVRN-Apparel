@@ -50,51 +50,47 @@
                     </p>
                 </div>
             </div>
-            <div class="row custom-no-gutters">
-                {% for product in products %}
-                <div class="col-6 col-md-4 col-lg-3 px-1">
-                    <div class="card h-100 border-0">
-                        <div class="image-container">
-                            {% if product.image %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid product-image" src="{{ product.image.url }}"
-                                    alt="{{ product.name }}">
-                            </a>
-                            {% else %}
-                            <a href="{% url 'product_detail' product.id %}">
-                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
-                                    alt="{{ product.name }}">
-                            </a>
-                            {% endif %}
-                        </div>
-                        <div class="card-body pb-0 bg-beige">
-                            <p class="mb-0">{{ product.name }}</p>
-                        </div>
-                        <div class="card-footer bg-beige pt-0 border-0 text-left">
-                            <div class="row">
-                                <div class="col">
-                                    <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
-                                    {% for category in product.categories.all %}
-                                    {% if category.name in 'hoodies,t_shirts,sweatshirts,leggings,hats,face_masks' %}
-                                    <p class="small mt-1 mb-0">
-                                        <a class="text-muted" href="{% url 'products' %}?category={{ category.name }}">
-                                            <i class="fas fa-tag mr-1"></i>{{ category.friendly_name }}
-                                        </a>
-                                    </p>
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% if product.rating %}
-                                    <small class="text-muted"><i class="fas fa-star mr-1"></i>{{ product.rating }} /
-                                        5</small>
-                                    {% else %}
-                                    <small class="text-muted">No Rating</small>
-                                    {% endif %}
+            <div class="container-fluid px-0">
+                <div class="row g-0">
+                    {% for product in products %}
+                    <div class="col-6 col-md-4 col-lg-3 px-1">
+                        <div class="card h-100 border-0">
+                            <div class="image-container">
+                                {% if product.image %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid product-image" src="{{ product.image.url }}"
+                                        alt="{{ product.name }}">
+                                </a>
+                                {% else %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png"
+                                        alt="{{ product.name }}">
+                                </a>
+                                {% endif %}
+                            </div>
+                            <div class="card-body pb-0 bg-beige">
+                                <p class="mb-0">{{ product.name }}</p>
+                            </div>
+                            <div class="card-footer bg-beige pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-left font-weight-bold">${{ product.price }}</p>
+                                        {% for category in product.categories.all %}
+                                        {% if category.name in 'hoodies,t_shirts,sweatshirts,leggings,hats,face_masks' %}
+                                        <p class="small mt-1 mb-0">
+                                            <a class="text-muted" href="{% url 'products' %}?category={{ category.name }}">
+                                                <i class="fas fa-tag mr-1"></i>{{ category.friendly_name }}
+                                            </a>
+                                        </p>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
