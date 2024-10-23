@@ -14,6 +14,11 @@
 - **Issue**: Sorting by category in the dropdown duplicates products.
 - **Cause**: Use of ManyToMany relationship for categories.
 - **Fix**: Remove this option to save time.
+
+### Bug 04
+- **Issue**: Toast close button not working.
+- **Cause**: Div tag automatically closed at the end of line.
+- **Fix**: Move closing div tag to end of toast file.
   
 
 ## Unfixed Bugs

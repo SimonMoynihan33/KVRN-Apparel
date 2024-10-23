@@ -188,6 +188,10 @@ nav {
     background-color: #f2eadf;
 }
 
+.nav-link.text-black {
+    color: #000 !important;  /* Force link to be black */
+}
+
 /* Hero section */
 section {
     overflow-x: hidden;
