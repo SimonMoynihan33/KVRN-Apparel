@@ -29,6 +29,10 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             products = products.order_by(sortkey)
 
+        if 'gender' in request.GET:
+            gender = request.GET['gender']
+            products = products.filter(gender__iexact=gender)
+
         if 'category' in request.GET:
             categories = request.GET['category'].replace(' ', '').split(',')
             products = products.filter(categories__name__in=categories)
