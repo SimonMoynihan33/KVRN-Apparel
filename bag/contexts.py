@@ -3,8 +3,14 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
-def bag_contents(request):
 
+def bag_contents(request):
+    """
+    Retrieves the current contents of the shopping bag from the session.
+    Calculates the total cost and product count, and prepares a list
+    of items in the bag, including quantity, size (if applicable), and product
+    details.
+    """
     bag_items = []
     total = 0
     product_count = 0
@@ -32,20 +38,13 @@ def bag_contents(request):
                     'size': size,
                 })
 
-    # For later use
-    # user_country = request.user.profile.country if request.user.is_authenticated else None
-
-    user_country = None
-
-    if request.user.is_authenticated:
-        pass
-
-    # Free delivery for ROI (Republic of Ireland), 15% delivery charge for others
-    if user_country == 'IE':
-        delivery = 0  # Free delivery for ROI
-    else:
+    if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-    
+        free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - total
+    else:
+        delivery = 0
+        free_delivery_delta = 0
+
     grand_total = delivery + total
 
     context = {
@@ -53,6 +52,8 @@ def bag_contents(request):
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
+        'free_delivery_delta': free_delivery_delta,
+        'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
     }
 
