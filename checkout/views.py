@@ -23,12 +23,9 @@ def cache_checkout_data(request):
     """
     try:
         client_secret = request.POST.get('client_secret')
-        client_secret = client_secret.strip('"')  # Remove extra quotes from client_secret
-        print(f"Client secret after stripping quotes: {client_secret}")  # Log it for verification
 
         if client_secret:
             pid = client_secret.split('_secret')[0]
-            print(f"Payment Intent ID: {pid}")  # Log Payment Intent ID
             stripe.api_key = settings.STRIPE_SECRET_KEY
             stripe.PaymentIntent.modify(pid, metadata={
                 'bag': json.dumps(request.session.get('bag', {})),
@@ -40,7 +37,6 @@ def cache_checkout_data(request):
             messages.error(request, 'Client secret is missing. Please try again.')
             return HttpResponse(status=400)
     except Exception as e:
-        print(f"Error in cache_checkout_data: {str(e)}")  # Log any exception
         messages.error(request, 'Sorry, your payment cannot be processed right now. Please try again later.')
         return HttpResponse(content=str(e), status=400)
 
@@ -74,7 +70,6 @@ def checkout(request):
             client_secret = request.POST.get('client_secret')
             if client_secret:
                 pid = client_secret.split('_secret')[0]  # Extract PID
-                print(f"Client secret: {client_secret}")  # Now this print statement will work
                 order.stripe_pid = pid
             else:
                 messages.error(request, 'Missing client secret. Please try again.')
@@ -147,7 +142,6 @@ def checkout(request):
         'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
-    print(f"Client secret in view: {intent.client_secret}")
 
     return render(request, template, context)
 

@@ -36,8 +36,12 @@ else:
 ```
 
 ## Bug 06 (Largest Issue to date: Issue begin-23/10/2024)
-- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in either a continuous loading screen after the form submission and a failure to redirect to the checkout success page, or an error page telling me <details>
-  <summary>Click to view the image</summary>![Error Message](/documentation/bugs/Screenshot%202024-10-24%20155004.png)</details>. This was avoided by adding checks to see if client secret was loaded to which I would get the error message: "Missing client secret."
+- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in either a continuous loading screen after the form submission and a failure to redirect to the checkout success page, or an error page telling me 
+<details>
+  <summary>Click to view the image</summary>
+
+  ![Error Message](/documentation/bugs/attribute-client-secret-bug.png)
+</details>This was avoided by adding checks to see if client secret was loaded to which I would get the error message: "Missing client secret."
 
 **Steps Taken to Troubleshoot:**
 
@@ -64,7 +68,26 @@ It really is the simple things! *crying face*
 - **Fix**: Uninstall and reinstalll django
 
 ## Bug 08
-**Issue**: Cannot commit.
+- **Issue**: Cannot commit.
+- **Cause**: Unknown
+- **Error**:
+```
+  no changes added to commit (use "git add" and/or "git commit -a")
+gitpod /workspace/KVRN-Apparel/documentation (main) $ git add .
+gitpod /workspace/KVRN-Apparel/documentation (main) $ git commit -m "Remove JS console.logs and print statement"
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   ../README.md
+        modified:   ../checkout/static/checkout/js/stripe_elements.js
+        modified:   ../checkout/views.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+- **Fix**: Close terminal and refresh workspace.
 
 
 ## Unfixed Bugs
