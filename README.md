@@ -38,6 +38,10 @@ else:
 ## Bug 06 
 - **Issue**: Stripe order not processing on front end or going to databse, but being successful on stripe end.
 
+## Bug 07
+- **Issue**: Couldn't run migrations as I accidentally modified a core django file.
+- **Fix**: Uninstall and reinstalll django
+  
 ## Unfixed Bugs
 ### Bug 01
 - **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.
