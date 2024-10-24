@@ -19,12 +19,30 @@
 - **Issue**: Toast close button not working.
 - **Cause**: Div tag automatically closed at the end of line.
 - **Fix**: Move closing div tag to end of toast file.
-  
+
+## Bug 05
+- **Issue**: `AttributeError at /checkout/
+'NoneType' object has no attribute 'split'`. 
+- **Cause**: This was happening because the `request.POST.get('client_secret')` is returning `None`, and I was trying to call `.split('_secret')` on it, which causes the `AttributeError` as `None` does not have a `split()` method.
+- **Fix**: Add a Check for `client_secret`:
+```
+pid = request.POST.get('client_secret')
+if pid:
+    pid = pid.split('_secret')[0]
+    order.stripe_pid = pid
+else:
+    messages.error(request, 'There was an issue processing your payment. Please try again.')
+    return redirect(reverse('checkout'))
+```
+
+## Bug 06 
+- **Issue**: Stripe order not processing on front end or going to databse, but being successful on stripe end.
 
 ## Unfixed Bugs
 ### Bug 01
 - **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.
 - **Cause**: Unknown. The walkthrough was followed and extensive troubleshooting took place.
+
 
 ## Credits
 ### Images

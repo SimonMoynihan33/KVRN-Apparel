@@ -20,7 +20,12 @@ def cache_checkout_data(request):
     with additional metadata from the session and the request.
     """
     try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
+        client_secret = request.POST.get('client_secret')      
+        if client_secret:
+            pid = client_secret.split('_secret')[0]
+        else:
+            messages.error(request, 'There was an issue processing your payment. Please try again.')
+            return HttpResponse(status=400)
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
@@ -60,8 +65,16 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
+            pid = request.POST.get('client_secret')
+            if pid:
+                pid = pid.split('_secret')[0]
+                order.stripe_pid = pid
+            else:
+                messages.error(
+                    request, 'There was an issue with the payment process.\
+                     Please try again.')
+                return redirect(reverse('checkout'))
+
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
