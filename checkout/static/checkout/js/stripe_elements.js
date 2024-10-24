@@ -7,8 +7,8 @@
 */
 
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
-console.log(clientSecret);
+var clientSecret = $('#id_client_secret').text().slice(1, -1).trim();
+console.log("Client secret:", clientSecret);
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
@@ -63,10 +63,11 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    console.log(postData);
+    console.log("POST Data: ", postData);
 
     var url = '/checkout/cache_checkout_data/';
 
+    console.log(postData); 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -111,6 +112,7 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
+                    console.log("Payment succeeded!");  // Log success
                     form.submit();
                 }
             }
