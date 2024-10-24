@@ -8,7 +8,6 @@
 
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1).trim();
-console.log("Client secret in JavaScript: ", clientSecret); 
 var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var style = {
@@ -63,12 +62,9 @@ form.addEventListener('submit', function(ev) {
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };
-    console.log("POST Data: ", postData);
 
     var url = '/checkout/cache_checkout_data/';
-    console.log("Sending POST request to cache_checkout_data with postData:", postData);
 
-    console.log(postData); 
     $.post(url, postData).done(function () {
         stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -100,7 +96,6 @@ form.addEventListener('submit', function(ev) {
             },
         }).then(function(result) {
             if (result.error) {
-                console.log("Payment failed:", result.error.message);
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
                     <span class="icon" role="alert">
@@ -114,14 +109,12 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log("Payment succeeded!");  // Log success
                     form.submit();
                 }
             }
         });
     }).fail(function () {
         // just reload the page, the error will be in django messages
-        console.error("Error in POST request to /checkout/cache_checkout_data/.");
         location.reload();
     })
 });

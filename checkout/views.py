@@ -72,7 +72,6 @@ def checkout(request):
         if order_form.is_valid():
             order = order_form.save(commit=False)
             client_secret = request.POST.get('client_secret')
-            print(f"Client secret in POST data: {client_secret}")    
             if client_secret:
                 pid = client_secret.split('_secret')[0]  # Extract PID
                 print(f"Client secret: {client_secret}")  # Now this print statement will work

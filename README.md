@@ -36,7 +36,7 @@ else:
 ```
 
 ## Bug 06 (Largest Issue to date: Issue begin-23/10/2024)
-- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in a continuous loading screen after the form submission and a failure to redirect to the checkout success page. I also kept getting the error message: "Missing client secret."
+- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in either a continuous loading screen after the form submission and a failure to redirect to the checkout success page, or an error page telling me This was avoided by adding checks to see if client secret was loaded to which I would get the error message: "Missing client secret."
 
 **Steps Taken to Troubleshoot:**
 
@@ -61,6 +61,10 @@ It really is the simple things! *crying face*
 ## Bug 07
 - **Issue**: Couldn't run migrations as I accidentally modified a core django file.
 - **Fix**: Uninstall and reinstalll django
+
+## Bug 08
+**Issue**: Cannot commit.
+
 
 ## Unfixed Bugs
 ### Bug 01
