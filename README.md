@@ -35,13 +35,33 @@ else:
     return redirect(reverse('checkout'))
 ```
 
-## Bug 06 
-- **Issue**: Stripe order not processing on front end or going to databse, but being successful on stripe end.
+## Bug 06 (Largest Issue to date: Issue begin-23/10/2024)
+- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in a continuous loading screen after the form submission and a failure to redirect to the checkout success page. I also kept getting the error message: "Missing client secret."
+
+**Steps Taken to Troubleshoot:**
+
+Initial Investigation: I began by reviewing the network logs in the browser's developer tools. This allowed me to confirm that the client secret was being properly generated and passed to the frontend, as I could see it in the console logs and in the page source. However, it was not making its way to the backend, as the Django view was logging None for the client secret.
+
+Adding Logs to the Code: To better understand where things were breaking down, I added several log statements to both my JavaScript (to check if the client secret was being passed correctly) and to my Django view (to check if the secret was received). This helped confirm that the client secret was being correctly logged in the frontend, but it wasn't arriving in the backend as part of the form submission.
+
+Using AI for Troubleshooting: I used AI to help guide me through potential issues. With its assistance, I was able to break the problem down and try out various debugging strategies, including checking network requests and cross-checking the flow of data between the frontend and backend.
+
+Working with Tutor Support: I reached out to tutor support for guidance, as this issue had been blocking my progress for a while. They helped me confirm that the client secret was necessary for Stripe to identify the payment intent, and that this was the key missing piece in my form submission.
+
+Identifying the Problem: After carefully reviewing the form submission process, I realized that I was not explicitly passing the client secret from the frontend to the backend. While the client secret was being generated in the frontend, it wasn’t included in the form data being submitted to Django. This explained why my view was receiving None for the client secret.
+
+The Fix: To resolve this issue I rewatched all Stripe videos again, checking my code for potential problems in relation to the walkthrough. To my surprise, I forgot to add a line into my checkout.html:
+
+`<input type="hidden" value="{{ client_secret }}" name="client_secret">`
+
+It really is the simple things! *crying face*
+
+**Issue closed-24/10/2024**
 
 ## Bug 07
 - **Issue**: Couldn't run migrations as I accidentally modified a core django file.
 - **Fix**: Uninstall and reinstalll django
-  
+
 ## Unfixed Bugs
 ### Bug 01
 - **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.

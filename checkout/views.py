@@ -71,11 +71,8 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            
-            # Assign client_secret before using it
             client_secret = request.POST.get('client_secret')
-            print(f"Client secret in POST data: {client_secret}")
-            
+            print(f"Client secret in POST data: {client_secret}")    
             if client_secret:
                 pid = client_secret.split('_secret')[0]  # Extract PID
                 print(f"Client secret: {client_secret}")  # Now this print statement will work
@@ -83,7 +80,7 @@ def checkout(request):
             else:
                 messages.error(request, 'Missing client secret. Please try again.')
                 return redirect(reverse('checkout'))
-            
+
             order.original_bag = json.dumps(bag)
             order.save()
             for item_id, item_data in bag.items():
