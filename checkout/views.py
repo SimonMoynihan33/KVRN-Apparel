@@ -74,6 +74,7 @@ def checkout(request):
             
             # Assign client_secret before using it
             client_secret = request.POST.get('client_secret')
+            print(f"Client secret in POST data: {client_secret}")
             
             if client_secret:
                 pid = client_secret.split('_secret')[0]  # Extract PID
