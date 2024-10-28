@@ -15,9 +15,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-if os.path.exists('env.py'):
-    import env
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -59,6 +56,7 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+    'wishlist',
     # Other
     'crispy_forms',
 ]
@@ -169,7 +167,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/1static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/media/'
