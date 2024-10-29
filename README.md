@@ -102,4 +102,4 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 ## Credits
 ### Images
-- [Hero Image](https://modernartetc.com/products/photography-of-american-landscape-series) 
+- [Stock 'No Image' Image](https://tracerproducts.com/replacement-parts-accessories/product-image-coming-soon/)
