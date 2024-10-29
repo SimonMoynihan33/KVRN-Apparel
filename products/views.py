@@ -13,8 +13,7 @@ def all_products(request):
 
     products = Product.objects.all()
     user_wishlist = Wishlist.objects.filter(
-        user=request.user
-        ).values_list(
+        user=request.user).values_list(
             'product_id', flat=True) if request.user.is_authenticated else []
     query = None
     categories = None
@@ -73,12 +72,12 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-    user_wishlist = Wishlist.objects.filter(
+    in_wishlist = Wishlist.objects.filter(
         user=request.user, product=product
         ).exists() if request.user.is_authenticated else False
     return render(request, 'products/product_detail.html', {
         'product': product,
-        'user_wishlist': user_wishlist
+        'in_wishlist': in_wishlist
     })
 
 

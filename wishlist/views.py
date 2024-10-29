@@ -1,6 +1,6 @@
-from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from .models import Wishlist
 from products.models import Product
 
@@ -19,8 +19,6 @@ def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)
-    if created:
-        pass
     return redirect('wishlist')
 
 
@@ -37,16 +35,19 @@ def toggle_wishlist(request, product_id):
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)
     if created:
-        # If the item was added to the wishlist
-        messages.success(
-            request, f"Added '{product.name}' to your wishlist.",
-            extra_tags='wishlist')
+        # Item was added to the wishlist
+        wishlist_state = True
     else:
-        # If the item was already in the wishlist and is now being removed
+        # Item was already in wishlist and is now removed
         wishlist_item.delete()
-        messages.success(
-            request, f"Removed '{product.name}' from your wishlist.",
-            extra_tags='wishlist')
+        wishlist_state = False
 
-    return redirect(request.META.get(
-        'HTTP_REFERER', reverse('product_detail', args=[product.id])))
+    # Return JSON response with the wishlist state
+    return JsonResponse({
+        'success': True,
+        'wishlist_state': wishlist_state
+    })
+
+    # Return an error response for non-POST requests
+    return JsonResponse(
+        {'success': False, 'error': 'Invalid request'}, status=400)

@@ -1,10 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'wishlist/css/wishlist.css' %}">
-{% endblock %}
-
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -148,4 +144,6 @@
             }
         })
     </script>
+    <script src="{% static 'wishlist/js/wishlist_button.js' %}"></script>
+
 {% endblock %}

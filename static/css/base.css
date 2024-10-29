@@ -464,6 +464,11 @@ hr {
     background-color: #f2eadf; /* Light background color on hover */
 }
 
+.wishlist-form .btn {
+    padding: 8px 10px;
+    font-size: 14px;
+}
+
 /* Banner Styles */
 .banner-container {
     width: 100%;
@@ -494,6 +499,10 @@ hr {
 
 .wishlist-images {
     margin-top: 30px;
+}
+
+.carousel-item {
+    position: relative;
 }
 
 /* -------------------------------- Media Queries */
