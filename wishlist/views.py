@@ -36,12 +36,14 @@ def toggle_wishlist(request, product_id):
     if created:
         # If the item was added to the wishlist
         messages.success(
-            request, f"Added '{product.name}' to your wishlist.")
+            request, f"Added '{product.name}' to your wishlist.",
+            extra_tags='wishlist')
     else:
         # If the item was already in the wishlist and is now being removed
         wishlist_item.delete()
         messages.success(
-            request, f"Removed '{product.name}' from your wishlist.")
+            request, f"Removed '{product.name}' from your wishlist.",
+            extra_tags='wishlist')
 
     return redirect(request.META.get(
         'HTTP_REFERER', reverse('product_detail', args=[product.id])))

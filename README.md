@@ -63,6 +63,10 @@ It really is the simple things! *crying face*
 
 **Issue closed-24/10/2024**
 
+## Bug 07 
+- **Issue**: When an item is added to the wishlist it shows the add to bag modal instead of a simple success message.
+- **Cause**: JS conflicting with classes
+
 ## Bug 07
 - **Issue**: Couldn't run migrations as I accidentally modified a core django file.
 - **Fix**: Uninstall and reinstalll django
