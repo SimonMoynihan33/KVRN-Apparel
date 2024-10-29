@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Wishlist
 from products.models import Product
 
@@ -32,9 +33,15 @@ def toggle_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)
-    if not created:
-        # If the item was already in the wishlist, remove it
+    if created:
+        # If the item was added to the wishlist
+        messages.success(
+            request, f"Added '{product.name}' to your wishlist.")
+    else:
+        # If the item was already in the wishlist and is now being removed
         wishlist_item.delete()
+        messages.success(
+            request, f"Removed '{product.name}' from your wishlist.")
+
     return redirect(request.META.get(
         'HTTP_REFERER', reverse('product_detail', args=[product.id])))
-

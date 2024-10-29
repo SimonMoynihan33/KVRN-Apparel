@@ -71,10 +71,10 @@
                                         alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
-                                <form action="{% url 'add_to_wishlist' product.id %}" method="post" class="wishlist-icon-form">
+                                <form action="{% url 'toggle_wishlist' product.id %}" method="post" class="wishlist-icon-form">
                                     {% csrf_token %}
                                     <button type="submit" class="wishlist-btn wishlist-btn-rounded" aria-label="Add to wishlist">
-                                        <i class="fa {% if product in user_wishlist %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
+                                        <i class="fa {% if product.id in user_wishlist %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
                                     </button>
                                 </form>
                             </div>

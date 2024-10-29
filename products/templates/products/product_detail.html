@@ -141,9 +141,9 @@
                                 <form action="{% url 'toggle_wishlist' product.id %}" method="post" style="flex: 1;">
                                     {% csrf_token %}
                                     <button type="submit" class="btn wishlist-btn btn-outline-black rounded-0 w-100" aria-label="Add to Wishlist">
-                                        <i class="fa {% if product in user_wishlist %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
+                                        <i class="fa {% if user_wishlist %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
                                     </button>
-                                </form>                        
+                                </form>                      
                             </div>
 
                             <!-- Keep Shopping Button (Full width below the other two) -->

@@ -3,12 +3,17 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
 from django.db.models.functions import Lower
+from wishlist.models import Wishlist
 
 
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
     products = Product.objects.all()
+    user_wishlist = Wishlist.objects.filter(
+        user=request.user
+        ).values_list(
+            'product_id', flat=True) if request.user.is_authenticated else []
     query = None
     categories = None
     sort = None
@@ -56,6 +61,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'user_wishlist': user_wishlist
     }
 
     return render(request, 'products/products.html', context)
@@ -65,9 +71,10 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
-
-    context = {
+    user_wishlist = Wishlist.objects.filter(
+        user=request.user, product=product
+        ).exists() if request.user.is_authenticated else False
+    return render(request, 'products/product_detail.html', {
         'product': product,
-    }
-
-    return render(request, 'products/product_detail.html', context)
+        'user_wishlist': user_wishlist
+    })
