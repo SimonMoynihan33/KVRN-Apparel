@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'wishlist/css/wislist.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -67,6 +71,12 @@
                                         alt="{{ product.name }}">
                                 </a>
                                 {% endif %}
+                                <form action="{% url 'add_to_wishlist' product.id %}" method="post" class="wishlist-icon-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="wishlist-btn" aria-label="Add to wishlist">
+                                        <i class="fa {% if product in user_wishlist %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
+                                    </button>
+                                </form>
                             </div>
                             <div class="card-body pb-0 bg-beige">
                                 <p class="mb-0">{{ product.name }}</p>

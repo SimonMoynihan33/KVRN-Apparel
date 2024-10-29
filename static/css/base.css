@@ -384,6 +384,40 @@ hr {
     margin-right: 0px;
 }
 
+
+/* Wishlist Icon Button */
+.wishlist-icon-form {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.wishlist-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem;
+    color: #8d8d8d; /* Outline heart color */
+    font-size: 1.2rem;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wishlist-btn .fa-heart {
+    color: #ff0000; /* Red color for solid heart */
+}
+
+.wishlist-btn:hover .fa-heart-o {
+    color: #ff0000; /* Red color on hover for outline heart */
+}
+
+.wishlist-btn:hover {
+    background-color: #f2eadf; /* Light background color on hover */
+}
+
 /* Banner Styles */
 .banner-container {
     width: 100%;
