@@ -21,6 +21,11 @@ class ProductForm(forms.ModelForm):
     image = forms.ImageField(
         label='Image', required=False, widget=CustomClearableFileInput)
 
+    image2 = forms.ImageField(
+        label='Secondary Image', required=False,
+        widget=CustomClearableFileInput
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
