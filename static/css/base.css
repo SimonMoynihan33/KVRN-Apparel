@@ -396,7 +396,6 @@ hr {
 .wishlist-btn {
     background: rgba(255, 255, 255, 0.7);
     border: none;
-    border-radius: 50%;
     padding: 0.5rem;
     color: #8d8d8d; /* Outline heart color */
     font-size: 1.2rem;
@@ -404,6 +403,23 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Wishlist Button Icon */
+.btn-outline-black i.fa-heart {
+    color: #ff0000; /* Red heart color when item is in wishlist */
+}
+
+.btn-outline-black i.fa-heart-o {
+    color: #8d8d8d; /* Gray outline for items not in wishlist */
+}
+
+.btn-outline-black:hover i.fa-heart-o {
+    color: #ff0000; /* Red on hover for outline heart */
+}
+
+.wishlist-btn-rounded {
+    border-radius: 50%;
 }
 
 .wishlist-btn .fa-heart {
