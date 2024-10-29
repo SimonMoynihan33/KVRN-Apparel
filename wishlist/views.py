@@ -7,8 +7,11 @@ from products.models import Product
 
 def wishlist_view(request):
     wishlist_items = Wishlist.objects.filter(user=request.user)
+    # Extract only the products from the wishlist items
+    products = [item.product for item in wishlist_items]
     return render(
-        request, 'wishlist/wishlist.html', {'wishlist_items': wishlist_items})
+        request, 'wishlist/wishlist.html', {'products': products}
+    )
 
 
 @login_required

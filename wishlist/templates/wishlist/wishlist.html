@@ -6,32 +6,85 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
 {% block content %}
-<div class="wishlist-container my-5">
-    <h2 class="text-center mb-4">Your Wishlist</h2>
+<div class="overlay"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col text-center mt-3">
+            <h2 class="logo-font" style="padding-top: 20px;">Wishlist</h2>
+            <p>Here are the items you've added to your wishlist.</p>
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
 
-    {% if wishlist_items %}
-        <ul class="list-group">
-            {% for item in wishlist_items %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <a href="{% url 'product_detail' item.product.id %}" class="wishlist-item-link">{{ item.product.name }}</a>
-                    <form action="{% url 'remove_from_wishlist' item.product.id %}" method="post" class="m-0">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p class="text-center mt-4">Your wishlist is empty.</p>
-        <a href="{% url 'products' %}" class="btn">Shop Now</a>
-    {% endif %}
+    <div class="row">
+        <div class="product-container col-10 offset-1">
+            <div class="container-fluid px-0">
+                <div class="row g-0">
+                    {% for product in products %}
+                    <div class="col-6 col-md-4 col-lg-3 px-1 wishlist-images">
+                        <div class="card h-100 border-0">
+                            <div class="image-container">
+                                {% if product.image %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid product-image" src="{{ product.image.url }}"
+                                        alt="{{ product.name }}">
+                                </a>
+                                {% else %}
+                                <a href="{% url 'product_detail' product.id %}">
+                                    <img class="card-img-top img-fluid product-image" src="{{ MEDIA_URL }}noimage.jpg"
+                                        alt="{{ product.name }}">
+                                </a>
+                                {% endif %}
+                                <form action="{% url 'toggle_wishlist' product.id %}" method="post" class="wishlist-icon-form">
+                                    {% csrf_token %}
+                                    <button type="submit" class="wishlist-btn wishlist-btn-rounded" aria-label="Add to wishlist">
+                                        <i class="fa fa-heart" style="color: red;"></i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="card-body pb-0 bg-beige">
+                                <p class="mb-0">{{ product.name }}</p>
+                            </div>
+                            <div class="card-footer bg-beige pt-0 border-0 text-left">
+                                <div class="row">
+                                    <div class="col">
+                                        <p class="lead mb-0 text-right font-weight-bold">€{{ product.price }}</p>
+                                        {% if request.user.is_superuser %}
+                                        <small class="ml-3">
+                                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                            <a class="text-danger" href="{% url 'delete_product' product.id %}">Delete</a>
+                                        </small>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col text-center">
+                        <p class="text-muted">Your wishlist is empty.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('.btt-link').click(function(e) {
+            window.scrollTo(0,0)
+        });
+    </script>
 {% endblock %}
