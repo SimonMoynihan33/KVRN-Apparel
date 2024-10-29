@@ -63,10 +63,6 @@ It really is the simple things! *crying face*
 
 **Issue closed-24/10/2024**
 
-## Bug 07 
-- **Issue**: When an item is added to the wishlist it shows the add to bag modal instead of a simple success message.
-- **Cause**: JS conflicting with classes
-
 ## Bug 07
 - **Issue**: Couldn't run migrations as I accidentally modified a core django file.
 - **Fix**: Uninstall and reinstalll django
@@ -93,6 +89,15 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ```
 - **Fix**: Close terminal and refresh workspace.
 
+## Bug 09
+- **Issue**: When an item is added to the wishlist, it shows the "Add to Bag" modal with cart contents instead of a simple success message.
+- **Cause**: The toast notification used for success messages was displaying cart contents whenever a success message was generated. This was because the toast template included bag details (like bag_items and grand_total) whenever a success message was triggered, regardless of whether it was for the wishlist or the cart.
+- **Fix**: Add tags to differentiate between "cart" and "wishlist" messages. In the add_to_bag view, success messages were tagged with "cart," and in the toggle_wishlist view, messages were tagged with "wishlist." The toast template was updated to conditionally display bag contents only for messages tagged with "cart." This ensured that wishlist actions displayed a simple success message without triggering the bag modal.
+
+## Bug 10
+- **Issue**:
+- **Cause**:
+- **Fix**:
 
 ## Unfixed Bugs
 ### Bug 01
