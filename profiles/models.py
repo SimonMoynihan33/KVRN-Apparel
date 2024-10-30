@@ -40,3 +40,14 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+
+class CustomUser(User):
+    """Proxy model to display email verification status in admin."""
+
+    class Meta:
+        proxy = True
+
+    def is_email_verified(self):
+        # Check if the email is verified using Allauth's EmailAddress model
+        return self.emailaddress_set.filter(verified=True).exists()
