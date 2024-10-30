@@ -32,7 +32,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
     'kvrn-apparel-4bc2d092ebd6.herokuapp.com',
-    'localhost']
+    '8000-simonmoynih-kvrnapparel-hjhftj3lcph.ws.codeinstitute-ide.net']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-simonmoynih-kvrnapparel-hjhftj3lcph.ws.codeinstitute-ide.net'
@@ -127,7 +127,6 @@ WSGI_APPLICATION = 'kvrn_apparel.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 if 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
@@ -139,7 +138,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
