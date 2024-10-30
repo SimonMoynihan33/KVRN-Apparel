@@ -1,0 +1,1 @@
+web: gunicorn kvrn-apparel.wsgi:application

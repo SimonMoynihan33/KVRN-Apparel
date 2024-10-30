@@ -95,9 +95,21 @@ no changes added to commit (use "git add" and/or "git commit -a")
 - **Fix**: Add tags to differentiate between "cart" and "wishlist" messages. In the add_to_bag view, success messages were tagged with "cart," and in the toggle_wishlist view, messages were tagged with "wishlist." The toast template was updated to conditionally display bag contents only for messages tagged with "cart." This ensured that wishlist actions displayed a simple success message without triggering the bag modal.
 
 ## Bug 10
-- **Issue**:
-- **Cause**:
-- **Fix**:
+- **Issue**: Placement of the wishlist button on the product_detail page would not overlay correctly on the product image or carousel, despite working correctly on the products page. Instead, it stayed positioned above the image or floated inconsistently on the page.
+- **Cause**: Differences in the layout structure between products and product_detail templates led to unexpected behavior. The carousel-item structure on product_detail uses specific positioning and overflow styles that interfere with the absolute positioning of the button, preventing it from appearing on top of the image as expected.
+- **Fix**: Attempted various placement alternatives, including placing the button outside the carousel structure, to ensure it displayed consistently on the page. Solution was to leave it where the Add to Bag button is.
+
+## Bug 11
+- **Issue**: When flex was used and both the Wishlist button and Add to Bag button were side by side, the add to bag view was called when the wishlist button was clicked. Both had seperate class names, and correct urls. The reason for this is still not known. I ran the code through AI to see if they could find the issue but to no avail.
+- **Fix**: The only fix was to not have them on the same line using flexbox. When they were on seperate lines of the page this issue did not occur, even with the exact same html structure.
+
+## Bug 12
+- **Issue**: When an item was added to the wishlist, the toast message displayed the contents of the shopping bag instead of a wishlist confirmation.
+- **Cause**: The toast message, intended for wishlist feedback, was inadvertently using the bag toast success code.
+- **Fix**: Add checks to toast_success.html ` {% if 'cart' in message.tags and grand_total and not on_profile_page %}` and add `extra_tags` to both bag view and wishlist view to identify what the messages were for.
+
+## Bug 13
+- **Issue**: Old toast notifications appeared upon revisiting the site, resulting in multiple stacked notifications for actions previously completed.
 
 ## Unfixed Bugs
 ### Bug 01
