@@ -1,1 +1,1 @@
-web: gunicorn kvrn-apparel.wsgi:application
+web: gunicorn kvrn_apparel.wsgi:application
