@@ -31,11 +31,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = "DEVELOPMENT" in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-simonmoynih-kvrnapparel-hjhftj3lcph.ws.codeinstitute-ide.net',
+    'kvrn-apparel@herokuapp.com',
     'localhost',]
 
 CSRF_TRUSTED_ORIGINS = [
-    'kvrn-apparel.herokuapp.com', 'localhost',
+    'https://8000-simonmoynih-kvrnapparel-hjhftj3lcph.ws.codeinstitute-ide.net'
     ]
 
 
