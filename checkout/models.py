@@ -90,3 +90,20 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'SKU {self.product.sku} on order {self.order.order_number}'
+
+
+class OrderReview(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    rating = models.PositiveSmallIntegerField()  # Rating from 1 to 5 stars
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        # Prevent duplicate reviews per order
+        unique_together = ('user', 'product', 'order')
+
+    def __str__(self):
+        return f"{self.user.username}'s rating of {self.rating} \
+            for {self.product.name}"

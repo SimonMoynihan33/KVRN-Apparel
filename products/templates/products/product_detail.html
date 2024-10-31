@@ -73,6 +73,14 @@
                     </a>
                 </p>
                 {% endfor %}
+                <div class="product-rating">
+                    <h4>Rating</h4>
+                    {% if avg_rating %}
+                        <p>{{ avg_rating|floatformat:1 }} / 5 stars</p>
+                    {% else %}
+                        <p>No ratings yet</p>
+                    {% endif %}
+                </div>
                 {% if request.user.is_superuser %}
                 <small class="ml-3">
                     <a href="{% url 'edit_product' product.id %}">Edit</a> |

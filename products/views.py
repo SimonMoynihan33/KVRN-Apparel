@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Avg
 from .models import Product, Category
 from django.db.models.functions import Lower
 from wishlist.models import Wishlist
+from checkout.models import OrderReview
 from .forms import ProductForm
 
 
@@ -72,12 +73,15 @@ def product_detail(request, product_id):
     """ A view to show individual product details """
 
     product = get_object_or_404(Product, pk=product_id)
+    avg_rating = OrderReview.objects.filter(
+        product=product).aggregate(Avg('rating'))['rating__avg']
     in_wishlist = Wishlist.objects.filter(
         user=request.user, product=product
         ).exists() if request.user.is_authenticated else False
     return render(request, 'products/product_detail.html', {
         'product': product,
-        'in_wishlist': in_wishlist
+        'in_wishlist': in_wishlist,
+        'avg_rating': avg_rating
     })
 
 
