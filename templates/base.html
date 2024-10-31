@@ -72,6 +72,15 @@
       </div>
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
         <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+          <li class="list-inline-item d-none d-lg-inline-block">
+            <!-- Phone Icon for desktop -->
+            <a class="text-black nav-link" href="{% url 'about' %}">
+                <div class="text-center">
+                    <div><i class="fas fa-phone fa-lg"></i></div>
+                    <p class="my-0">Contact Us</p>
+                </div>
+            </a>
+          </li>
           <li class="list-inline-item dropdown">
             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
@@ -117,8 +126,13 @@
           aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#account-nav"
+            aria-controls="account-nav" aria-expanded="false" aria-label="Toggle account navigation">
+            <i class="fas fa-user-circle fa-lg"></i>
+        </button>
         {% include 'includes/mobile-top-header.html' %}
         {% include 'includes/main-nav.html' %}
+        {% include 'includes/account-nav.html' %}
       </nav>
     </div>
     <div id="delivery-banner" class="row text-center">

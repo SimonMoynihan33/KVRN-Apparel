@@ -522,6 +522,10 @@ hr {
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
+    #account-nav {
+        display: none !important;
+    }
+    
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
