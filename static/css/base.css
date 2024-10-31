@@ -505,6 +505,12 @@ hr {
     position: relative;
 }
 
+.home-btn-404 {
+    border-top-color: rgba(0, 0, 0, 0.85);
+    border-bottom-color: rgba(0, 0, 0, 0.85);
+
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -526,6 +532,10 @@ hr {
 
     .header-container {
         padding-top: 164px;
+    }
+
+    .error-404 {
+        margin-top: 65px;
     }
 }
 
