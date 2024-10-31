@@ -1,19 +1,61 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'info/css/about.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
+<div class="overlay"></div>
 <div class="container py-5">
-    <h1 class="text-center mb-4">About Us</h1>
-    <p class="text-center lead">
-        Welcome to [Your Site Name]! We are dedicated to providing the best service...
-    </p>
+    <div class="row">
+        <!-- About Us Section -->
+        <div class="col-12 about-text col-lg-6">
+            <hr>
+            <h2 class="logo-font mb-4">Our Story</h2>
+            <p>
+                Welcome to <strong>KVRN Apparel</strong>! Based in Ireland, we specialize in graphic apparel that combines style
+                with sustainability. From T-shirts to hoodies and sweatshirts, each item is designed to make a
+                statement, while keeping comfort and the environment in mind.
+            </p>
+            <p>
+                As a new brand, we are constantly evolving and committed to bringing fresh designs every month. Every
+                piece is crafted from sustainable materials because we believe that fashion shouldn't come at the
+                expense of our planet.
+            </p>
+            <p>
+                Join us on our journey as we expand our collections and release new products to suit every taste. We're
+                excited to grow with you and bring creativity and eco-friendly fashion together, one graphic tee at a
+                time.
+            </p>
+            <hr>
+        </div>
 
-    <h2 class="mt-5">Contact Us</h2>
-    <p>If you have any questions, feel free to reach out using the form below:</p>
+        <!-- Contact Form Section -->
+        <div class="col-12 col-lg-6">
+            <div class="contact-form-container p-4 rounded">
+                <h3 class="mb-4 logo-font">Get in Touch</h3>
+                <p>Have questions? Feel free to reach out to us using the form below.</p>
 
-    <form method="post" class="contact-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
+                <form method="post" class="contact-form mt-3">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                        {{ form.name }}
+                        {{ form.email }}
+                        {{ form.subject }}
+                        {{ form.message }}
+                    <button type="submit" class="btn bg-beige btn-lg w-100 mt-3">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

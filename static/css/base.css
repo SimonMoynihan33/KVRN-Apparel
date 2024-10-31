@@ -548,6 +548,11 @@ hr {
     body {
         height: calc(100vh - 116px);
     }
+
+    /* Custom py-5 class */
+    .py-5 {
+        padding-top: 0 !important;
+    }
 }
 
 /* Responsiveness for hero text */

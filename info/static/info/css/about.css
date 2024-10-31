@@ -1,0 +1,46 @@
+.about-text {
+    font-size: 1.1rem;
+}
+
+.contact-form label {
+    display: none;
+}
+
+.contact-form-container {
+    background-color: rgba(0, 0, 0, 0.65); /* Dark transparent background */
+    color: #ffffff; /* White text for contrast */
+}
+
+.contact-form .form-control {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent bg for inputs */
+    border: 1px solid #ddd; /* Soft border for input */
+    color: #fff; /* White text inside input */
+}
+
+.contact-form .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly darker bg on focus */
+    color: #ffffff;
+    border-color: #ff9670; /* Gold border on focus */
+    box-shadow: none;
+}
+
+.contact-form textarea.form-control {
+    height: 150px; /* Smaller message box */
+    resize: none;
+}
+
+.contact-form button[type="submit"] {
+    display: block;
+    margin-top: 1rem;
+    background-color: #ff9670; /* Gold button color */
+    color: #000; /* Dark text color */
+    border: none;
+    width: 100%; /* Full width button */
+    padding: 10px 20px;
+}
+
+.contact-form .form-control::placeholder {
+    color: #ffffff;
+}
