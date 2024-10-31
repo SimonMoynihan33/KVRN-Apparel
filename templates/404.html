@@ -5,7 +5,7 @@
 <div class="container header-container py-5 text-center">
     <div class="row">
         <div class="col">
-            <h1 class="display-4">Oops! Page Not Found (404)</h1>
+            <h1 class="display-4"></h1>
         </div>
     </div>
 </div>
@@ -14,9 +14,10 @@
 {% block content %}
 <section class="error-404 text-center py-5">
     <div class="container">
-        <h2 class="mb-4">We couldn't find the page you're looking for.</h2>
+        <h2 class="mb-4">Oops! Page Not Found (404)</h2>
+        <h3 class="mb-4">We couldn't find the page you're looking for.</h3>
         <p class="lead mb-5">It seems the page has been moved or no longer exists. Check the URL or return to the homepage.</p>
-        <a href="{% url 'home' %}" class="btn btn-primary btn-lg">Go Back to Home</a>
+        <a href="{% url 'home' %}" class="btn bg-beige btn-lg">Go Back to Home</a>
     </div>
 </section>
 {% endblock %}
