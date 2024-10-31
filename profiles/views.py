@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import UserProfile
-from .forms import UserProfileForm
-
-from checkout.models import Order
+from .forms import UserProfileForm, ReviewForm
+from checkout.models import Order, OrderReview
+from products.models import Product
 
 
 @login_required
@@ -50,3 +50,34 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def submit_review(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    order = Order.objects.filter(
+        user_profile=request.user.userprofile, lineitems__product=product
+        ).first()
+    # Check if a review already exists
+    existing_review = OrderReview.objects.filter(
+        user=request.user, product=product, order=order).first()
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=existing_review)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.user = request.user
+            review.product = product
+            review.order = order
+            review.save()
+            if existing_review:
+                messages.success(request, "Your review has been updated.")
+            else:
+                messages.success(
+                    request, "Thank you! Your rating has been submitted.")
+            return redirect('order_history', order_number=order.order_number)
+        else:
+            messages.error(
+                request, "There was an issue with your rating submission.\
+                     Please try again.")
+
+    return redirect('order_history', order_number=order.order_number)

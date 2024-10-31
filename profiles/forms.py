@@ -1,5 +1,6 @@
 from django import forms
 from .models import UserProfile
+from checkout.models import OrderReview
 
 
 class UserProfileForm(forms.ModelForm):
@@ -33,3 +34,15 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs[
                 'class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = OrderReview
+        fields = ['rating']
+        widgets = {
+            'rating': forms.Select(
+                choices=[(
+                    i, f"{i} Star{'s' if i > 1 else ''}") for i in range(
+                        1, 6)]),
+        }
