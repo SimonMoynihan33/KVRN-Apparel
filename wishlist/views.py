@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Wishlist
 from products.models import Product
@@ -29,8 +29,14 @@ def remove_from_wishlist(request, product_id):
     return redirect('wishlist')
 
 
-@login_required
 def toggle_wishlist(request, product_id):
+    if not request.user.is_authenticated:
+        # Redirect to login page if the user is not authenticated
+        login_url = f"{reverse('account_login')}?next={request.path}"
+        return JsonResponse({
+            'success': False,
+            'redirect_url': login_url
+        })
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)

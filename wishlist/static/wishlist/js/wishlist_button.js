@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
                         icon.classList.remove('fa-heart');
                         icon.classList.add('fa-heart-o');
                     }
+                } else if (data.redirect_url) {
+                    // Redirect if the user is not authenticated
+                    window.location.href = data.redirect_url;
                 }
             })
             .catch(error => console.error('Error:', error));
