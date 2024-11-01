@@ -520,6 +520,14 @@ hr {
   }
 }
 
+/* Styles to fix icon placement on larger screens */
+@media (min-width: 992px) and (max-width: 1060px) {
+    .lg-screen-flex {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+    }
+}
+
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {
     #account-nav {
