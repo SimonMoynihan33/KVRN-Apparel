@@ -12,6 +12,8 @@ from products.models import Product
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
+    reviewed_products = OrderReview.objects.filter(
+        user=request.user).values_list('product_id', flat=True)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -29,7 +31,8 @@ def profile(request):
     context = {
         'form': form,
         'orders': orders,
-        'on_profile_page': True
+        'on_profile_page': True,
+        'reviewed_products': reviewed_products
     }
 
     return render(request, template, context)
@@ -80,4 +83,24 @@ def submit_review(request, product_id):
                 request, "There was an issue with your rating submission.\
                      Please try again.")
 
-    return redirect('order_history', order_number=order.order_number)
+    return redirect('profiles/profile.html')
+
+
+@login_required
+def order_detail(request, order_number):
+    # Retrieve the order associated with the user and the specific order number
+    order = get_object_or_404(
+        Order, order_number=order_number, user_profile=request.user.userprofile
+        )
+
+    # Check review status for each line item in this specific order
+    for item in order.lineitems.all():
+        item.is_reviewed = OrderReview.objects.filter(
+            user=request.user,
+            product=item.product,
+            order=order
+        ).exists()
+
+    return render(request, 'profiles/order_detail.html', {
+        'order': order,
+    })

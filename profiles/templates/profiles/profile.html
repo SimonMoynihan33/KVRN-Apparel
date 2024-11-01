@@ -56,11 +56,9 @@
                                     <td>{{ order.date }}</td>
                                     <td>
                                         <ul class="list-unstyled">
-                                            {% for item in order.lineitems.all %}
                                             <div class="order">
-                                                <a href="#" class="btn btn-black">View Order</a>
+                                                <a href="{% url 'order_detail'  order.order_number %}" class="btn btn-black">View Order</a>
                                             </div>
-                                            {% endfor %}
                                         </ul>
                                     </td>
                                     <td>€{{ order.grand_total }}</td>
