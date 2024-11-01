@@ -511,6 +511,10 @@ hr {
 
 }
 
+.bottom-spacing {
+    margin-bottom: 60px !important;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
