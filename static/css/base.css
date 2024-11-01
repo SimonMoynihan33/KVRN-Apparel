@@ -279,6 +279,19 @@ nav {
     color: #000 !important;  /* Force link to be black */
 }
 
+.navbar-toggler-icon {
+    height: 1.25em;
+}
+
+.fa-lg {
+    line-height: 1em;
+}
+
+.custom-icon {
+    height: 34.64px !important;
+    width: 55.6px!important;
+}
+
 /* Hero section */
 section {
     overflow-x: hidden;
@@ -512,6 +525,10 @@ hr {
 }
 
 .bottom-spacing {
+    margin-bottom: 20px !important;
+}
+
+.bottom-spacing-lg {
     margin-bottom: 60px !important;
 }
 

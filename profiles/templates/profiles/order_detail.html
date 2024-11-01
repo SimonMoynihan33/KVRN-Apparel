@@ -104,4 +104,43 @@
             </div>
         </div>
     </div>
+    <!-- Modal for Each Product Review -->
+    {% for item in order.lineitems.all %}
+    {% if item.product %}
+    <div class="modal fade" id="ratingModal-{{ item.product.id }}" tabindex="-1" 
+         aria-labelledby="ratingModalLabel-{{ item.product.id }}" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ratingModalLabel-{{ item.product.id }}">
+                        Current Rating: {{ reviewed_products|get_item:item.product.id }}/5
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'submit_review' product_id=item.product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_number" value="{{ order.order_number }}">
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <select id="rating" name="rating" class="form-control" required>
+                                <option value="">Select Rating</option>
+                                {% for i in "12345" %}
+                                    <option value="{{ i }}"
+                                        {% if reviewed_products|get_item:item.product.id == i|stringformat:"d" %}selected{% endif %}>
+                                        {{ i }} Star{{ i|pluralize }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit Rating</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
 {% endblock %}
