@@ -73,20 +73,27 @@ class OrderLineItem(models.Model):
         Order, null=False, blank=False, on_delete=models.CASCADE,
         related_name='lineitems')
     product = models.ForeignKey(
-        Product, null=False, blank=False, on_delete=models.CASCADE)
+        Product, null=True, blank=True, on_delete=models.SET_NULL)
+    price_at_purchase = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00)
     product_size = models.CharField(max_length=2, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(
         max_digits=6, decimal_places=2, null=False, blank=False, editable=False
         )
-    product_size = models.CharField(max_length=10, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         """
-        Override the original save method to set the lineitem total
-        and update the order total.
+        Override the save method to set the price at the time of purchase
+        and calculate the total cost for the line item based on this price
+        and the quantity purchased.
         """
-        self.lineitem_total = self.product.price * self.quantity
+        # Set the price at purchase if not already set
+        if not self.price_at_purchase and self.product:
+            self.price_at_purchase = self.product.price
+
+        # Calculate the line item total based on price at purchase and quantity
+        self.lineitem_total = self.price_at_purchase * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):

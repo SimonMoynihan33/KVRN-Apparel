@@ -93,15 +93,14 @@ def order_detail(request, order_number):
     order = get_object_or_404(
         Order, order_number=order_number, user_profile=request.user.userprofile
         )
-
-    # Check review status for each line item in this specific order
+    # Fetch the rating for each product reviewed by the user
     reviewed_products = {
-        item.product.id: OrderReview.objects.filter(
-            user=request.user,
-            product=item.product,
-        ).exists()
-        for item in order.lineitems.all()
+        review.product_id: review.rating for review in
+        OrderReview.objects.filter(user=request.user)
     }
+    for item in order.lineitems.all():
+        item.is_reviewed = item.product_id in reviewed_products \
+            if item.product else False
 
     return render(request, 'profiles/order_detail.html', {
         'order': order,

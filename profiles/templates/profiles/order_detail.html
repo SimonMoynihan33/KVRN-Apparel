@@ -2,6 +2,11 @@
 {% load static %}
 {% load custom_filters %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'profiles/css/profile.css' %}">
+{% endblock %}
+
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -40,24 +45,43 @@
                         </thead>
                         <tbody>
                             {% for item in order.lineitems.all %}
-                                <tr class="align-middle" style="height: 120px;">
-                                    <td class="d-flex align-items-center">
-                                        <div style="width: 100px; height: 100px; overflow: hidden; flex-shrink: 0; margin-right: 15px;">
+                            <tr class="align-middle" style="height: 120px;">
+                                <td class="d-flex align-items-center">
+                                    <div style="width: 100px; height: 100px; overflow: hidden; flex-shrink: 0; margin-right: 15px;">
+                                        {% if item.product and item.product.image %}
                                             <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" 
                                                  class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
-                                        </div>
-                                        <p class="mb-0">{{ item.product.name }}</p>
-                                    </td>
-                                    <td>
-                                        {% if item.product.has_sizes and item.product_size %}
-                                            {{ item.product_size|upper }}
+                                            <p class="mb-0">{{ item.product.name }}</p>
+                                        {% elif item.product %}
+                                            <img src="{{ MEDIA_URL }}noimage.jpg" alt="{{ item.product.name }}" 
+                                                 class="img-fluid" style="width: 100%; height: 100%; object-fit: cover; background-color: #f0f0f0;">
+                                            <p class="mb-0">{{ item.product.name }}</p>
                                         {% else %}
-                                            N/A
+                                            <div style="width: 100px; height: 100px; background-color: #f0f0f0; 
+                                                        display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                                                <span class="text-muted">Image Unavailable</span>
+                                            </div>
+                                            <p class="mb-0 text-muted">Product Removed</p>                                        
                                         {% endif %}
-                                    </td>
-                                    <td>{{ item.quantity }}</td>
-                                    <td>€{{ item.product.price }}</td>
-                                    <td>
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if item.product and item.product.has_sizes and item.product_size %}
+                                        {{ item.product_size|upper }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
+                                <td>{{ item.quantity }}</td>
+                                <td>
+                                    {% if item.product %}
+                                        €{{ item.lineitem_total }}
+                                    {% else %}
+                                        €{{ item.price_at_purchase|multiply:item.quantity }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if item.product %}
                                         <button type="button" class="btn btn-black" data-toggle="modal" 
                                                 data-target="#ratingModal-{{ item.product.id }}">
                                             {% if reviewed_products|get_item:item.product.id %}
@@ -66,8 +90,13 @@
                                                 Give a Rating
                                             {% endif %}
                                         </button>
-                                    </td>
-                                </tr>
+                                    {% else %}
+                                        <button type="button" class="btn btn-secondary" disabled>
+                                            Item Removed
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
                             {% endfor %}
                         </tbody>
                     </table>
