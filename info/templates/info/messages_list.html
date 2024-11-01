@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'info/css/messages.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center mt-5 logo-font">Customer Messages</h1>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="messages-container">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="message-card p-4 rounded shadow-sm mb-4">
+                        <h5 class="message-subject mb-2"><strong>Subject:</strong> {{ message.subject }}</h5>
+                        <p class="message-info mb-1">
+                            <strong>From:</strong> {{ message.name }} (<a href="mailto:{{ message.email }}">{{ message.email }}</a>)
+                        </p>
+                        <p class="message-date mb-3"><strong>Submitted:</strong> {{ message.submitted_at|date:"F j, Y, g:i a" }}</p>
+                        <hr>
+                        <p class="message-content">{{ message.message }}</p>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted text-center">No messages to display.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

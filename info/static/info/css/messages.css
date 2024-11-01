@@ -1,0 +1,43 @@
+/* General Styling for Messages Page */
+.container {
+    max-width: 800px;
+}
+
+.messages-container {
+    background-color: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.message-card {
+    background-color: #f8f9fa; /* Light background for readability */
+    border: 1px solid #e0e0e0;
+    border-left: 5px solid #ffd700; /* Your gold accent color */
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.message-subject {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.message-info, .message-date {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.message-content {
+    color: #444;
+    font-size: 1rem;
+    margin-top: 1rem;
+    white-space: pre-line; /* Preserve line breaks in the message */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .message-card {
+        margin-top: 20px;
+    }
+}

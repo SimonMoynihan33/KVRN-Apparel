@@ -1,6 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ContactForm
 from django.contrib import messages
+from .models import Contact
 
 
 def about(request):
@@ -19,3 +21,17 @@ def about(request):
         'form': form,
     }
     return render(request, 'info/about.html', context)
+
+
+@login_required
+def contact_messages_view(request):
+    """View for superusers to view contact messages in read-only format."""
+    if not request.user.is_superuser:
+        messages.error(
+            request, "You do not have permission to view this page.")
+        return redirect('home')  # Redirect non-superusers to home
+
+    # Retrieve contact messages if the user is a superuser
+    contact_messages = Contact.objects.all().order_by('-submitted_at')
+    return render(
+        request, 'info/messages_list.html', {'messages': contact_messages})

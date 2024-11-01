@@ -25,6 +25,7 @@
                 {% if request.user.is_authenticated %}
                     {% if request.user.is_superuser %}
                         <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                        <a href="{% url 'contact_messages' %}" class="dropdown-item">Customer Messages</a>
                     {% endif %}
                     <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
                     <a href="{% url 'wishlist' %}" class="dropdown-item">My Wishlist</a>
