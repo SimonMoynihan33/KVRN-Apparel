@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Order Details</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <p class="text-muted">Order #{{ order.order_number }}</p>
+                <p>Order Date: {{ order.date }}</p>
+                <p>Total: €{{ order.grand_total }}</p>
+                <hr>
+                <div class="order-items table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order.lineitems.all %}
+                                <tr class="align-middle" style="height: 120px;">
+                                    <td class="d-flex align-items-center">
+                                        <div style="width: 100px; height: 100px; overflow: hidden; flex-shrink: 0; margin-right: 15px;">
+                                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" 
+                                                 class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+                                        </div>
+                                        <p class="mb-0">{{ item.product.name }}</p>
+                                    </td>
+                                    <td>
+                                        {% if item.product.has_sizes and item.product_size %}
+                                            {{ item.product_size|upper }}
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>€{{ item.product.price }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-black" data-toggle="modal" 
+                                                data-target="#ratingModal-{{ item.product.id }}">
+                                            {% if reviewed_products|get_item:item.product.id %}
+                                                Update Rating
+                                            {% else %}
+                                                Give a Rating
+                                            {% endif %}
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

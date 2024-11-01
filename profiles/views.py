@@ -59,11 +59,12 @@ def order_history(request, order_number):
 def submit_review(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     order = Order.objects.filter(
-        user_profile=request.user.userprofile, lineitems__product=product
-        ).first()
-    # Check if a review already exists
+        user_profile=request.user.userprofile,
+        lineitems__product=product
+    ).latest('date')
     existing_review = OrderReview.objects.filter(
-        user=request.user, product=product, order=order).first()
+        user=request.user, product=product
+    ).first()
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=existing_review)
         if form.is_valid():
@@ -77,13 +78,13 @@ def submit_review(request, product_id):
             else:
                 messages.success(
                     request, "Thank you! Your rating has been submitted.")
-            return redirect('order_history', order_number=order.order_number)
+            return redirect('profile')
         else:
             messages.error(
                 request, "There was an issue with your rating submission.\
                      Please try again.")
 
-    return redirect('profiles/profile.html')
+    return redirect('profile')
 
 
 @login_required
@@ -94,13 +95,15 @@ def order_detail(request, order_number):
         )
 
     # Check review status for each line item in this specific order
-    for item in order.lineitems.all():
-        item.is_reviewed = OrderReview.objects.filter(
+    reviewed_products = {
+        item.product.id: OrderReview.objects.filter(
             user=request.user,
             product=item.product,
-            order=order
         ).exists()
+        for item in order.lineitems.all()
+    }
 
     return render(request, 'profiles/order_detail.html', {
         'order': order,
+        'reviewed_products': reviewed_products,
     })
