@@ -21,7 +21,7 @@
     </div>
 
     <div class="row">
-        <div class="product-container col-10 offset-1">
+        <div class="product-container col-12">
             <div class="container-fluid px-0">
                 <div class="row g-0">
                     {% for product in products %}
@@ -51,7 +51,7 @@
                             </div>
                             <div class="card-footer bg-beige pt-0 border-0 text-left">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col bottom-spacing">
                                         <p class="lead mb-0 text-right font-weight-bold">€{{ product.price }}</p>
                                         {% if request.user.is_superuser %}
                                         <small class="ml-3">

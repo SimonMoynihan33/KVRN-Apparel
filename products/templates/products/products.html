@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="product-container col-10 offset-1">
+        <div class="product-container col-12">
             <div class="row mt-1 mb-2">
                 <div class="col-12 col-md-6 my-auto order-md-last d-flex justify-content-center justify-content-md-end">
                     <div class="w-50">
@@ -79,7 +79,7 @@
                             </div>
                             <div class="card-footer bg-beige pt-0 border-0 text-left">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col bottom-spacing">
                                         <p class="lead mb-0 text-right font-weight-bold">€{{ product.price }}</p>
                                         {% if request.user.is_superuser %}
                                         <small class="ml-3">
