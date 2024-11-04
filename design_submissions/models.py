@@ -7,15 +7,9 @@ class UserDesignSubmission(models.Model):
     Model to allow user submissions of designs
     for graphic mockups
     """
-    CATEGORY_CHOICES = [
-        ('tshirt', 'T-Shirt'),
-        ('hoodie', 'Hoodie'),
-        ('sweatshirt', 'Sweatshirt')
-    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     image = models.ImageField(upload_to='design_submissions/')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
