@@ -532,6 +532,51 @@ hr {
     margin-bottom: 60px !important;
 }
 
+/* Footer Styles */
+.site-footer {
+    background-color: #000; /* Black background */
+    color: #f6ebdc;
+}
+
+.site-footer h5 {
+    font-weight: bold;
+    color: #ffd700; /* Gold color for headings */
+}
+
+.footer-link {
+    color: #f6ebdc;
+    transition: color 0.3s;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #ffd700;
+}
+
+.newsletter-form .form-control {
+    background-color: #2e2e2e; /* Dark gray input field background */
+    border: none;
+    color: #f6ebdc;
+}
+
+.newsletter-form .form-control::placeholder {
+    color: #8d8d8d;
+}
+
+.newsletter-form .btn {
+    color: #f6ebdc;
+    border-color: #ffd700;
+}
+
+.newsletter-form .btn:hover {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.newsletter-form small {
+    color: #8d8d8d;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
