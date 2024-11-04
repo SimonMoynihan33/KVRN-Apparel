@@ -5,10 +5,8 @@
     font-family: "Lacquer", system-ui;
     font-weight: 400;
     font-style: normal;
-  }
+}
   
-  
-/* Styles copied from Boutique Ado */
 html {
     height: 100%;
 }
@@ -19,6 +17,11 @@ body {
     color: #555;
     font-family: 'Lato';
     overflow-x: hidden; 
+}
+
+.container > .row >
+.col-12 {
+    margin-top: 50px;
 }
 
 /* from Bulma */

@@ -14,8 +14,7 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="row">
-        <div class="col">
-            <hr>
+        <div class="col-12 col-md-6">
             <h2 class="logo-font mb-4">Submit your designs!</h2>
             <hr>
         </div>
@@ -45,6 +44,31 @@
                         </div>
                         <button type="submit" class="btn btn-block">Submit Design</button>
                     </form>
+                </section>
+                <section class="mb-4">
+                <!-- User's Submissions Section -->
+                <h2 class="competition-header text-center mb-4">Your Submissions</h2>
+                <div class="submission-list">
+                    {% if user_submissions %}
+                    {% for submission in user_submissions %}
+                    <div class="submission-card p-3 mb-3 shadow-sm rounded">
+                        <h5 class="submission-title font-weight-bold">{{ submission.title }}</h5>
+                        <p class="submission-description text-muted">{{ submission.description }}</p>
+                        <img src="{{ submission.image.url }}" alt="User submitted design"
+                            class="submission-image img-fluid rounded">
+                        <p class="submission-date small text-muted mt-2">Submitted on {{ submission.created_at|date:"F j, Y, g:i a" }}</p>
+                        <form action="{% url 'delete_submission' submission.id %}" method="post"
+                            class="delete-submission-form mt-2">
+                            {% csrf_token %}
+                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete Submission</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="no-submissions text-muted">You have no submissions yet.</p>
+                    {% endif %}
+                </div>
                 </section>
             </div>
         </div>

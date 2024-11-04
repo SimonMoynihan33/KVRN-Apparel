@@ -35,3 +35,20 @@ def delete_submission(request, submission_id):
         UserDesignSubmission, id=submission_id, user=request.user)
     submission.delete()
     return redirect('submit_design')
+
+
+@login_required
+def edit_submission(request, submission_id):
+    submission = get_object_or_404(
+        UserDesignSubmission, id=submission_id, user=request.user)
+    if request.method == 'POST':
+        form = UserDesignSubmissionForm(
+            request.POST, request.FILES, instance=submission)
+        if form.is_valid():
+            form.save()
+            return redirect('submit_design')
+    else:
+        form = UserDesignSubmissionForm(instance=submission)
+    return render(
+        request, 'design_submissions/edit_submission.html',
+        {'form': form, 'submission': submission})
