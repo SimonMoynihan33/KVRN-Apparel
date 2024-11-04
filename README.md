@@ -111,6 +111,11 @@ no changes added to commit (use "git add" and/or "git commit -a")
 ## Bug 13
 - **Issue**: Old toast notifications appeared upon revisiting the site, resulting in multiple stacked notifications for actions previously completed.
 
+## Bug 14
+- **Issue1**: Emails
+- **Cause**:
+- **Fic**: [This page](https://stackoverflow.com/questions/77482831/smtp-starttls-got-an-unexpected-keyword-argument-keyfile) 
+
 ## Unfixed Bugs
 ### Bug 01
 - **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.
