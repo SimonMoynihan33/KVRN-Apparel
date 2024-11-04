@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import UserDesignSubmission
 from .forms import UserDesignSubmissionForm
@@ -6,6 +6,9 @@ from .forms import UserDesignSubmissionForm
 
 @login_required
 def submit_design(request):
+    """
+    View to submit designs to be featured on a graphic apparel product
+    """
     form = UserDesignSubmissionForm()
     user_submissions = UserDesignSubmission.objects.filter(user=request.user)
 
@@ -21,3 +24,14 @@ def submit_design(request):
         'form': form,
         'user_submissions': user_submissions,
     })
+
+
+@login_required
+def delete_submission(request, submission_id):
+    """
+    View to delete user uploaded submissions
+    """
+    submission = get_object_or_404(
+        UserDesignSubmission, id=submission_id, user=request.user)
+    submission.delete()
+    return redirect('submit_design')
