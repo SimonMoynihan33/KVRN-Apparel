@@ -13,7 +13,7 @@ html {
 
 body {
     background-color: #f2eadf; 
-    height: 100%;
+    height: calc(100vh - 164px);
     color: #555;
     font-family: 'Lato';
     overflow-x: hidden; 
@@ -23,7 +23,6 @@ body {
 .content {
     min-height: 100vh;
 }
-
 
 footer h5 {
     margin-top: 40px;
@@ -49,6 +48,10 @@ footer h5 {
 
 .hero-text {
     margin-left: 50px;
+}
+
+.hero-img > div {
+    margin-top: 300px;
 }
 
 .shop-now-button {
