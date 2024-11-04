@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'info/css/faq.css' %}">
+{% endblock %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <!-- AI implemented using bootstrap faq accordion -->
+                <div class="accordion" id="faqAccordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="card">
+                        <div class="card-header" id="faqHeading1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faq1" aria-expanded="false" aria-controls="faq1">
+                                    What is your return policy?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faq1" class="collapse" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>We offer a 30-day return policy on all items. Items must be in their original
+                                    condition and packaging.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="card">
+                        <div class="card-header" id="faqHeading2">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                                    Do you offer international shipping?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faq2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Yes, we ship internationally. Shipping times and costs vary depending on your
+                                    location.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="card">
+                        <div class="card-header" id="faqHeading3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                                    How can I track my order?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faq3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>We do not currently offer order tracking. Please contact us at kvrnapparel@gmail.com
+                                    if your order has taken longer than the specified period for your location. Delivery
+                                    information can be accessed <a href="{% url 'about' %}" class="faq-link">here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="card">
+                        <div class="card-header" id="faqHeading4">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                                    Can I cancel or modify my order?
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faq4" class="collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
+                            <div class="card-body">
+                                <p>Orders can be modified or canceled within 24 hours of purchase. Please contact us as
+                                    soon as possible for assistance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Call to Action Link to About Page -->
+                <a href="{% url 'about' %}" class="faq-cta">Didn't find your answer? Contact us here.</a>
+            </section>
+        </div>
+    </div>
+</div>
+{% endblock %}

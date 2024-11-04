@@ -185,9 +185,10 @@
                 <h5 class="text-uppercase">Customer Service</h5>
                 <ul class="list-unstyled">
                     <li><a href="{% url 'about' %}" class="footer-link">Contact Us</a></li>
-                    <li><a href="#" class="footer-link">FAQs</a></li>
-                    <li><a href="#" class="footer-link">Shipping & Delivery</a></li>
-                    <li><a href="#" class="footer-link">Returns & Exchanges</a></li>
+                    <li><a href="{% url 'faq' %}" class="footer-link">FAQs</a></li>
+                    <li><a href="{% url 'about' %}#shipping-delivery" class="footer-link">Shipping & Delivery</a></li>
+                    <li><a href="{% url 'about' %}#returns-exchanges" class="footer-link">Returns & Exchanges</a></li>
+
                 </ul>
             </div>
 

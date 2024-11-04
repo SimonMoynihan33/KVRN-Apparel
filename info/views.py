@@ -34,4 +34,10 @@ def contact_messages_view(request):
     # Retrieve contact messages if the user is a superuser
     contact_messages = Contact.objects.all().order_by('-submitted_at')
     return render(
-        request, 'info/messages_list.html', {'messages': contact_messages})
+        request, 'info/messages_list.html',
+        {'contact_messages': contact_messages})
+
+
+def faq_page(request):
+    """Render the FAQ page."""
+    return render(request, 'info/faq.html')

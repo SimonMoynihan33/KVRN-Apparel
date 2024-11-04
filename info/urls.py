@@ -6,4 +6,5 @@ urlpatterns = [
     path(
         'admin/messages/', views.contact_messages_view, name='contact_messages'
         ),
+    path('faq/', views.faq_page, name='faq'),
 ]

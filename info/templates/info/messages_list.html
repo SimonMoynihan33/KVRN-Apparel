@@ -8,20 +8,19 @@
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
-        <div class="col">
-            <h1 class="text-center mt-5 logo-font">Customer Messages</h1>
-        </div>
+        <div class="col"></div>
     </div>
 </div>
 {% endblock %}
 
 {% block content %}
+<div class="overlay"></div>
 <div class="container py-5">
     <div class="row">
         <div class="col-12">
             <div class="messages-container">
-                {% if messages %}
-                    {% for message in messages %}
+                {% if contact_messages %}
+                    {% for message in contact_messages %}
                     <div class="message-card p-4 rounded shadow-sm mb-4">
                         <h5 class="message-subject mb-2"><strong>Subject:</strong> {{ message.subject }}</h5>
                         <p class="message-info mb-1">
