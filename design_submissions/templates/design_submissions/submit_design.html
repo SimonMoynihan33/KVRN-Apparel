@@ -17,8 +17,8 @@
 <div class="overlay"></div>
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6">
-            <h2 class="logo-font mb-4">Submit your designs!</h2>
+        <div class="col-12">
+            <h2 class="logo-font text-center mb-4">Submit your designs!</h2>
             <hr>
         </div>
     </div>
@@ -63,9 +63,11 @@
                         <form action="{% url 'delete_submission' submission.id %}" method="post"
                             class="delete-submission-form mt-2">
                             {% csrf_token %}
-                            <button type="button" onclick="toggleEditForm('{{ submission.id }}')" class="btn btn-sm btn-warning">Edit</button>
-                            <a href="{% url 'delete_submission' submission.id %}" class="btn btn-sm btn-danger">Delete</a>
-
+                            <button type="button" class="edit-btn btn btn-warning" data-submission-id="{{ submission.id }}">Edit</button>
+                            <form action="{% url 'delete_submission' submission.id %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </form>
                     </div>
                     <!-- Edit Mode (Form) -->
@@ -84,8 +86,8 @@
                             <label for="image-{{ submission.id }}">Upload New Image:</label>
                             <input type="file" name="image" id="image-{{ submission.id }}" class="form-control-file">
                         </div>
-                        <button type="submit" class="btn save-edit-btn">Save</button>
-                        <button type="button" onclick="toggleEditForm('{{ submission.id }}')" class="btn btn-secondary">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="button" class="cancel-btn btn btn-secondary" data-submission-id="{{ submission.id }}">Cancel</button>
                     </form>
                     {% endfor %}
                     {% else %}
@@ -102,22 +104,24 @@
 {% block postloadjs %}
     {{ block.super }}    
     <script>
-        // Toggle edit and view modes for the specific submission
-        document.getElementById('edit-btn-{{ submission.id }}').addEventListener('click', function() {
-            document.getElementById('view-mode-{{ submission.id }}').style.display = 'none';
-            document.getElementById('edit-form-{{ submission.id }}').style.display = 'block';
+        document.addEventListener("DOMContentLoaded", function () {
+    // Attach event listeners to all edit buttons
+    document.querySelectorAll('.edit-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const submissionId = button.getAttribute('data-submission-id');
+            document.getElementById('view-mode-' + submissionId).style.display = 'none';
+            document.getElementById('edit-form-' + submissionId).style.display = 'block';
         });
+    });
 
-        document.getElementById('cancel-btn-{{ submission.id }}').addEventListener('click', function() {
-            document.getElementById('edit-form-{{ submission.id }}').style.display = 'none';
-            document.getElementById('view-mode-{{ submission.id }}').style.display = 'block';
+    // Attach event listeners to all cancel buttons
+    document.querySelectorAll('.cancel-btn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const submissionId = button.getAttribute('data-submission-id');
+            document.getElementById('edit-form-' + submissionId).style.display = 'none';
+            document.getElementById('view-mode-' + submissionId).style.display = 'block';
         });
-    </script>
-
-    <script>
-        function toggleEditForm(submissionId) {
-            const editForm = document.getElementById(`edit-form-${submissionId}`);
-            editForm.style.display = (editForm.style.display === 'none' || editForm.style.display === '') ? 'block' : 'none';
-        }
+    });
+});
     </script>
 {% endblock %}

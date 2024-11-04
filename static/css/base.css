@@ -13,10 +13,20 @@ html {
 
 body {
     background-color: #f2eadf; 
-    height: calc(100vh - 164px);
+    height: 100%;
     color: #555;
     font-family: 'Lato';
     overflow-x: hidden; 
+}
+
+/* Main content area */
+.content {
+    min-height: 100vh;
+}
+
+
+footer h5 {
+    margin-top: 40px;
 }
 
 .container > .row >
