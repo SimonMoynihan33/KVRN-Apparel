@@ -6,6 +6,4 @@ urlpatterns = [
     path(
         'delete-submission/<int:submission_id>/',
         views.delete_submission, name='delete_submission'),
-    path('edit-submission/<int:submission_id>/',
-         views.edit_submission, name='edit_submission'),
 ]

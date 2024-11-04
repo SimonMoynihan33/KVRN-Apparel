@@ -9,17 +9,29 @@ def submit_design(request):
     """
     View to submit designs to be featured on a graphic apparel product
     """
-    form = UserDesignSubmissionForm()
-    user_submissions = UserDesignSubmission.objects.filter(user=request.user)
-
+    submission_id = request.POST.get('submission_id')
     if request.method == 'POST':
-        form = UserDesignSubmissionForm(request.POST, request.FILES)
-        if form.is_valid():
-            submission = form.save(commit=False)
-            submission.user = request.user
-            submission.save()
-            return redirect('submit_design')
+        if submission_id:
+            # Attempt to edit an existing submission
+            submission = get_object_or_404(
+                UserDesignSubmission, id=submission_id, user=request.user)
+            form = UserDesignSubmissionForm(
+                request.POST, request.FILES, instance=submission)
+        else:
+            # Create a new submission if no ID provided
+            form = UserDesignSubmissionForm(request.POST, request.FILES)
 
+        if form.is_valid():
+            new_submission = form.save(commit=False)
+            new_submission.user = request.user
+            new_submission.save()
+            return redirect('submit_design')
+    else:
+        # Show an empty form for a new submission
+        form = UserDesignSubmissionForm()
+
+    # Display all submissions by the user
+    user_submissions = UserDesignSubmission.objects.filter(user=request.user)
     return render(request, 'design_submissions/submit_design.html', {
         'form': form,
         'user_submissions': user_submissions,
@@ -35,20 +47,3 @@ def delete_submission(request, submission_id):
         UserDesignSubmission, id=submission_id, user=request.user)
     submission.delete()
     return redirect('submit_design')
-
-
-@login_required
-def edit_submission(request, submission_id):
-    submission = get_object_or_404(
-        UserDesignSubmission, id=submission_id, user=request.user)
-    if request.method == 'POST':
-        form = UserDesignSubmissionForm(
-            request.POST, request.FILES, instance=submission)
-        if form.is_valid():
-            form.save()
-            return redirect('submit_design')
-    else:
-        form = UserDesignSubmissionForm(instance=submission)
-    return render(
-        request, 'design_submissions/edit_submission.html',
-        {'form': form, 'submission': submission})

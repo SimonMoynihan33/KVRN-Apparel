@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-{% load bag_tools %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'design_submissions/css/submissions.css' %}">
+{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -60,10 +63,30 @@
                         <form action="{% url 'delete_submission' submission.id %}" method="post"
                             class="delete-submission-form mt-2">
                             {% csrf_token %}
-                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
-                            <button type="submit" class="btn btn-danger btn-sm">Delete Submission</button>
+                            <button type="button" onclick="toggleEditForm('{{ submission.id }}')" class="btn btn-sm btn-warning">Edit</button>
+                            <a href="{% url 'delete_submission' submission.id %}" class="btn btn-sm btn-danger">Delete</a>
+
                         </form>
                     </div>
+                    <!-- Edit Mode (Form) -->
+                    <form id="edit-form-{{ submission.id }}" action="{% url 'submit_design' %}" method="POST" enctype="multipart/form-data" style="display: none;">
+                        {% csrf_token %}
+                        <input type="hidden" name="submission_id" value="{{ submission.id }}">
+                        <div class="form-group">
+                            <label for="title-{{ submission.id }}">Title:</label>
+                            <input type="text" name="title" value="{{ submission.title }}" id="title-{{ submission.id }}" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="description-{{ submission.id }}">Description:</label>
+                            <textarea name="description" id="description-{{ submission.id }}" class="form-control">{{ submission.description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image-{{ submission.id }}">Upload New Image:</label>
+                            <input type="file" name="image" id="image-{{ submission.id }}" class="form-control-file">
+                        </div>
+                        <button type="submit" class="btn save-edit-btn">Save</button>
+                        <button type="button" onclick="toggleEditForm('{{ submission.id }}')" class="btn btn-secondary">Cancel</button>
+                    </form>
                     {% endfor %}
                     {% else %}
                     <p class="no-submissions text-muted">You have no submissions yet.</p>
@@ -74,4 +97,27 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}    
+    <script>
+        // Toggle edit and view modes for the specific submission
+        document.getElementById('edit-btn-{{ submission.id }}').addEventListener('click', function() {
+            document.getElementById('view-mode-{{ submission.id }}').style.display = 'none';
+            document.getElementById('edit-form-{{ submission.id }}').style.display = 'block';
+        });
+
+        document.getElementById('cancel-btn-{{ submission.id }}').addEventListener('click', function() {
+            document.getElementById('edit-form-{{ submission.id }}').style.display = 'none';
+            document.getElementById('view-mode-{{ submission.id }}').style.display = 'block';
+        });
+    </script>
+
+    <script>
+        function toggleEditForm(submissionId) {
+            const editForm = document.getElementById(`edit-form-${submissionId}`);
+            editForm.style.display = (editForm.style.display === 'none' || editForm.style.display === '') ? 'block' : 'none';
+        }
+    </script>
 {% endblock %}
