@@ -112,9 +112,14 @@ no changes added to commit (use "git add" and/or "git commit -a")
 - **Issue**: Old toast notifications appeared upon revisiting the site, resulting in multiple stacked notifications for actions previously completed.
 
 ## Bug 14
-- **Issue1**: Emails
-- **Cause**:
-- **Fic**: [This page](https://stackoverflow.com/questions/77482831/smtp-starttls-got-an-unexpected-keyword-argument-keyfile) 
+- **Issue1**: Emails would not send and sent the error `SMTP.starttls() got an unexpected keyword argument 'keyfile'` on live site.
+- **Cause**: Compatibility issues with python3.12 and some django versions relating to SMPT.
+- **Fix**: [This page](https://stackoverflow.com/questions/77482831/smtp-starttls-got-an-unexpected-keyword-argument-keyfile) outlined that my solution was to upgrade to django 4.12.
+
+## Bug 15
+- **Issue**: Internal server error occurs on the live Heroku site when accessing the design submission page, causing the page to fail due to a missing database table for the UserDesignSubmission model.
+- **Cause**: This error indicates that the necessary database table, design_submissions_userdesignsubmission, does not exist in the production database. 
+- **Fix**: Run migrations in Heroku console.
 
 ## Unfixed Bugs
 ### Bug 01
