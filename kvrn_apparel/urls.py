@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 from .sitemaps import (
     StaticViewSitemap,
@@ -44,4 +45,11 @@ urlpatterns = [
     path('design_submissions/', include('design_submissions.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
+    path('privacy-policy/', TemplateView.as_view(
+        template_name="privacy_policy.html"), name='privacy_policy'),
+    path('cookie-policy/', TemplateView.as_view(
+        template_name="cookie_policy.html"), name='cookie_policy'),
+    path('terms-and-conditions/', TemplateView.as_view(
+        template_name="terms_and_conditions.html"), name='terms_and_conditions'
+        ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
