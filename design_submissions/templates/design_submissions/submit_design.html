@@ -55,20 +55,22 @@
                     {% if user_submissions %}
                     {% for submission in user_submissions %}
                     <div class="submission-card p-3 mb-3 shadow-sm rounded">
-                        <h5 class="submission-title font-weight-bold">{{ submission.title }}</h5>
-                        <p class="submission-description text-muted">{{ submission.description }}</p>
-                        <img src="{{ submission.image.url }}" alt="User submitted design"
-                            class="submission-image img-fluid rounded">
-                        <p class="submission-date small text-muted mt-2">Submitted on {{ submission.created_at|date:"F j, Y, g:i a" }}</p>
-                        <form action="{% url 'delete_submission' submission.id %}" method="post"
-                            class="delete-submission-form mt-2">
-                            {% csrf_token %}
-                            <button type="button" class="edit-btn btn btn-warning" data-submission-id="{{ submission.id }}">Edit</button>
-                            <form action="{% url 'delete_submission' submission.id %}" method="post" style="display: inline;">
+                        <div id="view-mode-{{ submission.id }}">
+                            <h5 class="submission-title font-weight-bold">{{ submission.title }}</h5>
+                            <p class="submission-description text-muted">{{ submission.description }}</p>
+                            <img src="{{ submission.image.url }}" alt="User submitted design"
+                                class="submission-image img-fluid rounded">
+                            <p class="submission-date small text-muted mt-2">Submitted on {{ submission.created_at|date:"F j, Y, g:i a" }}</p>
+                            <form action="{% url 'delete_submission' submission.id %}" method="post"
+                                class="delete-submission-form mt-2">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="button" class="edit-btn btn btn-warning" data-submission-id="{{ submission.id }}">Edit</button>
+                                <form action="{% url 'delete_submission' submission.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
                             </form>
-                        </form>
+                        </div>
                     </div>
                     <!-- Edit Mode (Form) -->
                     <form id="edit-form-{{ submission.id }}" action="{% url 'submit_design' %}" method="POST" enctype="multipart/form-data" style="display: none;">
@@ -86,8 +88,8 @@
                             <label for="image-{{ submission.id }}">Upload New Image:</label>
                             <input type="file" name="image" id="image-{{ submission.id }}" class="form-control-file">
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="cancel-btn btn btn-secondary" data-submission-id="{{ submission.id }}">Cancel</button>
+                        <button type="submit" class="btn save-edit-btn">Save</button>
+                        <button type="button" class="cancel-btn btn btn-danger" data-submission-id="{{ submission.id }}">Cancel</button>
                     </form>
                     {% endfor %}
                     {% else %}
