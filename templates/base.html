@@ -84,52 +84,51 @@
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
         <ul class="list-inline list-unstyled text-center text-lg-right my-0 lg-screen-flex">
           <li class="list-inline-item d-none d-lg-inline-block">
-              <!-- Contact Us Link -->
-              <a class="text-black nav-link" href="{% url 'about' %}" aria-label="Contact Us">
-                  <div class="text-center">
-                      <i class="fas fa-phone fa-lg"></i>
-                      <p class="my-0">Contact Us</p>
-                  </div>
-              </a>
+            <!-- Phone Icon for desktop -->
+            <a class="text-black nav-link" href="{% url 'about' %}">
+                <div class="text-center">
+                    <div><i class="fas fa-phone fa-lg"></i></div>
+                    <p class="my-0">Contact Us</p>
+                </div>
+            </a>
           </li>
           <li class="list-inline-item dropdown">
-              <!-- Account Dropdown Link -->
-              <a class="text-black nav-link dropdown-toggle" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="My Account">
-                  <div class="text-center">
-                      <i class="fas fa-user fa-lg mobile-small-icons"></i>
-                      <p class="my-0">My Account</p>
-                  </div>
-              </a>
-              <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                  {% if request.user.is_authenticated %}
-                      {% if request.user.is_superuser %}
-                          <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
-                          <a href="{% url 'contact_messages' %}" class="dropdown-item">Customer Messages</a>
-                      {% endif %}
-                      <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                      <a href="{% url 'wishlist' %}" class="dropdown-item">My Wishlist</a>
-                      <a href="{% url 'submit_design' %}" class="dropdown-item">Live Competition</a>
-                      <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                  {% else %}
-                      <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                      <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                  {% endif %}
+            <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <div class="text-center">
+                <div><i class="fas fa-user fa-lg mobile-small-icons"></i></div>
+                <p class="my-0">My Account</p>
               </div>
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="user-options">
+              {% if request.user.is_authenticated %}
+              {% if request.user.is_superuser %}
+              <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+              <a href="{% url 'contact_messages' %}" class="dropdown-item">Customer Messages</a>
+              {% endif %}
+              <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
+              <a href="{% url 'wishlist' %}" class="dropdown-item">My Wishlist</a>
+              <a href="{% url 'submit_design' %}" class="dropdown-item">Live Competition</a>
+              <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+              {% else %}
+              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+              {% endif %}
+            </div>
           </li>
           <li class="list-inline-item">
-              <!-- Bag Link -->
-              <a class="{% if grand_total %}font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}" aria-label="View Bag">
-                  <div class="text-center">
-                      <i class="fas fa-shopping-bag fa-lg text-black mobile-small-icons"></i>
-                      <p class="my-0 text-black">
-                          {% if total %}
-                              €{{ total|floatformat:2 }}
-                          {% else %}
-                              €0.00
-                          {% endif %}
-                      </p>
-                  </div>
-              </a>
+            <a class="{% if grand_total %}font-weight-bold{% else %}text-black{% endif %} nav-link" href="{% url 'view_bag' %}">
+              <div class="text-center">
+                <div><i class="fas fa-shopping-bag fa-lg text-black mobile-small-icons"></i></div>
+                <p class="my-0 text-black">
+                  {% if total %}
+                  €{{ total|floatformat:2 }}
+                  {% else %}
+                  €0.00
+                  {% endif %}
+                </p>
+              </div>
+            </a>
           </li>
         </ul>
       </div>
