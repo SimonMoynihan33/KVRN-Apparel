@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /account/
+Disallow: /wishlist/
+Disallow: /orders/
+Disallow: /password_reset/
+Disallow: /login/
+Disallow: /logout/
+Disallow: /signup/
+Allow: /static/
+Sitemap: https://kvrn-apparel-4bc2d092ebd6.herokuapp.com//sitemap.xml
