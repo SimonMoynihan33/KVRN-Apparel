@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -51,21 +52,20 @@ def toggle_wishlist(request, product_id):
     """
     Toggle a product's presence in the user's wishlist.
 
-    If the user is not logged in, redirects them to the login page. For
-    authenticated users, adds the product to the wishlist if not present;
-    otherwise, removes it. Returns a JSON response indicating the wishlist
-    state (added or removed).
+    If the user is not logged in, redirects them to the login page with a
+    message. If the user is logged in, toggles the product in the wishlist.
     """
     if not request.user.is_authenticated:
-        # Redirect to login page if the user is not authenticated
-        login_url = f"{reverse('account_login')}?next={request.path}"
-        return JsonResponse({
-            'success': False,
-            'redirect_url': login_url
-        })
+        # Add a message for the user and redirect to login if not authenticated
+        messages.info(request, 'You must be logged in to add items to your \
+            wishlist.')
+        return JsonResponse({'redirect_url': reverse('account_login')})
+
+    # User is authenticated; proceed with wishlist toggle
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)
+
     if created:
         # Item was added to the wishlist
         wishlist_state = True
@@ -74,12 +74,8 @@ def toggle_wishlist(request, product_id):
         wishlist_item.delete()
         wishlist_state = False
 
-    # Return JSON response with the wishlist state
+    # Return JSON response indicating the wishlist state
     return JsonResponse({
         'success': True,
         'wishlist_state': wishlist_state
     })
-
-    # Return an error response for non-POST requests
-    return JsonResponse(
-        {'success': False, 'error': 'Invalid request'}, status=400)
