@@ -44,4 +44,6 @@ class ProductForm(forms.ModelForm):
 
         self.fields['categories'].choices = friendly_names
         for field_name, field in self.fields.items():
-            field.widget.attrs['class'] = 'border-black rounded-0'
+            existing_classes = field.widget.attrs.get('class', '')
+        field.widget.attrs[
+            'class'] = f"{existing_classes} border-black rounded-0".strip()

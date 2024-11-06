@@ -246,7 +246,7 @@ a.category-badge > span.badge:hover {
 .allauth-form-inner-content input[type='submit']:hover {	
 	color: #f6ebdc; /* Light background color for text on hover */
     background-color: #2e2e2e; /* Dark gray for hover effect */
-    border-color: #2e2e2e;
+    border-color: #202020;
 }
 
 .allauth-form-inner-content a {
@@ -283,7 +283,7 @@ a.category-badge > span.badge:hover {
 
 .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
     background-color: #dc3545;
-    border-color: #dc3545;
+    border-color: #f53b4e;
     border-radius: 0;
 }
 
@@ -462,12 +462,16 @@ hr {
     background: rgba(255, 255, 255, 0.7);
     border: none;
     padding: 0.5rem;
-    color: #8d8d8d; /* Outline heart color */
+    color: #ff0000; /* Outline heart color */
     font-size: 1.2rem;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.detail-wish-btn {
+    font-size: 1.5rem !important;
 }
 
 /* Wishlist Button Icon */

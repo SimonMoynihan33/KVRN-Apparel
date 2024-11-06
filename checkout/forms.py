@@ -37,10 +37,12 @@ class OrderForm(forms.ModelForm):
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if field != 'country':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-            self.fields[field].widget.attrs['placeholder'] = placeholder
+                placeholder = f'{placeholders[field]} *' if \
+                    self.fields[field].required else placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+            # Add common CSS class to all fields
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             self.fields[field].label = False
+
+        self.fields['country'].choices = [(
+            '', 'Select Country')] + list(self.fields['country'].choices)
