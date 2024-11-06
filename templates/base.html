@@ -151,7 +151,7 @@
       </div>            
   </div>
   </header>
-  <section class="content">
+  <div class="content">
 
   {% if messages %}
   <div class="message-container">
@@ -178,14 +178,14 @@
   {% endblock %}
 
   {% block postloadjs %}
-  <script type="text/javascript">
+  <script>
     $(document).ready(function(){
         $('.toast').toast('show');
     });
 </script>
   {% endblock %}
-  </section>
-</body>
+  </div>
+
 
 <footer class="site-footer text-white">
   <div class="container py-5">
@@ -275,5 +275,5 @@
       </div>
   </div>
 </footer>
-
+</body>
 </html>
