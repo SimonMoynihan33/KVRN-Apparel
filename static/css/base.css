@@ -291,6 +291,11 @@ nav {
     background-color: #f2eadf;
 }
 
+.custom-nav-link {
+    color: black !important; /* Override Bootstrap's default color */
+}
+
+
 .nav-link.text-black {
     color: #000 !important;  /* Force link to be black */
 }
@@ -705,6 +710,6 @@ footer {
 /* For Nav on small screens */
 @media (max-width: 400px) {
     .small-nav-text-mobile {
-        font-size: 10px !important;
+        font-size: 13px !important;
     }
 }

@@ -82,7 +82,7 @@
         </a>
       </div>
       <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-        <ul class="list-inline list-unstyled text-center text-lg-right my-0 lg-screen-flex">
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0 d-flex justify-content-end">
           <li class="list-inline-item d-none d-lg-inline-block">
             <!-- Phone Icon for desktop -->
             <a class="text-black nav-link" href="{% url 'about' %}">
@@ -139,13 +139,8 @@
           aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <button class="navbar-toggler custom-iconw" type="button" data-toggle="collapse" data-target="#account-nav"
-            aria-controls="account-nav" aria-expanded="false" aria-label="Toggle account navigation">
-            <span class="fa-solid fa-user"></span>
-        </button>
         {% include 'includes/mobile-top-header.html' %}
         {% include 'includes/main-nav.html' %}
-        {% include 'includes/account-nav.html' %}
       </nav>
     </div>
     <div id="delivery-banner" class="row text-center">
