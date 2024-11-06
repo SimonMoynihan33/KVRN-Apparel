@@ -1,130 +1,158 @@
-## Bugs 
+# KVRN Apparel - README
 
-### Bug 01
-- **Issue**: Migrate would not run when initializing the workspace and adding `'django.contrib.sites',` to installed apps.
-- **Cause**: Added `'allauth.socialaccount',` and migrated before adding `'django.contrib.sites',`.
-- **Fix**: Remove `'allauth.socialaccount',`, run migrations and then re-add and migrate again. 
+## Index
+- [KVRN Apparel - README](#kvrn-apparel---readme)
+  - [Index](#index)
+  - [Introduction](#introduction)
+  - [Objectives](#objectives)
+  - [Target Audience](#target-audience)
+  - [Target Audience](#target-audience-1)
+  - [Problem Being Solved](#problem-being-solved)
+  - [Scope](#scope)
+  - [📊 Business and Marketing Plan](#-business-and-marketing-plan)
+    - [Introduction](#introduction-1)
+    - [Target Market](#target-market)
+    - [Revenue Model](#revenue-model)
+    - [Marketing Strategies](#marketing-strategies)
+    - [Key Performance Indicators (KPIs)](#key-performance-indicators-kpis)
+    - [Risks and Mitigation Strategies](#risks-and-mitigation-strategies)
+  - [🛠️ Development Plan](#️-development-plan)
+    - [Introduction](#introduction-2)
+    - [Research and Initial Decisions](#research-and-initial-decisions)
+    - [Agile Methodology](#agile-methodology)
+    - [Sprints](#sprints)
+    - [Acceptance Criteria](#acceptance-criteria)
+    - [Milestones](#milestones)
+    - [MoSCoW](#moscow)
+  - [🎨 UX/UI Design Plan](#-uxui-design-plan)
+    - [The Strategy Plane](#the-strategy-plane)
+    - [The Scope Plane](#the-scope-plane)
+    - [The Structure Plane](#the-structure-plane)
+    - [The Skeleton Plane](#the-skeleton-plane)
+    - [The Surface Plane](#the-surface-plane)
+  - [🚀 Features](#-features)
+  - [🔮 Future Enhancements](#-future-enhancements)
+  - [🧪 Testing](#-testing)
+  - [🖥️ Technologies Used](#️-technologies-used)
+  - [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
+  - [👥 Credits \& Acknowledgements](#-credits--acknowledgements)
+  - [Credits](#credits)
+    - [Images](#images)
 
-### Bug 02
-- **Issue**: After django-makrdownx would not work due to compatibility issues, I uninstalled it. This caused errors due to earlier migrations and would not allow my server to run.
-- **Cause**: After uninstalling it, earlier migrations depended on it.
-- **Fix**: Manually delete migration 0005 and 0006. Migration 0006 depended on 005 so they both had to be deleted and new migrations had to be run.
+---
 
-### Bug 03
-- **Issue**: Sorting by category in the dropdown duplicates products.
-- **Cause**: Use of ManyToMany relationship for categories.
-- **Fix**: Remove this option to save time.
+## Introduction
 
-### Bug 04
-- **Issue**: Toast close button not working.
-- **Cause**: Div tag automatically closed at the end of line.
-- **Fix**: Move closing div tag to end of toast file.
+**KVRN Apparel** is a custom apparel e-commerce platform that offers a sleek, user-friendly shopping experience for modern consumers. Built with Django, the platform showcases a variety of apparel items with a focus on unique, stylish designs that cater to a broad audience. KVRN Apparel integrates key features, including a Wishlist, product filtering by gender, user reviews, and a live competition. 
 
-## Bug 05
-- **Issue**: `AttributeError at /checkout/
-'NoneType' object has no attribute 'split'`. 
-- **Cause**: This was happening because the `request.POST.get('client_secret')` is returning `None`, and I was trying to call `.split('_secret')` on it, which causes the `AttributeError` as `None` does not have a `split()` method.
-- **Fix**: Add a Check for `client_secret`:
-```
-pid = request.POST.get('client_secret')
-if pid:
-    pid = pid.split('_secret')[0]
-    order.stripe_pid = pid
-else:
-    messages.error(request, 'There was an issue processing your payment. Please try again.')
-    return redirect(reverse('checkout'))
-```
+The project’s aim is to create a responsive and visually appealing online store that seamlessly guides users from browsing to checkout, with secure payment processing through Stripe. The store’s design and branding align with KVRN’s core identity: bold aesthetics, quality, and simplicity. This project also includes a unique competition feature where users can submit graphic designs, with winning designs featured on apparel items and royalties awarded to creators (this is a mockup, there is no royalties to be awarded).
 
-## Bug 06 (Largest Issue to date: Issue begin-23/10/2024)
-- **Issue**: When submitting the checkout form, I encountered a problem where the payment was being processed on the frontend, but the client secret was not being passed to my Django view on the backend. This resulted in either a continuous loading screen after the form submission and a failure to redirect to the checkout success page, or an error page telling me 
-<details>
-  <summary>Click to view the image</summary>
+KVRN Apparel was developed with attention to both business and technical goals, ensuring that users have a smooth, engaging experience across devices while meeting essential requirements for scalability, maintainability, and e-commerce best practices.
 
-  ![Error Message](/documentation/bugs/attribute-client-secret-bug.png)
-</details>This was avoided by adding checks to see if client secret was loaded to which I would get the error message: "Missing client secret."
+## Objectives
 
-**Steps Taken to Troubleshoot:**
+The primary objectives for **KVRN Apparel** are:
 
-Initial Investigation: I began by reviewing the network logs in the browser's developer tools. This allowed me to confirm that the client secret was being properly generated and passed to the frontend, as I could see it in the console logs and in the page source. However, it was not making its way to the backend, as the Django view was logging None for the client secret.
+1. **User-Centric Shopping Experience:** Provide an intuitive, seamless shopping experience with essential features like Wishlist, product reviews, and personalized user profiles. 
 
-Adding Logs to the Code: To better understand where things were breaking down, I added several log statements to both my JavaScript (to check if the client secret was being passed correctly) and to my Django view (to check if the secret was received). This helped confirm that the client secret was being correctly logged in the frontend, but it wasn't arriving in the backend as part of the form submission.
+2. **Visual Appeal and Brand Consistency:** Ensure a bold, sleek aesthetic that aligns with KVRN's brand identity, resonating with modern consumers and differentiating the brand in the e-commerce space.
 
-Using AI for Troubleshooting: I used AI to help guide me through potential issues. With its assistance, I was able to break the problem down and try out various debugging strategies, including checking network requests and cross-checking the flow of data between the frontend and backend.
+3. **Responsive Design:** Develop a fully responsive site that delivers a smooth browsing experience across desktops, tablets, and mobile devices.
 
-Working with Tutor Support: I reached out to tutor support for guidance, as this issue had been blocking my progress for a while. They helped me confirm that the client secret was necessary for Stripe to identify the payment intent, and that this was the key missing piece in my form submission.
+4. **Secure and Efficient Checkout:** Integrate Stripe for secure payments and customized delivery options, including multi-currency support for flexibility with international buyers.
 
-Identifying the Problem: After carefully reviewing the form submission process, I realized that I was not explicitly passing the client secret from the frontend to the backend. While the client secret was being generated in the frontend, it wasn’t included in the form data being submitted to Django. This explained why my view was receiving None for the client secret.
+5. **Community Engagement:** Introduce a user-driven competition feature allowing users to submit graphic designs for apparel, fostering engagement and brand loyalty. Creators of selected designs receive royalties.
 
-The Fix: To resolve this issue I rewatched all Stripe videos again, checking my code for potential problems in relation to the walkthrough. To my surprise, I forgot to add a line into my checkout.html:
+6. **Scalability and Maintainability:** Build a robust, scalable application that adheres to best practices in code quality, SEO, and security, preparing the store for future growth.
 
-`<input type="hidden" value="{{ client_secret }}" name="client_secret">`
+These objectives guide the project development, ensuring that KVRN Apparel meets user expectations while fulfilling business requirements and delivering a lasting impact in the apparel e-commerce market.
 
-It really is the simple things! *crying face*
+## Target Audience
 
-**Issue closed-24/10/2024**
+## Target Audience
 
-## Bug 07
-- **Issue**: Couldn't run migrations as I accidentally modified a core django file.
-- **Fix**: Uninstall and reinstalll django
+**KVRN Apparel** is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
 
-## Bug 08
-- **Issue**: Cannot commit.
-- **Cause**: Unknown
-- **Error**:
-```
-  no changes added to commit (use "git add" and/or "git commit -a")
-gitpod /workspace/KVRN-Apparel/documentation (main) $ git add .
-gitpod /workspace/KVRN-Apparel/documentation (main) $ git commit -m "Remove JS console.logs and print statement"
-On branch main
-Your branch is up to date with 'origin/main'.
+1. **Young Adults (Ages 18-35):** Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
 
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-        modified:   ../README.md
-        modified:   ../checkout/static/checkout/js/stripe_elements.js
-        modified:   ../checkout/views.py
+2. **Creative Individuals:** People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
 
-no changes added to commit (use "git add" and/or "git commit -a")
-```
-- **Fix**: Close terminal and refresh workspace.
+3. **Tech-Savvy Shoppers:** Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
 
-## Bug 09
-- **Issue**: When an item is added to the wishlist, it shows the "Add to Bag" modal with cart contents instead of a simple success message.
-- **Cause**: The toast notification used for success messages was displaying cart contents whenever a success message was generated. This was because the toast template included bag details (like bag_items and grand_total) whenever a success message was triggered, regardless of whether it was for the wishlist or the cart.
-- **Fix**: Add tags to differentiate between "cart" and "wishlist" messages. In the add_to_bag view, success messages were tagged with "cart," and in the toggle_wishlist view, messages were tagged with "wishlist." The toast template was updated to conditionally display bag contents only for messages tagged with "cart." This ensured that wishlist actions displayed a simple success message without triggering the bag modal.
+4. **International Buyers:** With multi-currency support and flexible shipping options, KVRN appeals to an international audience, particularly those in Ireland and the UK.
 
-## Bug 10
-- **Issue**: Placement of the wishlist button on the product_detail page would not overlay correctly on the product image or carousel, despite working correctly on the products page. Instead, it stayed positioned above the image or floated inconsistently on the page.
-- **Cause**: Differences in the layout structure between products and product_detail templates led to unexpected behavior. The carousel-item structure on product_detail uses specific positioning and overflow styles that interfere with the absolute positioning of the button, preventing it from appearing on top of the image as expected.
-- **Fix**: Attempted various placement alternatives, including placing the button outside the carousel structure, to ensure it displayed consistently on the page. Solution was to leave it where the Add to Bag button is.
+This target audience aligns with KVRN’s brand identity, valuing quality, originality, and a personalized shopping experience.
 
-## Bug 11
-- **Issue**: When flex was used and both the Wishlist button and Add to Bag button were side by side, the add to bag view was called when the wishlist button was clicked. Both had seperate class names, and correct urls. The reason for this is still not known. I ran the code through AI to see if they could find the issue but to no avail.
-- **Fix**: The only fix was to not have them on the same line using flexbox. When they were on seperate lines of the page this issue did not occur, even with the exact same html structure.
+## Problem Being Solved
 
-## Bug 12
-- **Issue**: When an item was added to the wishlist, the toast message displayed the contents of the shopping bag instead of a wishlist confirmation.
-- **Cause**: The toast message, intended for wishlist feedback, was inadvertently using the bag toast success code.
-- **Fix**: Add checks to toast_success.html ` {% if 'cart' in message.tags and grand_total and not on_profile_page %}` and add `extra_tags` to both bag view and wishlist view to identify what the messages were for.
+**KVRN Apparel** addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
 
-## Bug 13
-- **Issue**: Old toast notifications appeared upon revisiting the site, resulting in multiple stacked notifications for actions previously completed.
+1. **Streamlining the Shopping Experience:** Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and color, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
 
-## Bug 14
-- **Issue1**: Emails would not send and sent the error `SMTP.starttls() got an unexpected keyword argument 'keyfile'` on live site.
-- **Cause**: Compatibility issues with python3.12 and some django versions relating to SMPT.
-- **Fix**: [This page](https://stackoverflow.com/questions/77482831/smtp-starttls-got-an-unexpected-keyword-argument-keyfile) outlined that my solution was to upgrade to django 4.12.
+2. **Enhancing Post-Purchase Engagement:** Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
 
-## Bug 15
-- **Issue**: Internal server error occurs on the live Heroku site when accessing the design submission page, causing the page to fail due to a missing database table for the UserDesignSubmission model.
-- **Cause**: This error indicates that the necessary database table, design_submissions_userdesignsubmission, does not exist in the production database. 
-- **Fix**: Run migrations in Heroku console.
+3. **Building Community and Brand Loyalty:** By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
 
-## Unfixed Bugs
-### Bug 01
-- **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.
-- **Cause**: Unknown. The walkthrough was followed and extensive troubleshooting took place.
+4. **Meeting the Needs of a Global Audience:** The platform provides multi-currency support and adaptable delivery options, ensuring that international buyers (particularly in Ireland and the UK) can shop with ease and confidence.
+
+Through these solutions, KVRN Apparel addresses both common e-commerce pain points and unique challenges related to community engagement, encouraging a lasting connection with users.
+
+
+## Scope
+
+## 📊 Business and Marketing Plan
+
+### Introduction
+
+### Target Market
+
+### Revenue Model
+
+### Marketing Strategies
+
+### Key Performance Indicators (KPIs)
+
+### Risks and Mitigation Strategies
+
+## 🛠️ Development Plan
+
+### Introduction
+
+### Research and Initial Decisions
+
+### Agile Methodology
+
+### Sprints
+
+### Acceptance Criteria
+
+### Milestones
+
+### MoSCoW
+
+## 🎨 UX/UI Design Plan
+
+### The Strategy Plane
+
+### The Scope Plane
+
+### The Structure Plane
+
+### The Skeleton Plane
+
+### The Surface Plane
+
+## 🚀 Features
+
+## 🔮 Future Enhancements
+
+## 🧪 Testing
+
+## 🖥️ Technologies Used
+
+## 📦 Setup and Installation (GitHub and Heroku)
+
+## 👥 Credits & Acknowledgements
 
 
 ## Credits

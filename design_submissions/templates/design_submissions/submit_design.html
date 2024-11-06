@@ -58,6 +58,7 @@
                         <div id="view-mode-{{ submission.id }}">
                             <h5 class="submission-title font-weight-bold">{{ submission.title }}</h5>
                             <p class="submission-description text-muted">{{ submission.description }}</p>
+                            <p class="text-black">Status: {{ submission.get_status_display }}</p>
                             <img src="{{ submission.image.url }}" alt="User submitted design"
                                 class="submission-image img-fluid rounded">
                             <p class="submission-date small text-muted mt-2">Submitted on {{ submission.created_at|date:"F j, Y, g:i a" }}</p>

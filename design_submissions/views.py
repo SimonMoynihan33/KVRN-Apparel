@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import UserDesignSubmission
 from .forms import UserDesignSubmissionForm
 
@@ -15,6 +16,15 @@ def submit_design(request):
             # Attempt to edit an existing submission
             submission = get_object_or_404(
                 UserDesignSubmission, id=submission_id, user=request.user)
+
+            # Check if the submission is processed
+            if submission.status == 'processed':
+                messages.error(
+                    request,
+                    "This submission has already been processed and cannot be \
+                        edited.")
+                return redirect('submit_design')
+
             form = UserDesignSubmissionForm(
                 request.POST, request.FILES, instance=submission)
         else:
