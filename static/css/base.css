@@ -293,6 +293,7 @@ nav {
 
 .custom-nav-link {
     color: black !important; /* Override Bootstrap's default color */
+    font-size: 1rem;
 }
 
 
