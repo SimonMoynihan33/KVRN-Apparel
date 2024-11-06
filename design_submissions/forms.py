@@ -9,4 +9,4 @@ class UserDesignSubmissionForm(forms.ModelForm):
     """
     class Meta:
         model = UserDesignSubmission
-        fields = ['title', 'description', 'image']
+        fields = ['title', 'description', 'image', 'email']

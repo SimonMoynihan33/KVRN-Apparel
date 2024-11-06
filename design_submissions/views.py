@@ -17,12 +17,14 @@ def submit_design(request):
             submission = get_object_or_404(
                 UserDesignSubmission, id=submission_id, user=request.user)
 
-            # Check if the submission is processed
-            if submission.status == 'processed':
+            # Check if the submission is processing or finalized
+            if submission.status in ['processing', 'finalized']:
                 messages.error(
                     request,
-                    "This submission has already been processed and cannot be \
-                        edited.")
+                    "This submission is already being processed or finalized \
+                        and cannot be edited."
+                )
+
                 return redirect('submit_design')
 
             form = UserDesignSubmissionForm(

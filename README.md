@@ -6,7 +6,6 @@
   - [Introduction](#introduction)
   - [Objectives](#objectives)
   - [Target Audience](#target-audience)
-  - [Target Audience](#target-audience-1)
   - [Problem Being Solved](#problem-being-solved)
   - [Scope](#scope)
   - [📊 Business and Marketing Plan](#-business-and-marketing-plan)
@@ -69,8 +68,6 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 ## Target Audience
 
-## Target Audience
-
 **KVRN Apparel** is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
 
 1. **Young Adults (Ages 18-35):** Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
@@ -78,10 +75,6 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 2. **Creative Individuals:** People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
 
 3. **Tech-Savvy Shoppers:** Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
-
-4. **International Buyers:** With multi-currency support and flexible shipping options, KVRN appeals to an international audience, particularly those in Ireland and the UK.
-
-This target audience aligns with KVRN’s brand identity, valuing quality, originality, and a personalized shopping experience.
 
 ## Problem Being Solved
 
@@ -93,10 +86,7 @@ This target audience aligns with KVRN’s brand identity, valuing quality, origi
 
 3. **Building Community and Brand Loyalty:** By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
 
-4. **Meeting the Needs of a Global Audience:** The platform provides multi-currency support and adaptable delivery options, ensuring that international buyers (particularly in Ireland and the UK) can shop with ease and confidence.
-
 Through these solutions, KVRN Apparel addresses both common e-commerce pain points and unique challenges related to community engagement, encouraging a lasting connection with users.
-
 
 ## Scope
 
