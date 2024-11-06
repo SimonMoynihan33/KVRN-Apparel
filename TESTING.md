@@ -8,7 +8,12 @@
   - [Types of Testing Conducted](#types-of-testing-conducted)
   - [Tools Used](#tools-used)
   - [Test Cases](#test-cases)
-  - [Browser Developer Tools Testing](#browser-developer-tools-testing)
+  - [Browser and Responsiveness Testing](#browser-and-responsiveness-testing)
+    - [Chrome](#chrome)
+    - [Edge](#edge)
+    - [Safari](#safari)
+    - [Opera](#opera)
+    - [Firefox](#firefox)
   - [User Acceptance Testing](#user-acceptance-testing)
   - [Test Cases - by Features](#test-cases---by-features)
   - [Code Validation](#code-validation)
@@ -97,7 +102,64 @@ Our testing strategy included a combination of manual and user acceptance testin
 | Bad Request Error (400)       | Verify that a custom 400 page displays for invalid requests.                                          | Users are shown a custom 400 page on invalid requests.                                                 | Works as intended         |                     |
 | General Error Messages        | Check that general errors are handled with user-friendly messages across the site.                    | Error messages display and prevent unintended actions site-wide.                                       | Works as intended         | Comprehensive error handling in place. |
 
-## Browser Developer Tools Testing
+## Browser and Responsiveness Testing
+
+### Chrome
+| Device/Screen Size            | Operating System  | Test Results                                                                                       | Notes                       |
+|-------------------------------|-------------------|----------------------------------------------------------------------------------------------------|-----------------------------|
+| iPhone SE                     | iOS               | No irregularities found.                                                                           |                             |
+| iPhone XR                     | iOS               | No irregularities found.                                                                           |                             |
+| iPhone 12 Pro                 | iOS               | No irregularities found.                                                                           |                             |
+| iPhone 14 Pro Max             | iOS               | No irregularities found.                                                                           |                             |
+| Pixel 7                        | Android           | No irregularities found.                                                                           |                             |
+| Samsung Galaxy S8+            | Android           | No irregularities found.                                                                           |                             |
+| Samsung Galaxy S20 Ultra      | Android           | No irregularities found.                                                                           |                             |
+| iPad Mini                     | iOS               | No irregularities found.                                                                           |                             |
+| iPad Air                      | iOS               | No irregularities found.                                                                           |                             |
+| iPad Pro                      | iOS               | No irregularities found.                                                                           |                             |
+| Surface Pro 7                 | Windows           | No irregularities found.                                                                           |                             |
+| Surface Duo                   | Android           | No irregularities found.                                                                           |                             |
+| Galaxy Z Fold 5               | Android           | No irregularities found.                                                                           |                             |
+| Asus Zenbook Fold             | Windows           | No irregularities found.                                                                           |                             |
+| Samsung Galaxy A51/A71        | Android           | No irregularities found.                                                                           |                             |
+| Nest Hub                      | Android           | No irregularities found.                                                                           |                             |
+| Nest Hub Max                  | Android           | No irregularities found.                                                                           |                             |
+| Large Screen (2560px)    | Windows          | No irregularities found.                                                                           | Covered all available device presets in Chrome DevTools. |
+
+### Edge
+| Device/Screen Size       | Operating System | Test Results                                                                                       | Notes                       |
+|--------------------------|------------------|----------------------------------------------------------------------------------------------------|-----------------------------|
+| iPad (768px)             | iOS              | No irregularities found.                                                                           |                             |
+| iPhone (375px)           | iOS              | No irregularities found.                                                                           |                             |
+| Samsung (360px)          | Android          | No irregularities found.                                                                           |                             |
+| Galaxy Fold (344px)      | Android          | No irregularities found.                                                                           |                             |
+| Laptop (1366px)          | Windows          | No irregularities found.                                                                           |                             |
+| Large Screen (2560px)    | Windows          | No irregularities found.                                                                           | Covered main sizes in Edge. |
+
+### Safari
+| Device/Screen Size       | Operating System | Test Results                                                                                       | Notes                             |
+|--------------------------|------------------|----------------------------------------------------------------------------------------------------|-----------------------------------|
+| iPad (768px)             | iOS              | No irregularities found.                                                                           |                                   |
+| iPhone (375px)           | iOS              | No irregularities found.                                                                           |                                   |
+
+### Opera
+| Device/Screen Size       | Operating System | Test Results                                                                                       | Notes                                                                                                      |
+|--------------------------|------------------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| Nest Hub (1024px)        | Windows, Android | Zooming issue when filtering products or rendering new pages; fixes on refresh.                    | Uncertain if this is an issue with Opera DevTools; unable to test on a physical device. <details><summary>Opera Nest Hub Error</summary><img src="documentation/testing/opera-nest-zoom-error.png"></details> |
+| Galaxy Fold (344px)      | Android          | Zooming issue similar to Nest Hub, resolved on refresh.                                            | Same issue as above. <details><summary>Opera Galaxy Fold Error</summary><img src="documentation/testing/opera-galaxy-zoom-error.png"></details> |
+| iPad (768px)             | iOS              | No irregularities found.                                                                           |                                                                                                            |
+| iPhone (375px)           | iOS              | No irregularities found.                                                                           |                                                                                                            |
+| Laptop (1366px)          | Windows          | No irregularities found.                                                                           |                                                                                                            |
+| Large Screen (2560px)    | Windows          | No irregularities found.                                                                           | Opera issues isolated to specific devices above.                                                           |
+
+### Firefox
+| Device/Screen Size       | Operating System | Test Results                                                                                       | Notes                             |
+|--------------------------|------------------|----------------------------------------------------------------------------------------------------|-----------------------------------|
+| iPad (768px)             | iOS              | No irregularities found.                                                                           |                                   |
+| iPhone (375px)           | iOS              | No irregularities found.                                                                           |                                   |
+| Samsung (360px)          | Android          | No irregularities found.                                                                           |                                   |
+| Laptop (1366px)          | Windows          | No irregularities found.                                                                           |                                   |
+| Large Screen (2560px)    | Windows          | No irregularities found.                                                                           | Tested comprehensively up to 2560px. |
 
 ## User Acceptance Testing
 
@@ -133,6 +195,8 @@ Our testing strategy included a combination of manual and user acceptance testin
 | Add to Wishlist                     | Test adding an item to Wishlist from the product page.                                                             | Product appears in Wishlist.                                                                                         | Works as intended         |                     |
 | Remove from Wishlist                | Test removing an item from Wishlist.                                                                               | Product no longer appears in Wishlist.                                                                               | Works as intended         |                     |
 | Wishlist Update without Refresh     | Confirm that Wishlist updates without refreshing the page, allowing users to remain in their current scroll position. | Wishlist updates asynchronously without page refresh; changes appear upon full page refresh.                         | Works as intended         | Prevents user from being sent back to top of page after each click. |
+| Logged-Out User Redirect            | Verify that logged-out users are redirected to the login page when they attempt to add items to the wishlist.       | Unauthenticated users are redirected to the login page, and a message is displayed prompting login.                  | Works as intended         |                     |
+| Logged-In User Toggle               | Confirm that logged-in users can add/remove items from the wishlist without page reload, and icon updates visually. | Wishlist toggle functions as expected; icon changes based on wishlist state without page refresh.                    | Works as intended         |                     |
 | Submit Review                       | Confirm users can submit and update a star rating for items via a Bootstrap modal.                                 | Users can submit, view, and update ratings; modal displays feedback messages.                                        | Works as intended         |                     |
 | Disabled Reviews for Removed Items  | Verify that ratings are disabled for removed products in the order page.                                           | Rating system is disabled, showing a message if the item has been removed.                                           | Works as intended         |                     |
 | Update Review                       | Confirm user can update existing ratings, and that rating average is displayed on product.                         | User can update rating; average rating updates accordingly on the product.                                           | Works as intended         |                     |
@@ -143,6 +207,9 @@ Our testing strategy included a combination of manual and user acceptance testin
 | Submission Success Message          | Verify success message is displayed upon submission or update.                                                     | Message appears confirming successful submission/update.                                                             | Works as intended         |                     |
 | Admin Status Management             | Confirm admin can change entry status between submitted, processing, and finalized.                                | Status updates correctly in admin panel; processing/finalized submissions cannot be updated by users.                | Works as intended         |                     |
 | Submission Restriction              | Verify users are notified when they attempt to edit entries that are processing or finalized.                      | Users see a message if submission is locked due to processing/finalized status.                                      | Works as intended         |                     |
+| **Footer Links**                    |                                                                                                                    |                                                                                                                      |                           |                     |
+| Social Media Links                  | Verify that footer links redirect to the appropriate Facebook, Instagram, and GitHub pages for the business.       | All footer links open the correct pages in a new tab.                                                                | Works as intended         |                     |
+| Open in New Tab                     | Confirm that all footer links open in a new tab, maintaining the current session.                                  | Footer links open external pages in new tabs, keeping the user on the site.                                          | Works as intended         |                     |
 | **Other Features**                  |                                                                                                                    |                                                                                                                      |                           |                     |
 | Account Creation                    | Verify account registration, including email confirmation if applicable.                                           | Account is created, and user receives verification email.                                                            | Works as intended         |                     |
 | Login and Logout                    | Test login and logout functionality to ensure sessions work correctly.                                             | User can log in, navigate site, and log out without issues.                                                          | Works as intended         |                     |

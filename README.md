@@ -35,12 +35,21 @@
   - [🖥️ Technologies Used](#️-technologies-used)
   - [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
   - [👥 Credits \& Acknowledgements](#-credits--acknowledgements)
-  - [Credits](#credits)
+  - [Credits \& Acknowledgements](#credits--acknowledgements)
     - [Images](#images)
+    - [Mockups and Design Creation](#mockups-and-design-creation)
+    - [Favicon and Documentation Support](#favicon-and-documentation-support)
+    - [Scrolling Navigation Banner](#scrolling-navigation-banner)
+    - [Dependencies and Community Support](#dependencies-and-community-support)
+    - [Design Inspiration](#design-inspiration)
+    - [Documentation](#documentation)
 
 ---
 
 ## Introduction
+**Disclaimer**: *None of these items are for sale. This store is a mockup for portfolio purposes only. If you wish to test the functionality please use the stripe developer card 4242 4242 4242 4242.*
+
+*All products on the site are completely custom made and designed using online tools and mockup generators. None of these items are purchasable.*
 
 **KVRN Apparel** is a custom apparel e-commerce platform that offers a sleek, user-friendly shopping experience for modern consumers. Built with Django, the platform showcases a variety of apparel items with a focus on unique, stylish designs that cater to a broad audience. KVRN Apparel integrates key features, including a Wishlist, product filtering by gender, user reviews, and a live competition. 
 
@@ -145,6 +154,41 @@ Through these solutions, KVRN Apparel addresses both common e-commerce pain poin
 ## 👥 Credits & Acknowledgements
 
 
-## Credits
+## Credits & Acknowledgements
 ### Images
 - [Stock 'No Image' Image](https://tracerproducts.com/replacement-parts-accessories/product-image-coming-soon/)
+
+### Mockups and Design Creation
+- **[Placeit](https://placeit.net/)**: Used for creating high-quality mockups of apparel items.
+- **[Canva](https://www.canva.com/)**: Utilized for designing custom graphics and themes for apparel.
+
+### Favicon and Documentation Support
+- **[ChatGPT](https://openai.com/chatgpt)**: 
+  - Assisted in creating the favicon.
+  - Provided detailed support for writing docstrings, structuring documentation tables, code breakdown, and troubleshooting tips.
+
+### Scrolling Navigation Banner
+- **[Stack Overflow](https://stackoverflow.com/questions/72092797/make-content-infinite-scroll-left-to-right)**: Resource for the CSS code to enable the infinite scrolling left-to-right animation.
+  - `animation: scroll-left 20s linear infinite;` for speed adjustment and continuous scroll effect.
+  - `white-space: nowrap;` to prevent text wrapping.
+- **[MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/text-overflow)**: Used for the `text-overflow: ellipsis;` property to handle overflow text.
+- **Reddit and W3Schools**: Keyframe animation inspiration from Reddit and implemented with [W3Schools](https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php) CSS animations reference.
+
+### Dependencies and Community Support
+- **[Stack Overflow](https://stackoverflow.com/)**: For solutions and insights on specific coding challenges.
+- **Slack Community**: Provided valuable feedback and solutions to troubleshooting issues.
+- **CI Tutor Support**: Received guidance on technical issues and project requirements.
+- **Classmates and Peer Reviewers**: Support for testing and providing feedback throughout the development process.
+- **Mentor David Bowers**: Ongoing support and mentorship during the project development.
+- **Facilitator Marko Tot**: Project facilitation and feedback.
+
+### Design Inspiration
+- **[Mars the Label](https://marsthelabel.com/)**: Inspiration for site style and aesthetic choices.
+  
+### Documentation
+- **[Bootstrap Documentation](https://getbootstrap.com/docs/)**: Used for responsive design and styling elements throughout the project.
+- **[Python Documentation](https://docs.python.org/3/)**: Primary reference for Python language features and standard library functions.
+- **[Django](https://docs.djangoproject.com/en/4.2/)**: Core framework documentation, used for general application development and specific features like models, views, and authentication.
+- **[django-allauth](https://django-allauth.readthedocs.io/en/latest/)**: Documentation for implementing social authentication and user account management.
+- **[stripe](https://stripe.com/docs)**: Used for Stripe payment integration, providing secure and reliable payment processing.
+- **[W3Schools HTML/CSS/JavaScript](https://www.w3schools.com/)**: Used for fundamental HTML, CSS, and JavaScript knowledge and quick reference.
