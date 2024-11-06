@@ -602,6 +602,10 @@ footer {
     margin-top: 200px;
 }
 
+.header-container {
+    padding-top: 70px;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -620,7 +624,11 @@ footer {
 }
 
 /* fixed top navbar only on medium and up */
-@media (min-width: 992px) {
+@media (min-width: 991px) {
+    .header-container {
+        padding-top: 170px !important;
+    }
+
     #account-nav {
         display: none !important;
     }
@@ -644,10 +652,6 @@ footer {
 
 /* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
-    .header-container {
-        padding-top: 126px;
-    }
-
     body {
         height: calc(100vh - 116px);
     }
@@ -705,11 +709,18 @@ footer {
     .banner-content {
         font-size: 14px;  /* Reduce font size on mobile for better fit */
     }
+
+    .small-nav-text-mobile {
+        font-size: 10px !important;
+    }
+
+    .nav-link {
+        padding: .5rem .3rem;
+    }
 }
 
-/* For Nav on small screens */
-@media (max-width: 400px) {
-    .small-nav-text-mobile {
-        font-size: 13px !important;
+@media (min-width: 600px) {
+    .header-container {
+        padding-top: 100px;
     }
 }
