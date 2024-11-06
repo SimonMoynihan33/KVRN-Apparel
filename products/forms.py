@@ -4,6 +4,13 @@ from .models import Product, Category
 
 
 class ProductForm(forms.ModelForm):
+    """
+    Form for creating and updating Product instances.
+
+    Includes fields for selecting multiple categories (with help text for
+    graphic collection guidelines) and allows the upload of primary and
+    secondary images with custom widgets.
+    """
 
     class Meta:
         model = Product
@@ -27,6 +34,10 @@ class ProductForm(forms.ModelForm):
     )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form with a friendly name display for categories and
+        apply custom styling to all form fields.
+        """
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]

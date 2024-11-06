@@ -39,6 +39,13 @@ def profile(request):
 
 
 def order_history(request, order_number):
+    """
+    Display a past order confirmation.
+
+    Retrieves the specified order by its order number and informs the user
+    that this is a historical confirmation. The confirmation message is shown
+    on the checkout success template with limited context.
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (
@@ -57,6 +64,14 @@ def order_history(request, order_number):
 
 @login_required
 def submit_review(request, product_id):
+    """
+    Handle the submission or update of a product review.
+
+    Retrieves the relevant product and the latest order associated with
+    the user's profile. If a review already exists, updates it; otherwise,
+    creates a new review. On successful submission, redirects to the user's
+    profile and displays a success message.
+    """
     product = get_object_or_404(Product, id=product_id)
     order = Order.objects.filter(
         user_profile=request.user.userprofile,
@@ -89,6 +104,14 @@ def submit_review(request, product_id):
 
 @login_required
 def order_detail(request, order_number):
+    """
+    Display detailed information for a specific order.
+
+    Retrieve the order associated with the user and the specified order number.
+    Checks if each product in the order has been reviewed by the user and
+    annotates the line items accordingly. Renders the order detail template
+    with the order and review status for each item.
+    """
     # Retrieve the order associated with the user and the specific order number
     order = get_object_or_404(
         Order, order_number=order_number, user_profile=request.user.userprofile

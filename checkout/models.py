@@ -10,6 +10,11 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """
+    Model representing a customer order, storing details of the user's profile,
+    contact information, delivery address, order totals, and payment
+    information.
+    """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True,
@@ -69,6 +74,10 @@ class Order(models.Model):
 
 
 class OrderLineItem(models.Model):
+    """
+    Model representing an individual item within an order,
+    linked to a specific product and storing the quantity and price details.
+    """
     order = models.ForeignKey(
         Order, null=False, blank=False, on_delete=models.CASCADE,
         related_name='lineitems')
@@ -101,6 +110,10 @@ class OrderLineItem(models.Model):
 
 
 class OrderReview(models.Model):
+    """
+    Model for storing a user's rating for a purchased product within an order.
+    Allows users to review individual products within their orders.
+    """
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

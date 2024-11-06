@@ -6,6 +6,12 @@ from .models import CustomUser
 
 
 def verify_email(modeladmin, request, queryset):
+    """
+    Custom admin action to mark selected users' emails as verified.
+
+    For each selected user, finds the associated email address and sets
+    it as verified, then saves the updated status.
+    """
     for user in queryset:
         email_address = EmailAddress.objects.filter(user=user).first()
         if email_address:
@@ -17,6 +23,13 @@ verify_email.short_description = "Mark selected users as email verified"
 
 
 class CustomUserAdmin(UserAdmin):
+    """
+    Custom admin class for managing CustomUser instances.
+
+    Displays user details including username, email, and email verification
+    status.Includes a custom action to mark emails as verified and a read-only
+    field showing the verification status.
+    """
     list_display = ('username', 'email', 'is_email_verified')
     readonly_fields = ('is_email_verified',)
     actions = [verify_email]

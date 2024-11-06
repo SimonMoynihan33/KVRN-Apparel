@@ -4,6 +4,13 @@ from products.models import Product
 
 
 class Wishlist(models.Model):
+    """
+    Model representing a user's wishlist item.
+
+    Each wishlist entry links a user to a specific product, with the
+    date the item was added. Ensures unique product entries per user
+    through a unique constraint.
+    """
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     product = models.ForeignKey(

@@ -4,6 +4,12 @@ from checkout.models import OrderReview
 
 
 class UserProfileForm(forms.ModelForm):
+    """
+    Form for updating UserProfile details.
+
+    Provides fields for setting default address and contact information,
+    with customized placeholders, styling, and autofocus on the first field.
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -37,6 +43,12 @@ class UserProfileForm(forms.ModelForm):
 
 
 class ReviewForm(forms.ModelForm):
+    """
+    Form for submitting a star rating review for an order item.
+
+    Restricts input to the 'rating' field, providing a dropdown with star
+    options from 1 to 5.
+    """
     class Meta:
         model = OrderReview
         fields = ['rating']

@@ -6,6 +6,12 @@ from products.models import Product
 
 
 def wishlist_view(request):
+    """
+    Display the user's wishlist.
+
+    Retrieves all wishlist items for the logged-in user and extracts
+    the associated products. Renders the wishlist page with these products.
+    """
     wishlist_items = Wishlist.objects.filter(user=request.user)
     # Extract only the products from the wishlist items
     products = [item.product for item in wishlist_items]
@@ -16,6 +22,12 @@ def wishlist_view(request):
 
 @login_required
 def add_to_wishlist(request, product_id):
+    """
+    Add a product to the user's wishlist.
+
+    Fetches the specified product by ID and creates a wishlist item
+    if it doesn't already exist. Redirects to the wishlist page.
+    """
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
         user=request.user, product=product)
@@ -24,12 +36,26 @@ def add_to_wishlist(request, product_id):
 
 @login_required
 def remove_from_wishlist(request, product_id):
+    """
+    Remove a product from the user's wishlist.
+
+    Fetches the specified product by ID and deletes the corresponding
+    wishlist item if it exists. Redirects to the wishlist page.
+    """
     product = get_object_or_404(Product, id=product_id)
     Wishlist.objects.filter(user=request.user, product=product).delete()
     return redirect('wishlist')
 
 
 def toggle_wishlist(request, product_id):
+    """
+    Toggle a product's presence in the user's wishlist.
+
+    If the user is not logged in, redirects them to the login page. For
+    authenticated users, adds the product to the wishlist if not present;
+    otherwise, removes it. Returns a JSON response indicating the wishlist
+    state (added or removed).
+    """
     if not request.user.is_authenticated:
         # Redirect to login page if the user is not authenticated
         login_url = f"{reverse('account_login')}?next={request.path}"
