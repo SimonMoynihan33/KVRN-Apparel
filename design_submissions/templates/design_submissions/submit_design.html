@@ -70,6 +70,7 @@
                             <img src="{{ submission.image.url }}" alt="User submitted design"
                                 class="submission-image img-fluid rounded">
                             <p class="submission-date small text-muted mt-2">Submitted on {{ submission.created_at|date:"F j, Y, g:i a" }}</p>
+                            <p class="submission-date small text-muted mt-2">Email: {{ submission.email}}</p>
                             <form action="{% url 'delete_submission' submission.id %}" method="post"
                                 class="delete-submission-form mt-2">
                                 {% csrf_token %}
