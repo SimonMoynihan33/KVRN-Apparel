@@ -6,7 +6,6 @@
   - [Introduction](#introduction)
   - [Testing Strategy](#testing-strategy)
   - [Types of Testing Conducted](#types-of-testing-conducted)
-  - [Tools Used](#tools-used)
   - [Test Cases](#test-cases)
   - [Browser and Responsiveness Testing](#browser-and-responsiveness-testing)
     - [Chrome](#chrome)
@@ -19,7 +18,7 @@
   - [Code Validation](#code-validation)
     - [Validation Tests/Results](#validation-testsresults)
     - [Python Formatting and Linting](#python-formatting-and-linting)
-      - [Tools Used](#tools-used-1)
+      - [Tools Used](#tools-used)
       - [Process](#process)
   - [JavaScript Linting with ESLint](#javascript-linting-with-eslint)
     - [ESLint Setup and Configuration](#eslint-setup-and-configuration)
@@ -27,8 +26,8 @@
     - [Future Reference and Additional Notes](#future-reference-and-additional-notes)
   - [HTML Validation Results](#html-validation-results)
   - [CSS Validation Results](#css-validation-results)
-    - [Wave Accessibility Results](#wave-accessibility-results)
-    - [PageSpeed Insights Results](#pagespeed-insights-results)
+  - [Wave Accessibility Results](#wave-accessibility-results)
+  - [Lighthouse](#lighthouse)
   - [Bugs](#bugs)
     - [Bug 01](#bug-01)
     - [Bug 02](#bug-02)
@@ -60,14 +59,6 @@ Our testing strategy included a combination of manual and user acceptance testin
 3. **System Testing**: End-to-end testing covering workflows from browsing to checkout, ensuring users can navigate the site, add products to the cart, and complete purchases.
 4. **User Acceptance Testing (UAT)**: Real-world scenario testing to confirm that the application meets user expectations and requirements.
 6. **Cross-Browser Testing**: Tested compatibility across major browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile devices.
-
-## Tools Used
-- **Flake8 and pycodestyle**: For Pep8 compliance with python line length, white spaces and blank lines.
-- **Browser Developer Tools**: For manual testing, inspecting elements, and testing responsiveness.
-- **Wave Accessibility Tool**: For accessibility validation.
-- **JSLint**: For JavaScript code validation.
-- **W3C HTML Validator**: For HTML markup validation.
-- **W3C CSS Validator**: For CSS validation.
 
 ## Test Cases
 
@@ -385,11 +376,10 @@ By following these setup and configuration steps, ESLint is fully prepared to ma
 | Profile Styles        | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-profile-val.png"></details> |
 | Submissions Styles    | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-submissions-val.png"></details> |
 
-### Wave Accessibility Results
+## Wave Accessibility Results
 - **WCAG Compliance**: Confirmed that key pages meet accessibility standards for color contrast, ARIA roles, and screen reader compatibility.
 
-### PageSpeed Insights Results
-- **Performance Metrics**: Page load speeds optimized to meet or exceed industry standards.
+## Lighthouse
 
 ## Bugs 
 
