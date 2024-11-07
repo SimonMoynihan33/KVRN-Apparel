@@ -25,10 +25,17 @@
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
-                        {% if field.name != 'image' %}
+                        {% if field.name != 'image' and field.name != 'image2' %}
                             {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
+                        {% elif field.name == 'image' %}
+                            <!-- Unique ID for each image input -->
+                            <label for="new-image-1">Primary Image</label>
+                            <input id="new-image-1" type="file" name="image" accept="image/*" class="border-black rounded-0">
+                            <div class="text-danger" id="filename-1"></div>
+                        {% elif field.name == 'image2' %}
+                            <label for="new-image-2">Secondary Image</label>
+                            <input id="new-image-2" type="file" name="image2" accept="image/*" class="border-black rounded-0">
+                            <div class="text-danger" id="filename-2"></div>
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
@@ -44,9 +51,15 @@
 {% block postloadjs %}
     {{ block.super }}
     <script>
-        $('#new-image').change(function() {
-            const file = $('#new-image')[0].files[0];
-            $('#filename').text(`Image will be set to: ${file.name}`);
+        // JavaScript to handle file input changes for each image input
+        $('#new-image-1').change(function() {
+            const file = $('#new-image-1')[0].files[0];
+            $('#filename-1').text(`Image will be set to: ${file.name}`);
+        });
+
+        $('#new-image-2').change(function() {
+            const file = $('#new-image-2')[0].files[0];
+            $('#filename-2').text(`Image will be set to: ${file.name}`);
         });
     </script>
 {% endblock %}

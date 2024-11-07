@@ -55,9 +55,9 @@
                                     <td>{{ order.date }}</td>
                                     <td>
                                         <ul class="list-unstyled">
-                                            <div class="order">
+                                            <li class="order">
                                                 <a href="{% url 'order_detail'  order.order_number %}" class="btn btn-black">View Order</a>
-                                            </div>
+                                            </li>
                                         </ul>
                                     </td>
                                     <td>€{{ order.grand_total }}</td>
@@ -73,5 +73,5 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+    <script src="{% static 'profiles/js/countryfield.js' %}"></script>
 {% endblock %}
