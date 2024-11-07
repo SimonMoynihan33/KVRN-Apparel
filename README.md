@@ -761,8 +761,6 @@ To clone the repository:
 6. Type `git clone`, then paste the URL you copied.
 7. Press `Enter`, and the repository will be cloned to your specified directory.
 
-![Line brake](github_assets/readme_images/color-line-break.png)
-
 [⬆️Back to top](<#index>)
 
 ---

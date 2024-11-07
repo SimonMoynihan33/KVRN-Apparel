@@ -49,6 +49,7 @@
   <script src="https://kit.fontawesome.com/62e39d5211.js" crossorigin="anonymous"></script>
   <!-- Stripe -->
   <script src="https://js.stripe.com/v3/"></script>
+  <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/2def6cb4bac7e02252861ec21/d60fd9d945658cfe10ee03ff5.js");</script>
   {% endblock %}
 
   {% block extra_js %}
@@ -256,17 +257,26 @@
 
           <!-- Newsletter Signup -->
           <div class="col-md-3 mb-4">
-              <h5 class="text-uppercase">Stay Updated</h5>
-              <form class="newsletter-form">
-                  <div class="input-group">
-                      <input type="email" class="form-control rounded-0" placeholder="Enter your email" required>
-                      <div class="input-group-append">
-                          <button class="btn btn-outline-light rounded-0" type="submit">Sign Up</button>
-                      </div>
-                  </div>
-                  <small class="form-text mt-2">Sign up for exclusive offers and updates.</small>
-              </form>
+            <h5 class="text-uppercase">Stay Updated</h5>
+            <form action="https://herokuapp.us3.list-manage.com/subscribe/post?u=2def6cb4bac7e02252861ec21&amp;id=f64deac9e9&amp;f_id=0025b8e2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate newsletter-form" target="_blank">
+                <div class="input-group">
+                    <input type="email" name="EMAIL" class="form-control rounded-0 required email" id="mce-EMAIL" placeholder="Enter your email" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-light rounded-0" type="submit" id="mc-embedded-subscribe">Sign Up</button>
+                    </div>
+                </div>
+                <small class="form-text mt-2">Sign up for exclusive offers and updates.</small>
+                <div id="mce-responses" class="clear foot">
+                    <div class="response" id="mce-error-response" style="display:none;"></div>
+                    <div class="response" id="mce-success-response" style="display:none;"></div>
+                </div>
+                <!-- Hidden field for Mailchimp anti-bot protection - do not remove -->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_2def6cb4bac7e02252861ec21_f64deac9e9" tabindex="-1" value="">
+                </div>
+            </form>
           </div>
+
       </div>
 
       <!-- Footer Bottom -->
