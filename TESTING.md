@@ -26,14 +26,15 @@
     - [Python Formatting and Linting](#python-formatting-and-linting)
       - [Tools Used](#tools-used)
       - [Process](#process)
-  - [JavaScript Linting with ESLint](#javascript-linting-with-eslint)
-    - [ESLint Setup and Configuration](#eslint-setup-and-configuration)
-    - [Results of ESLint Linting](#results-of-eslint-linting)
-    - [Future Reference and Additional Notes](#future-reference-and-additional-notes)
-  - [HTML Validation Results](#html-validation-results)
-  - [CSS Validation Results](#css-validation-results)
-  - [Wave Accessibility Results](#wave-accessibility-results)
+    - [JavaScript Linting with ESLint](#javascript-linting-with-eslint)
+      - [ESLint Setup and Configuration](#eslint-setup-and-configuration)
+      - [Results of ESLint Linting](#results-of-eslint-linting)
+      - [Future Reference and Additional Notes](#future-reference-and-additional-notes)
+    - [HTML Validation Results](#html-validation-results)
+    - [CSS Validation Results](#css-validation-results)
   - [Lighthouse](#lighthouse)
+    - [Desktop Lighthouse Scores](#desktop-lighthouse-scores)
+    - [Mobile Lighthouse Scores](#mobile-lighthouse-scores)
   - [Bugs](#bugs)
     - [Bug 01](#bug-01)
     - [Bug 02](#bug-02)
@@ -51,7 +52,6 @@
     - [Bug 14](#bug-14)
     - [Bug 15](#bug-15)
   - [Unfixed Bugs](#unfixed-bugs)
-    - [Bug 01](#bug-01-1)
 
 ## Introduction
 This document details the testing conducted for **KVRN Apparel**, an e-commerce platform specializing in custom apparel. Comprehensive testing was performed to ensure that each feature provides a reliable, accessible, and user-friendly experience.
@@ -348,11 +348,11 @@ In this project, Python code formatting and linting were handled using `flake8` 
    After running `black`, `flake8` was executed once more from the terminal to verify that all style errors were resolved. A lack of output indicated that the code passed `flake8` checks successfully, meaning no further linting issues were detected.
 
 
-## JavaScript Linting with ESLint
+### JavaScript Linting with ESLint
 
 This project uses **ESLint** to maintain code quality and consistency across JavaScript files, covering both standalone `.js` files and inline JavaScript within HTML files. This setup ensures modern JavaScript standards (ES6+) and custom project requirements are met.
 
-### ESLint Setup and Configuration
+#### ESLint Setup and Configuration
 
 1. **Node.js and npm Installation**:
    - **Node.js** and **npm** are required to install and use ESLint.
@@ -410,7 +410,7 @@ This project uses **ESLint** to maintain code quality and consistency across Jav
      ```
      - Provides verbose output about the files ESLint processes, the rules it applies, and the configuration loaded. This helps verify that all desired files (including HTML) are being linted.
 
-### Results of ESLint Linting
+#### Results of ESLint Linting
 
 1. **Standalone JavaScript Files**:
    - Running `npx eslint .` successfully identified and checked all `.js` files in the project.
@@ -425,7 +425,7 @@ This project uses **ESLint** to maintain code quality and consistency across Jav
    - ESLint returned no output in both standard and quiet mode, meaning no errors or warnings were found in the project’s JavaScript (including inline HTML).
    - Debug mode (`npx eslint . --debug`) confirmed that ESLint loaded the correct configuration and linted all intended files without errors.
 
-### Future Reference and Additional Notes
+#### Future Reference and Additional Notes
 
 - **Re-running ESLint**: Use `npx eslint .` any time to check both standalone `.js` and inline JavaScript in HTML files.
 - **Modifying Configuration**:
@@ -437,7 +437,7 @@ This project uses **ESLint** to maintain code quality and consistency across Jav
 By following these setup and configuration steps, ESLint is fully prepared to maintain code quality across JavaScript files, whether standalone or inline, throughout the project’s lifecycle.
 
 
-## HTML Validation Results
+### HTML Validation Results
 
 | Page                         | Validation Status                    | Screenshot                                                                                                 |
 |------------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------|
@@ -472,7 +472,7 @@ By following these setup and configuration steps, ESLint is fully prepared to ma
 | Verify Email Request Page    | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-varify-email-req-val.png"></details> |
 | Wishlist Page                | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-wishlist-val.png"></details> |
 
-## CSS Validation Results
+### CSS Validation Results
 
 | CSS File            | Validation Status                    | Warning Details                                                                                           | Screenshot                                                                                                 |
 |---------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
@@ -484,10 +484,46 @@ By following these setup and configuration steps, ESLint is fully prepared to ma
 | Profile Styles        | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-profile-val.png"></details> |
 | Submissions Styles    | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-submissions-val.png"></details> |
 
-## Wave Accessibility Results
-- **WCAG Compliance**: Confirmed that key pages meet accessibility standards for color contrast, ARIA roles, and screen reader compatibility.
-
 ## Lighthouse
+
+### Desktop Lighthouse Scores
+
+| Page                   | Lighthouse Score |
+|------------------------|------------------|
+| **About Page**         | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-about.png" alt="About Page Lighthouse Score"></details> |
+| **Bag Page**           | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-bag.png" alt="Bag Page Lighthouse Score"></details> |
+| **Checkout Success**   | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-checkout-success.png" alt="Checkout Success Lighthouse Score"></details> |
+| **Checkout Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-checkout.png" alt="Checkout Page Lighthouse Score"></details> |
+| **Home Page**          | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-home.png" alt="Home Page Lighthouse Score"></details> |
+| **Order Detail**       | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-order-detail.png" alt="Order Detail Lighthouse Score"></details> |
+| **Product Detail**     | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-product-detail.png" alt="Product Detail Lighthouse Score"></details> |
+| **Products Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-products.png" alt="Products Page Lighthouse Score"></details> |
+| **Profile Page**       | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-profile.png" alt="Profile Page Lighthouse Score"></details> |
+| **Submit Design Page** | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-submit-design.png" alt="Submit Design Page Lighthouse Score"></details> |
+| **Wishlist Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-desktop/lh-d-wishlist.png" alt="Wishlist Page Lighthouse Score"></details> |
+
+### Mobile Lighthouse Scores
+
+| Page                   | Lighthouse Score |
+|------------------------|------------------|
+| **About Page**         | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-about.png" alt="About Page Mobile Lighthouse Score"></details> |
+| **Bag Page**           | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-bag.png" alt="Bag Page Mobile Lighthouse Score"></details> |
+| **Checkout Success**   | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-checkout-success.png" alt="Checkout Success Mobile Lighthouse Score"></details> |
+| **Checkout Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-checkout.png" alt="Checkout Page Mobile Lighthouse Score"></details> |
+| **FAQ Page**           | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-faq.png" alt="FAQ Page Mobile Lighthouse Score"></details> |
+| **Home Page**          | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-home.png" alt="Home Page Mobile Lighthouse Score"></details> |
+| **Order Detail**       | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-order-detail.png" alt="Order Detail Mobile Lighthouse Score"></details> |
+| **Product Detail**     | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-prduct-detail.png" alt="Product Detail Mobile Lighthouse Score"></details> |
+| **Products Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-products.png" alt="Products Page Mobile Lighthouse Score"></details> |
+| **Profile Page**       | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-profile.png" alt="Profile Page Mobile Lighthouse Score"></details> |
+| **Submit Design Page** | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-submit-design.png" alt="Submit Design Page Mobile Lighthouse Score"></details> |
+| **Wishlist Page**      | <details><summary>View Score</summary><img src="documentation/testing/lighthouse/lighthouse-mobile/lh-m-wishlist.png" alt="Wishlist Page Mobile Lighthouse Score"></details> |
+
+---
+
+Some of the Lighthouse scores, both on desktop and mobile, are currently sub-optimal due to time constraints and the project's short deadlines. Significant improvements have been made to maximize these scores as much as possible within the available time, but there is still room for optimization in areas such as accessibility and SEO. These scores are satisfactory and functional, but with more time, additional refinements would be possible. Future iterations will revisit these scores to further enhance performance, focusing especially on accessibility and SEO improvements that couldn't be fully implemented in this phase.
+
+
 
 ## Bugs 
 
@@ -614,6 +650,5 @@ no changes added to commit (use "git add" and/or "git commit -a")
 - **Fix**: Run migrations in Heroku console.
 
 ## Unfixed Bugs
-### Bug 01
-- **Issue**: When a sorting option is picked and the page updates, it no lomger displays what it is being sorted by, instead it says 'Sort By...' no matter what option is picked.
-- **Cause**: Unknown. The walkthrough was followed and extensive troubleshooting took place.
+
+To date, no bugs have been found and left unfixed.
