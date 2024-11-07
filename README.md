@@ -76,7 +76,7 @@
 
 *All products on the site are completely custom made and designed using online tools and mockup generators. None of these items are purchasable.*
 
-**KVRN Apparel*- is a custom apparel e-commerce platform that offers a sleek, user-friendly shopping experience for modern consumers. Built with Django, the platform showcases a variety of apparel items with a focus on unique, stylish designs that cater to a broad audience. KVRN Apparel integrates key features, including a Wishlist, product filtering by gender, user reviews, and a live competition. 
+**KVRN Apparel**- is a custom apparel e-commerce platform that offers a sleek, user-friendly shopping experience for modern consumers. Built with Django, the platform showcases a variety of apparel items with a focus on unique, stylish designs that cater to a broad audience. KVRN Apparel integrates key features, including a Wishlist, product filtering by gender, user reviews, and a live competition. 
 
 The project’s aim is to create a responsive and visually appealing online store that seamlessly guides users from browsing to checkout, with secure payment processing through Stripe. The store’s design and branding align with KVRN’s core identity: bold aesthetics, quality, and simplicity. This project also includes a unique competition feature where users can submit graphic designs, with winning designs featured on apparel items and royalties awarded to creators (this is a mockup, there is no royalties to be awarded).
 
@@ -86,19 +86,19 @@ KVRN Apparel was developed with attention to both business and technical goals, 
 
 ## Objectives
 
-The primary objectives for **KVRN Apparel*- are:
+The primary objectives for **KVRN Apparel**- are:
 
-1. **User-Centric Shopping Experience:*- Provide an intuitive, seamless shopping experience with essential features like Wishlist, product reviews, and personalized user profiles. 
+1. **User-Centric Shopping Experience:**- Provide an intuitive, seamless shopping experience with essential features like Wishlist, product reviews, and personalized user profiles. 
 
-2. **Visual Appeal and Brand Consistency:*- Ensure a bold, sleek aesthetic that aligns with KVRN's brand identity, resonating with modern consumers and differentiating the brand in the e-commerce space.
+2. **Visual Appeal and Brand Consistency:**- Ensure a bold, sleek aesthetic that aligns with KVRN's brand identity, resonating with modern consumers and differentiating the brand in the e-commerce space.
 
-3. **Responsive Design:*- Develop a fully responsive site that delivers a smooth browsing experience across desktops, tablets, and mobile devices.
+3. **Responsive Design:**- Develop a fully responsive site that delivers a smooth browsing experience across desktops, tablets, and mobile devices.
 
-4. **Secure and Efficient Checkout:*- Integrate Stripe for secure payments and customized delivery options, including multi-currency support for flexibility with international buyers.
+4. **Secure and Efficient Checkout:**- Integrate Stripe for secure payments and customized delivery options, including multi-currency support for flexibility with international buyers.
 
-5. **Community Engagement:*- Introduce a user-driven competition feature allowing users to submit graphic designs for apparel, fostering engagement and brand loyalty. Creators of selected designs receive royalties.
+5. **Community Engagement:**- Introduce a user-driven competition feature allowing users to submit graphic designs for apparel, fostering engagement and brand loyalty. Creators of selected designs receive royalties.
 
-6. **Scalability and Maintainability:*- Build a robust, scalable application that adheres to best practices in code quality, SEO, and security, preparing the store for future growth.
+6. **Scalability and Maintainability:**- Build a robust, scalable application that adheres to best practices in code quality, SEO, and security, preparing the store for future growth.
 
 These objectives guide the project development, ensuring that KVRN Apparel meets user expectations while fulfilling business requirements and delivering a lasting impact in the apparel e-commerce market.
 
@@ -106,25 +106,25 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 ## Target Audience
 
-**KVRN Apparel*- is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
+**KVRN Apparel**- is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
 
-1. **Young Adults (Ages 18-35):*- Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
+1. **Young Adults (Ages 18-35):**- Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
 
-2. **Creative Individuals:*- People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
+2. **Creative Individuals:**- People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
 
-3. **Tech-Savvy Shoppers:*- Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
+3. **Tech-Savvy Shoppers:**- Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
 
 [⬆️Back to top](<#index>)
 
 ## Problem Being Solved
 
-**KVRN Apparel*- addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
+**KVRN Apparel**- addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
 
-1. **Streamlining the Shopping Experience:*- Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and color, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
+1. **Streamlining the Shopping Experience:**- Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and color, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
 
-2. **Enhancing Post-Purchase Engagement:*- Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
+2. **Enhancing Post-Purchase Engagement:**- Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
 
-3. **Building Community and Brand Loyalty:*- By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
+3. **Building Community and Brand Loyalty:**- By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
 
 Through these solutions, KVRN Apparel addresses both common e-commerce pain points and unique challenges related to community engagement, encouraging a lasting connection with users.
 
