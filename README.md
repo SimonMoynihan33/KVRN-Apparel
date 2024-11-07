@@ -40,6 +40,11 @@
       - [B2C Advantages for KVRN Apparel](#b2c-advantages-for-kvrn-apparel)
   - [🛠️ Development Plan](#️-development-plan)
     - [Research and Initial Decisions](#research-and-initial-decisions)
+  - [Wireframes and ERD](#wireframes-and-erd)
+    - [Desktop Wireframes](#desktop-wireframes)
+    - [Mobile Wireframes](#mobile-wireframes)
+    - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+      - [Reflection on Wireframes and ERD](#reflection-on-wireframes-and-erd)
     - [Agile Methodology](#agile-methodology)
     - [Project Board](#project-board)
     - [Sprints](#sprints)
@@ -56,6 +61,12 @@
   - [🔮 Future Enhancements](#-future-enhancements)
   - [🧪 Testing](#-testing)
   - [🖥️ Technologies Used](#️-technologies-used)
+  - [🗃️ Custom Models Breakdown](#️-custom-models-breakdown)
+    - [1. Wishlist Model](#1-wishlist-model)
+    - [2. Contact Model](#2-contact-model)
+    - [3. UserDesignSubmission Model](#3-userdesignsubmission-model)
+    - [4. OrderReview Model](#4-orderreview-model)
+    - [Reflection on Model Changes](#reflection-on-model-changes)
   - [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
     - [Project Deployment: Heroku](#project-deployment-heroku)
       - [Forking the Repository](#forking-the-repository)
@@ -120,7 +131,7 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 **KVRN Apparel**- addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
 
-1. **Streamlining the Shopping Experience:**- Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and color, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
+1. **Streamlining the Shopping Experience:**- Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and price, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
 
 2. **Enhancing Post-Purchase Engagement:**- Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
 
@@ -166,7 +177,7 @@ Through these solutions, KVRN Apparel addresses both common e-commerce pain poin
 
 #### Design Submission and Community Engagement
 - **User Design Submission**: Users can submit designs for potential feature on products, with selected designs earning royalties. This feature fosters community engagement and encourages creativity.
-- **Contest and Updates**: The competition feature lets users view their own submissions, while admin can monitor and manage submissions.
+- **Contest and Updates**: The competition feature lets users view their own submissions and update them before they are being reviewed, while admin can monitor and manage submissions.
 
 ### 3. Optional Features for Future Iterations
 
@@ -344,13 +355,102 @@ The development plan for KVRN Apparel follows an agile methodology, with a stron
 
 In the early stages, extensive research was conducted to understand market trends, customer needs, and e-commerce best practices. These insights informed the foundational decisions for KVRN, guiding the selection of core features, design elements, and the user experience.
 
+## Wireframes and ERD
+
+The wireframes and Entity Relationship Diagram (ERD) were instrumental in the initial planning and design phases of the KVRN Apparel project. These wireframes provided visual guidance on page layouts and site navigation, ensuring a user-centered design approach. Below are the desktop and mobile wireframes for key site pages, as well as the ERD outlining the database structure.
+
+### Desktop Wireframes
+
+<details>
+<summary>View All Products Page</summary>
+<img src="documentation/wireframe-erd/d-all-products-view.png" alt="Desktop Wireframe - All Products View">
+</details>
+
+<details>
+<summary>View Checkout Page</summary>
+<img src="documentation/wireframe-erd/d-checkout.png" alt="Desktop Wireframe - Checkout">
+</details>
+
+<details>
+<summary>View Landing Page</summary>
+<img src="documentation/wireframe-erd/d-landing-page.png" alt="Desktop Wireframe - Landing Page">
+</details>
+
+<details>
+<summary>View Landing Page Scrolled</summary>
+<img src="documentation/wireframe-erd/d-landing-scrolled.png" alt="Desktop Wireframe - Landing Page Scrolled">
+</details>
+
+<details>
+<summary>View My Orders Page</summary>
+<img src="documentation/wireframe-erd/d-my-orders.png" alt="Desktop Wireframe - My Orders">
+</details>
+
+<details>
+<summary>View Shopping Bag Page</summary>
+<img src="documentation/wireframe-erd/d-shopping-bag.png" alt="Desktop Wireframe - Shopping Bag">
+</details>
+
+<details>
+<summary>View Single Product Page</summary>
+<img src="documentation/wireframe-erd/d-single-product.png" alt="Desktop Wireframe - Single Product">
+</details>
+
+<details>
+<summary>View Wishlist Page</summary>
+<img src="documentation/wireframe-erd/d-wishlist.png" alt="Desktop Wireframe - Wishlist">
+</details>
+
+### Mobile Wireframes
+
+<details>
+<summary>View All Products Page</summary>
+<img src="documentation/wireframe-erd/m-all-products-view.png" alt="Mobile Wireframe - All Products View">
+</details>
+
+<details>
+<summary>View Landing Page</summary>
+<img src="documentation/wireframe-erd/m-landing-page.png" alt="Mobile Wireframe - Landing Page">
+</details>
+
+<details>
+<summary>View Landing Page Scrolled</summary>
+<img src="documentation/wireframe-erd/m-landing-scrolled.png" alt="Mobile Wireframe - Landing Page Scrolled">
+</details>
+
+<details>
+<summary>View My Orders Page</summary>
+<img src="documentation/wireframe-erd/m-my-orders.png" alt="Mobile Wireframe - My Orders">
+</details>
+
+<details>
+<summary>View Shopping Bag Page</summary>
+<img src="documentation/wireframe-erd/m-shopping-bag.png" alt="Mobile Wireframe - Shopping Bag">
+</details>
+
+<details>
+<summary>View Single Product Page</summary>
+<img src="documentation/wireframe-erd/m-single-product.png" alt="Mobile Wireframe - Single Product">
+</details>
+
+### Entity Relationship Diagram (ERD)
+
+<details>
+<summary>View ERD</summary>
+<img src="documentation/wireframe-erd/kvrn-erd.png" alt="KVRN ERD">
+</details>
+
+#### Reflection on Wireframes and ERD
+
+These wireframes and the ERD served as foundational tools in the early stages, guiding site navigation and the layout of critical elements like orders, the wishlist, and sidebar navigation. However, as the project evolved, certain aspects were adjusted or removed in response to agile development decisions and time constraints, focusing on an MVP (Minimum Viable Product) first. Diverging from initial designs in favor of enhanced functionality and user experience proved beneficial, demonstrating the importance of flexibility and responsiveness as the project progressed.
+
 ### Agile Methodology
 
 The KVRN Apparel project utilized agile methodology, focusing on delivering incremental value through short development cycles. This approach facilitated rapid iterations, enabled priority adjustments, and ensured that core functionalities were delivered within the timeline.
 
 ### Project Board
 
-A [project board](documentation/agile-development/project-board.png) was used to organize tasks, track progress, and maintain a clear overview of the development lifecycle. The board was divided into key phases, providing a comprehensive view of tasks and their current status. This setup allowed for seamless communication and tracking, helping the team stay aligned on priorities and timelines.
+A [project board](documentation/agile-development/project-board.png) was used to organize tasks, track progress, and maintain a clear overview of the development lifecycle. The board was divided into key phases, providing a comprehensive view of tasks and their current status. This setup allowed for seamless flexibility and tracking, helping me stay aligned on priorities and timelines.
 
 <details>
 <summary>View Project Board</summary>
@@ -359,7 +459,7 @@ A [project board](documentation/agile-development/project-board.png) was used to
 
 ### Sprints
 
-The development process was divided into **milestone-based sprints**, each associated with specific objectives and deliverables. As shown in the [milestones image](documentation/agile-development/milestones.png), each sprint focused on essential features, such as product display, checkout, and user profiles. By organizing tasks into manageable sprints, the team was able to consistently deliver functional increments, building the product step by step.
+The development process was divided into **milestone-based sprints**, each associated with specific objectives and deliverables. As shown in the [milestones image](documentation/agile-development/milestones.png), each sprint focused on essential features, such as product display, checkout, and user profiles. By organizing tasks into manageable sprints, I was able to consistently deliver functional increments, building the product step by step.
 
 <details>
 <summary>View Milestones</summary>
@@ -368,7 +468,7 @@ The development process was divided into **milestone-based sprints**, each assoc
 
 ### Acceptance Criteria
 
-Acceptance criteria were meticulously defined for each user story to ensure alignment with project goals and user expectations. The [acceptance criteria image](documentation/agile-development/acceptance-criteria.png) demonstrates how criteria were established and used to verify the successful completion of features. Clear acceptance criteria helped the team maintain quality standards and ensured that each function met the expected requirements.
+Acceptance criteria were meticulously defined for each user story to ensure alignment with project goals and user expectations. The [acceptance criteria image](documentation/agile-development/acceptance-criteria.png) demonstrates how criteria were established and used to verify the successful completion of features. Clear acceptance criteria helped me maintain quality standards and ensured that each function met the expected requirements.
 
 <details>
 <summary>View Acceptance Criteria</summary>
@@ -436,6 +536,102 @@ Testing for this project has been carried out in a seperate file. It can be foun
 [⬆️Back to top](<#index>)
 
 ## 🖥️ Technologies Used
+This project was built with a combination of Django, Python, JavaScript, JQuery, Bootstrap, HTML5, CSS3 and the following dependancies:
+
+```
+asgiref==3.8.1
+black==24.10.0
+boto3==1.35.52
+botocore==1.35.52
+click==8.1.7
+dj-database-url==0.5.0
+Django==4.2
+django-allauth==0.51.0
+django-countries==7.2.1
+django-crispy-forms==1.14.0
+django-storages==1.14.4
+gunicorn==23.0.0
+jmespath==1.0.1
+oauthlib==3.2.2
+pathspec==0.12.1
+pillow==10.4.0
+psycopg2==2.9.10
+PyJWT==2.9.0
+python-dotenv==1.0.1
+python3-openid==3.2.0
+pytz==2024.2
+requests-oauthlib==2.0.0
+s3transfer==0.10.3
+sqlparse==0.5.1
+stripe==11.1.1
+```
+
+In addition, AWS (Amazon Web Services) was used for media and static file storage, while Heroku was leveraged for app deployment.
+
+[⬆️Back to top](<#index>)
+
+## 🗃️ Custom Models Breakdown
+
+The following models are custom-built to enhance KVRN Apparel's functionality, focusing on user engagement, product interaction, and order management. Each model has distinct fields and relationships that enable unique features such as user wishlists, design submissions, contact messaging, and product reviews within orders.
+
+### 1. Wishlist Model
+
+The `Wishlist` model allows users to save products they are interested in for future purchases. Key characteristics include:
+- **Fields**:
+  - `user`: Foreign key linking to Django’s `AUTH_USER_MODEL`, indicating the user who added the product to their wishlist.
+  - `product`: Foreign key to the `Product` model, representing the specific item saved by the user.
+  - `added_at`: Date and time when the product was added to the wishlist, automatically set when created.
+- **Relationships**:
+  - **One-to-Many** between `User` and `Wishlist`: A user can have multiple wishlist entries, but each entry is unique per product due to the unique constraint.
+  - **One-to-Many** between `Product` and `Wishlist`: A single product can be added to wishlists by multiple users.
+- **Unique Constraint**: Ensures that each user can only add a specific product once to their wishlist.
+
+### 2. Contact Model
+
+The `Contact` model enables users to send messages or inquiries through the contact page.
+- **Fields**:
+  - `name`: User’s name, captured as a string.
+  - `email`: User’s email, validated as an email field.
+  - `subject`: Brief subject line for the message.
+  - `message`: The full message or inquiry text.
+  - `submitted_at`: Timestamp for when the message was submitted.
+- **Relationships**: 
+  - This model is standalone with no foreign key relationships, making it a simple, self-contained model.
+- **Purpose**: Captures and stores contact form submissions, aiding in customer communication and support.
+
+### 3. UserDesignSubmission Model
+
+The `UserDesignSubmission` model allows users to submit designs for potential use in apparel graphics, supporting engagement and creativity.
+- **Fields**:
+  - `user`: Foreign key linking to Django’s `User`, identifying the design creator.
+  - `email`: User’s email address.
+  - `title`: Title of the design submission.
+  - `description`: Optional description of the design.
+  - `image`: Image upload field for the design file.
+  - `status`: Status of the submission, with choices between "submitted," "processing," and "finalized."
+  - `created_at` and `updated_at`: Timestamps for creation and latest update.
+- **Relationships**:
+  - **One-to-Many** between `User` and `UserDesignSubmission`: Users can submit multiple designs.
+- **Status Choices**: Enables tracking of each design’s review stage, allowing administrators to manage submissions effectively.
+
+### 4. OrderReview Model
+
+The `OrderReview` model allows users to review products they have purchased, providing feedback and ratings within individual orders.
+- **Fields**:
+  - `user`: Foreign key to `AUTH_USER_MODEL`, identifying the reviewer.
+  - `product`: Foreign key to `Product`, representing the reviewed item.
+  - `order`: Foreign key to the `Order` model, linking the review to the specific purchase.
+  - `rating`: User’s rating for the product, from 1 to 5 stars.
+  - `created_at`: Timestamp for when the review was created.
+- **Relationships**:
+  - **One-to-Many** between `User` and `OrderReview`: Each user can leave multiple reviews, one per product in each order.
+  - **One-to-Many** between `Order` and `OrderReview`: Each order can have multiple reviews, corresponding to the products within it.
+  - **One-to-Many** between `Product` and `OrderReview`: Each product can receive reviews from different users and orders.
+- **Unique Constraint**: Ensures that a user can only review a specific product once per order, preventing duplicate reviews.
+
+### Reflection on Model Changes
+
+These custom models were essential in shaping KVRN Apparel's functionality and providing user-centered features. However, as the project evolved, certain navigation and layout elements, such as order and wishlist placement, as well as the initial idea of a sidebar navigation, were modified or removed due to time constraints and agile development choices. These models served as guides for feature implementation, though some divergence from initial designs in favor of improved functionality and user experience was both necessary and beneficial, helping the project achieve its MVP efficiently.
 
 [⬆️Back to top](<#index>)
 
