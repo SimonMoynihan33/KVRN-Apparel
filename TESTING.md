@@ -18,7 +18,9 @@
   - [Test Cases - by Features](#test-cases---by-features)
   - [Code Validation](#code-validation)
     - [Validation Tests/Results](#validation-testsresults)
-    - [CI Python Linter Results](#ci-python-linter-results)
+    - [Python Formatting and Linting](#python-formatting-and-linting)
+      - [Tools Used](#tools-used-1)
+      - [Process](#process)
   - [JavaScript Linting with ESLint](#javascript-linting-with-eslint)
     - [ESLint Setup and Configuration](#eslint-setup-and-configuration)
     - [Results of ESLint Linting](#results-of-eslint-linting)
@@ -226,8 +228,24 @@ Our testing strategy included a combination of manual and user acceptance testin
 ### Validation Tests/Results
 Summary of the tools used for code validation and any results.
 
-### CI Python Linter Results
-- **Flake8**: Verified PEP 8 compliance and error-free Python code.
+### Python Formatting and Linting
+
+In this project, Python code formatting and linting were handled using `flake8` and `black` to ensure code readability, consistency, and adherence to style guidelines.
+
+#### Tools Used
+- **Flake8**: Used for linting to catch style errors and improve code quality.
+- **Black**: An autoformatter that enforces consistent styling across Python files.
+
+#### Process
+1. **Initial Linting with Flake8**  
+   `flake8` was run manually on each file. This allowed a thorough review of linting issues, highlighting any PEP 8 inconsistencies, long lines, unused imports, and other style errors. Each issue was addressed individually while working within the file to maintain compliance.
+
+2. **Auto-formatting with Black**  
+   After manually reviewing and addressing issues flagged by `flake8`, the code was then auto-formatted using `black`. This tool standardized the code format according to Black's conventions, handling aspects such as line length, indentation, and string formatting automatically. This step ensures a consistent code style across the entire project.
+
+3. **Final Linting with Flake8**  
+   After running `black`, `flake8` was executed once more from the terminal to verify that all style errors were resolved. A lack of output indicated that the code passed `flake8` checks successfully, meaning no further linting issues were detected.
+
 
 ## JavaScript Linting with ESLint
 

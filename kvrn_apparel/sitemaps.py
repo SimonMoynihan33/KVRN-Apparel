@@ -9,16 +9,19 @@ class StaticViewSitemap(Sitemap):
     Priority is set relatively high as they are core pages, and frequency is
     set to yearly.
     """
+
     priority = 0.8
-    changefreq = 'yearly'
+    changefreq = "yearly"
 
     def items(self):
         """
         Returns a list of static view names to be included in the sitemap.
         Uses Django Allauth's URL names for signup and login.
         """
-        return ['home', 'about', 'account_signup', 'account_login', 'view_bag',
-                'faq']
+        return [
+            "home", "about", "account_signup", "account_login", "view_bag",
+            "faq"
+            ]
 
     def location(self, item):
         """
@@ -33,8 +36,9 @@ class ProductSitemap(Sitemap):
     Priority is moderate as product pages are important, and frequency is set
     to weekly to account for potential updates or new product additions.
     """
+
     priority = 0.64
-    changefreq = 'weekly'
+    changefreq = "weekly"
 
     def items(self):
         """
@@ -48,8 +52,9 @@ class ProductCategorySitemap(Sitemap):
     Sitemap for product category pages, which may change occasionally.
     Priority is set high, and frequency is set to monthly.
     """
+
     priority = 0.8
-    changefreq = 'monthly'
+    changefreq = "monthly"
 
     def items(self):
         """
@@ -70,15 +75,16 @@ class GeneralProductsSitemap(Sitemap):
     view of products. Priority is set relatively high since this page provides
     primary access to product listings.
     """
+
     priority = 0.8
-    changefreq = 'monthly'
+    changefreq = "monthly"
 
     def items(self):
         """
         Returns a list containing the general products view, which supports
         filtering by gender.
         """
-        return ['products']
+        return ["products"]
 
     def location(self, item):
         """

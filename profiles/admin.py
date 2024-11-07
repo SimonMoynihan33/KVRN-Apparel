@@ -30,15 +30,17 @@ class CustomUserAdmin(UserAdmin):
     status.Includes a custom action to mark emails as verified and a read-only
     field showing the verification status.
     """
-    list_display = ('username', 'email', 'is_email_verified')
-    readonly_fields = ('is_email_verified',)
+
+    list_display = ("username", "email", "is_email_verified")
+    readonly_fields = ("is_email_verified",)
     actions = [verify_email]
 
     def is_email_verified(self, obj):
         """Check if the user’s email is verified."""
         return obj.is_email_verified()
+
     is_email_verified.boolean = True
-    is_email_verified.short_description = 'Email Verified'
+    is_email_verified.short_description = "Email Verified"
 
 
 # Unregister the default User admin and register the CustomUser proxy

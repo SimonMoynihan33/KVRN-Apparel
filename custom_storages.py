@@ -9,6 +9,7 @@ class StaticStorage(S3Boto3Storage):
     Sets the storage location for static files using the configured
     `STATICFILES_LOCATION` in settings.
     """
+
     location = settings.STATICFILES_LOCATION
 
 
@@ -19,4 +20,5 @@ class MediaStorage(S3Boto3Storage):
     Sets the storage location for media files using the configured
     `MEDIAFILES_LOCATION` in settings.
     """
+
     location = settings.MEDIAFILES_LOCATION

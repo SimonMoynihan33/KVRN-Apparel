@@ -10,12 +10,20 @@ class OrderForm(forms.ModelForm):
     the user for processing an order, including contact information
     and address details.
     """
+
     class Meta:
         model = Order
-        fields = ('full_name', 'email', 'phone_number',
-                  'street_address1', 'street_address2',
-                  'town_or_city', 'postcode', 'country',
-                  'county',)
+        fields = (
+            "full_name",
+            "email",
+            "phone_number",
+            "street_address1",
+            "street_address2",
+            "town_or_city",
+            "postcode",
+            "country",
+            "county",
+        )
 
     def __init__(self, *args, **kwargs):
         """
@@ -24,25 +32,29 @@ class OrderForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name': 'Full Name',
-            'email': 'Email Address',
-            'phone_number': 'Phone Number',
-            'postcode': 'Postal Code',
-            'town_or_city': 'Town or City',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
-            'county': 'County/State',
+            "full_name": "Full Name",
+            "email": "Email Address",
+            "phone_number": "Phone Number",
+            "postcode": "Postal Code",
+            "town_or_city": "Town or City",
+            "street_address1": "Street Address 1",
+            "street_address2": "Street Address 2",
+            "county": "County/State",
         }
 
-        self.fields['full_name'].widget.attrs['autofocus'] = True
+        self.fields["full_name"].widget.attrs["autofocus"] = True
         for field in self.fields:
-            if field != 'country':
-                placeholder = f'{placeholders[field]} *' if \
-                    self.fields[field].required else placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
+            if field != "country":
+                placeholder = (
+                    f"{placeholders[field]} *"
+                    if self.fields[field].required
+                    else placeholders[field]
+                )
+                self.fields[field].widget.attrs["placeholder"] = placeholder
             # Add common CSS class to all fields
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].widget.attrs["class"] = "stripe-style-input"
             self.fields[field].label = False
 
-        self.fields['country'].choices = [(
-            '', 'Select Country')] + list(self.fields['country'].choices)
+        self.fields["country"].choices = [("", "Select Country")] + list(
+            self.fields["country"].choices
+        )

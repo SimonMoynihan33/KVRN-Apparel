@@ -7,15 +7,18 @@ class Category(models.Model):
     Category model to render
     Boutique Ado Model
     """
+
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = "Categories"
 
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
     gender = models.CharField(
-        max_length=10, choices=[
-            ('men', 'Men'), ('women', 'Women')
-            ], null=True, blank=True)
+        max_length=10,
+        choices=[("men", "Men"), ("women", "Women")],
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return self.name
@@ -29,13 +32,12 @@ class Product(models.Model):
     Product model for displaying each product and information
     Boutique Ado Model
     """
-    GENDER_CHOICES = [
-        ('men', 'Men'),
-        ('women', 'Women')
-    ]
-    categories = models.ManyToManyField('Category', blank=True)
+
+    GENDER_CHOICES = [("men", "Men"), ("women", "Women")]
+    categories = models.ManyToManyField("Category", blank=True)
     gender = models.CharField(
-        max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
+        max_length=10, choices=GENDER_CHOICES, null=True, blank=True
+    )
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
@@ -55,4 +57,4 @@ class Product(models.Model):
         Returns the absolute URL for a product instance, which is used
         by sitemaps.
         """
-        return reverse('product_detail', args=[str(self.id)])
+        return reverse("product_detail", args=[str(self.id)])

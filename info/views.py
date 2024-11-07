@@ -6,21 +6,21 @@ from .models import Contact
 
 
 def about(request):
-    """ View to handle About Us section and process Contact Form submission """
+    """View to handle About Us section and process Contact Form submission"""
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(
                 request, "Your message has been sent successfully!")
-            return redirect('about')
+            return redirect("about")
     else:
         form = ContactForm()
 
     context = {
-        'form': form,
+        "form": form,
     }
-    return render(request, 'info/about.html', context)
+    return render(request, "info/about.html", context)
 
 
 @login_required
@@ -29,15 +29,16 @@ def contact_messages_view(request):
     if not request.user.is_superuser:
         messages.error(
             request, "You do not have permission to view this page.")
-        return redirect('home')  # Redirect non-superusers to home
+        return redirect("home")  # Redirect non-superusers to home
 
     # Retrieve contact messages if the user is a superuser
-    contact_messages = Contact.objects.all().order_by('-submitted_at')
+    contact_messages = Contact.objects.all().order_by("-submitted_at")
     return render(
-        request, 'info/messages_list.html',
-        {'contact_messages': contact_messages})
+        request, "info/messages_list.html",
+        {"contact_messages": contact_messages}
+    )
 
 
 def faq_page(request):
     """Render the FAQ page."""
-    return render(request, 'info/faq.html')
+    return render(request, "info/faq.html")

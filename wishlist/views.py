@@ -16,9 +16,7 @@ def wishlist_view(request):
     wishlist_items = Wishlist.objects.filter(user=request.user)
     # Extract only the products from the wishlist items
     products = [item.product for item in wishlist_items]
-    return render(
-        request, 'wishlist/wishlist.html', {'products': products}
-    )
+    return render(request, "wishlist/wishlist.html", {"products": products})
 
 
 @login_required
@@ -31,8 +29,9 @@ def add_to_wishlist(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
-        user=request.user, product=product)
-    return redirect('wishlist')
+        user=request.user, product=product
+    )
+    return redirect("wishlist")
 
 
 @login_required
@@ -45,7 +44,7 @@ def remove_from_wishlist(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
     Wishlist.objects.filter(user=request.user, product=product).delete()
-    return redirect('wishlist')
+    return redirect("wishlist")
 
 
 def toggle_wishlist(request, product_id):
@@ -57,14 +56,18 @@ def toggle_wishlist(request, product_id):
     """
     if not request.user.is_authenticated:
         # Add a message for the user and redirect to login if not authenticated
-        messages.info(request, 'You must be logged in to add items to your \
-            wishlist.')
-        return JsonResponse({'redirect_url': reverse('account_login')})
+        messages.info(
+            request,
+            "You must be logged in to add items to your \
+            wishlist.",
+        )
+        return JsonResponse({"redirect_url": reverse("account_login")})
 
     # User is authenticated; proceed with wishlist toggle
     product = get_object_or_404(Product, id=product_id)
     wishlist_item, created = Wishlist.objects.get_or_create(
-        user=request.user, product=product)
+        user=request.user, product=product
+    )
 
     if created:
         # Item was added to the wishlist
@@ -75,7 +78,4 @@ def toggle_wishlist(request, product_id):
         wishlist_state = False
 
     # Return JSON response indicating the wishlist state
-    return JsonResponse({
-        'success': True,
-        'wishlist_state': wishlist_state
-    })
+    return JsonResponse({"success": True, "wishlist_state": wishlist_state})

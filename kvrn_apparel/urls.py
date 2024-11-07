@@ -14,6 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -25,30 +26,43 @@ from .sitemaps import (
     ProductSitemap,
     GeneralProductsSitemap,
 )
+
 sitemaps = {
-    'static': StaticViewSitemap,
-    'products': ProductSitemap,
-    'general_products': GeneralProductsSitemap,
+    "static": StaticViewSitemap,
+    "products": ProductSitemap,
+    "general_products": GeneralProductsSitemap,
 }
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('', include('home.urls')),
-    path('products/', include('products.urls')),
-    path('bag/', include('bag.urls')),
-    path('checkout/', include('checkout.urls')),
-    path('wishlist/', include('wishlist.urls')),
-    path('profile/', include('profiles.urls')),
-    path('about/', include('info.urls')),
-    path('design_submissions/', include('design_submissions.urls')),
-    path('privacy-policy/', TemplateView.as_view(
-        template_name="privacy_policy.html"), name='privacy_policy'),
-    path('cookie-policy/', TemplateView.as_view(
-        template_name="cookie_policy.html"), name='cookie_policy'),
-    path('terms-and-conditions/', TemplateView.as_view(
-        template_name="terms_and_conditions.html"), name='terms_and_conditions'
-        ),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
-         name='django.contrib.sitemaps.views.sitemap'),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")),
+    path("", include("home.urls")),
+    path("products/", include("products.urls")),
+    path("bag/", include("bag.urls")),
+    path("checkout/", include("checkout.urls")),
+    path("wishlist/", include("wishlist.urls")),
+    path("profile/", include("profiles.urls")),
+    path("about/", include("info.urls")),
+    path("design_submissions/", include("design_submissions.urls")),
+    path(
+        "privacy-policy/",
+        TemplateView.as_view(template_name="privacy_policy.html"),
+        name="privacy_policy",
+    ),
+    path(
+        "cookie-policy/",
+        TemplateView.as_view(template_name="cookie_policy.html"),
+        name="cookie_policy",
+    ),
+    path(
+        "terms-and-conditions/",
+        TemplateView.as_view(template_name="terms_and_conditions.html"),
+        name="terms_and_conditions",
+    ),
+    path(
+        "sitemap.xml",
+        sitemap,
+        {"sitemaps": sitemaps},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,5 +8,6 @@ class BagConfig(AppConfig):
     Sets the default auto field for model primary keys and registers
     the application under the name 'bag'.
     """
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'bag'
+
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "bag"

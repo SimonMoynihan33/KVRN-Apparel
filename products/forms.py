@@ -14,7 +14,7 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        fields = "__all__"
 
     # Customize the category field help text
     categories = forms.ModelMultipleChoiceField(
@@ -22,14 +22,15 @@ class ProductForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         help_text="Please only select multiple categories when it relates to \
             the Graphic Collection (e.g. Graphic Tshirt = Graphic T-Shirt\
-                + T-Shirt)"
+                + T-Shirt)",
     )
 
     image = forms.ImageField(
-        label='Image', required=False, widget=CustomClearableFileInput)
+        label="Image", required=False, widget=CustomClearableFileInput
+    )
 
     image2 = forms.ImageField(
-        label='Secondary Image', required=False,
+        label="Secondary Image", required=False,
         widget=CustomClearableFileInput
     )
 
@@ -42,8 +43,9 @@ class ProductForm(forms.ModelForm):
         categories = Category.objects.all()
         friendly_names = [(c.id, c.get_friendly_name()) for c in categories]
 
-        self.fields['categories'].choices = friendly_names
+        self.fields["categories"].choices = friendly_names
         for field_name, field in self.fields.items():
-            existing_classes = field.widget.attrs.get('class', '')
-        field.widget.attrs[
-            'class'] = f"{existing_classes} border-black rounded-0".strip()
+            existing_classes = field.widget.attrs.get("class", "")
+        field.widget.attrs["class"] = (
+            f"{existing_classes} border-black rounded-0".strip()
+        )

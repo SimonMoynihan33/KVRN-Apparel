@@ -10,29 +10,31 @@ from products.models import Product
 
 @login_required
 def profile(request):
-    """ Display the user's profile. """
+    """Display the user's profile."""
     profile = get_object_or_404(UserProfile, user=request.user)
     reviewed_products = OrderReview.objects.filter(
-        user=request.user).values_list('product_id', flat=True)
+        user=request.user).values_list(
+        "product_id", flat=True
+    )
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request, "Profile updated successfully")
         else:
             messages.error(
-                request, 'Update failed. Please ensure the form is valid')
+                request, "Update failed. Please ensure the form is valid")
     else:
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-    template = 'profiles/profile.html'
+    template = "profiles/profile.html"
     context = {
-        'form': form,
-        'orders': orders,
-        'on_profile_page': True,
-        'reviewed_products': reviewed_products
+        "form": form,
+        "orders": orders,
+        "on_profile_page": True,
+        "reviewed_products": reviewed_products,
     }
 
     return render(request, template, context)
@@ -48,15 +50,18 @@ def order_history(request, order_number):
     """
     order = get_object_or_404(Order, order_number=order_number)
 
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
-    ))
+    messages.info(
+        request,
+        (
+            f"This is a past confirmation for order number {order_number}. "
+            "A confirmation email was sent on the order date."
+        ),
+    )
 
-    template = 'checkout/checkout_success.html'
+    template = "checkout/checkout_success.html"
     context = {
-        'order': order,
-        'from_profile': True,
+        "order": order,
+        "from_profile": True,
     }
 
     return render(request, template, context)
@@ -74,13 +79,12 @@ def submit_review(request, product_id):
     """
     product = get_object_or_404(Product, id=product_id)
     order = Order.objects.filter(
-        user_profile=request.user.userprofile,
-        lineitems__product=product
-    ).latest('date')
+        user_profile=request.user.userprofile, lineitems__product=product
+    ).latest("date")
     existing_review = OrderReview.objects.filter(
         user=request.user, product=product
     ).first()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ReviewForm(request.POST, instance=existing_review)
         if form.is_valid():
             review = form.save(commit=False)
@@ -93,13 +97,15 @@ def submit_review(request, product_id):
             else:
                 messages.success(
                     request, "Thank you! Your rating has been submitted.")
-            return redirect('profile')
+            return redirect("profile")
         else:
             messages.error(
-                request, "There was an issue with your rating submission.\
-                     Please try again.")
+                request,
+                "There was an issue with your rating submission.\
+                     Please try again.",
+            )
 
-    return redirect('profile')
+    return redirect("profile")
 
 
 @login_required
@@ -115,17 +121,22 @@ def order_detail(request, order_number):
     # Retrieve the order associated with the user and the specific order number
     order = get_object_or_404(
         Order, order_number=order_number, user_profile=request.user.userprofile
-        )
+    )
     # Fetch the rating for each product reviewed by the user
     reviewed_products = {
-        review.product_id: review.rating for review in
-        OrderReview.objects.filter(user=request.user)
+        review.product_id: review.rating
+        for review in OrderReview.objects.filter(user=request.user)
     }
     for item in order.lineitems.all():
-        item.is_reviewed = item.product_id in reviewed_products \
-            if item.product else False
+        item.is_reviewed = (
+            item.product_id in reviewed_products if item.product else False
+        )
 
-    return render(request, 'profiles/order_detail.html', {
-        'order': order,
-        'reviewed_products': reviewed_products,
-    })
+    return render(
+        request,
+        "profiles/order_detail.html",
+        {
+            "order": order,
+            "reviewed_products": reviewed_products,
+        },
+    )
