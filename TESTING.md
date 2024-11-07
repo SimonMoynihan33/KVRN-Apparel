@@ -13,7 +13,13 @@
     - [Safari](#safari)
     - [Opera](#opera)
     - [Firefox](#firefox)
-  - [User Acceptance Testing](#user-acceptance-testing)
+  - [User Acceptance Criteria](#user-acceptance-criteria)
+    - [Milestone 1: Project Planning and Research](#milestone-1-project-planning-and-research)
+    - [Milestone 2: Product Setup and Home Page](#milestone-2-product-setup-and-home-page)
+    - [Milestone 3: Product Management and Shopping Bag](#milestone-3-product-management-and-shopping-bag)
+    - [Milestone 4: Checkout, Payments, and Profile Management](#milestone-4-checkout-payments-and-profile-management)
+    - [Milestone 5: Testing, Documentation, Final Deployment, and Marketing Strategy](#milestone-5-testing-documentation-final-deployment-and-marketing-strategy)
+    - [Milestone 6: Planned for Future Deployments](#milestone-6-planned-for-future-deployments)
   - [Test Cases - by Features](#test-cases---by-features)
   - [Code Validation](#code-validation)
     - [Validation Tests/Results](#validation-testsresults)
@@ -158,7 +164,109 @@ Our testing strategy included a combination of manual and user acceptance testin
 | Laptop (1366px)          | Windows          | No irregularities found.                                                                           |                                   |
 | Large Screen (2560px)    | Windows          | No irregularities found.                                                                           | Tested comprehensively up to 2560px. |
 
-## User Acceptance Testing
+## User Acceptance Criteria
+
+### Milestone 1: Project Planning and Research
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Wireframes**               | Must Have    | - [x] Wireframes are created for the home page, product page, and checkout page.                                                  | Completed            |
+|                              |              | - [x] The wireframes align with the overall design direction.                                                                     |                       |
+| **ERD**                      | Should Have  | - [x] An ERD is created outlining product, user, and order relationships.                                                         | Completed            |
+|                              |              | - [x] The ERD reflects database structure and supports business logic.                                                            |                       |
+|                              |              | - [x] Three custom models are planned for implementation.                                                                         |                       |
+| **Project Setup**            | Must Have    | - [x] Project is initialized with version control (Git/GitHub).                                                                   | Completed            |
+|                              |              | - [x] Necessary dependencies and libraries are installed.                                                                         |                       |
+| **Base Template**            | Must Have    | - [x] Pages share a consistent header, footer, and navigation.                                                                    | Completed            |
+
+### Milestone 2: Product Setup and Home Page
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Home Page**                | Must Have    | - [x] The homepage has a hero section and displays featured products.                                                             | Completed            |
+| **Products Setup**           | Must Have    | - [x] Products are displayed with images, descriptions, and prices.                                                               | Completed            |
+|                              |              | - [x] Products are organized into categories.                                                                                     |                       |
+| **Product Sorting**          | Must Have    | - [x] Customers can sort products by price (ascending/descending), name, and rating.                                              | Completed            |
+|                              |              | - [x] Design is easy to use and shows relevant products.                                                                          |                       |
+| **Product Filtering and Searching** | Must Have | - [x] Customers can search for products by name or description.                                                                  | Completed            |
+|                              |              | - [x] Filtering options are available for categories, price range, etc.                                                           |                       |
+
+### Milestone 3: Product Management and Shopping Bag
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Toasts**                   | Must Have    | - [x] Toast notifications appear after key actions (adding to cart, product updates, successful checkout).                        | Completed            |
+| **Shopping Bag**             | Must Have    | - [x] Products can be added to a shopping bag.                                                                                   | Completed            |
+|                              |              | - [x] Shopping bag displays correct quantities, total price, and selected items.                                                  |                       |
+| **Product Modifying**        | Should Have  | - [x] Admins can update product details from the admin panel.                                                                     | Completed            |
+|                              |              | - [x] Super Users can update products from the front end.                                                                         |                       |
+| **Adding Products**          | Must Have    | - [x] Admins can add products via an admin panel.                                                                                | Completed            |
+|                              |              | - [x] Admins can also add products through the site, allowing for admin CRUD operations.                                          |                       |
+| **About Us Page**            | Could Have   | - [x] A static webpage where users can view information about the shop owner.                                                     | Completed            |
+|                              |              | - [x] Information is available to contact the KVRN team or just about the products.                                               |                       |
+
+### Milestone 4: Checkout, Payments, and Profile Management
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Guest Checkout**           | Must Have    | - [x] Guest checkout option is available for customers who don't want to register.                                                | Completed            |
+|                              |              | - [x] Guest customers can still receive order confirmation emails.                                                                |                       |
+| **Stripe Payments**          | Must Have    | - [x] Stripe payment gateway is integrated for secure transactions.                                                               | Completed            |
+|                              |              | - [x] Customers receive an email confirmation after successful payment.                                                           |                       |
+| **Checkout App**             | Must Have    | - [x] Customers can enter shipping details.                                                                                       | Completed            |
+|                              |              | - [x] Payment methods are available (integrated with Stripe).                                                                     |                       |
+| **Saved Payment Methods**    | Could Have   | - [x] Customers can save payment methods during checkout.                                                                         | Completed            |
+|                              |              | - [x] Saved payment methods are securely stored and can be used in future purchases.                                              |                       |
+| **More Products (Late in Development)** | Should Have | - [x] New products are added to existing categories.                                                                    | Completed            |
+|                              |              | - [x] Each new product includes relevant details like description, price, and images.                                             |                       |
+| **Authentication and Authorization** | Must Have | - [x] Secure registration and login process is implemented.                                                              | Completed            |
+|                              |              | - [x] Users can log in and log out.                                                                                               |                       |
+| **Wishlist Feature**         | Should Have  | - [x] Users can add products to a wishlist from the product page.                                                                 | Completed            |
+|                              |              | - [x] The wishlist is accessible from the user’s profile.                                                                         |                       |
+| **Newsletter Signup in Footer** | Could Have | - [x] A sign-up form is added to the footer of the site.                                                                          | Completed            |
+| **Profile Management**       | Must Have    | - [x] Users can view and update profile details.                                                                                  | Completed            |
+|                              |              | - [x] Users can see their order history on the profile page.                                                                      |                       |
+
+### Milestone 5: Testing, Documentation, Final Deployment, and Marketing Strategy
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Final Deployment**         | Must Have    | - [x] The project is deployed on Heroku.                                                                                          | Completed            |
+|                              |              | - [x] All environment variables are configured for production.                                                                    |                       |
+| **Testing**                  | Must Have    | - [x] Manual testing is carried out for all functionality.                                                                        | Completed            |
+|                              |              | - [x] Integration tests are in place to test interactions between components.                                                     |                       |
+| **Instagram Page Integration** | Could Have | - [x] A link to the Instagram page is added to the footer or header.                                                              | Completed            |
+|                              |              | - [x] The Instagram page opens in a new tab when clicked.                                                                         |                       |
+| **Facebook Page Setup**      | Must Have    | - [x] A branded Facebook page is set up with business details.                                                                    | Completed            |
+|                              |              | - [x] The page is linked to the e-commerce website and products can be shared easily.                                             |                       |
+| **SEO Optimization**         | Must Have    | - [x] The website follows SEO best practices.                                                                                     | Completed            |
+|                              |              | - [x] Meta tags are added.                                                                                                        |                       |
+|                              |              | - [x] robots.txt file is present for crawlers.                                                                                    |                       |
+|                              |              | - [x] sitemap.xml file is present in the footer.                                                                                  |                       |
+| **Accessibility Review**     | Could Have   | - [x] The site passes basic accessibility checks (contrast ratio, alt text for images).                                           | Completed            |
+| **Documentation**            | Must Have    | - [x] In-code documentation is used generously to make sure all code is clear and maintainable                                    | Completed            |
+|                              |              | - [x] Extensive README is written outlining features, testing, issues, bugs, etc.                                                 |                       |
+
+### Milestone 6: Planned for Future Deployments
+
+| **User Story**               | **MoSCoW**   | **Acceptance Criteria**                                                                                                           | **Status**           |
+|------------------------------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| **Blog Integration**         | Won't Have   | - [ ] A blog section is added to the website with promotional posts.                                                              | Future Deployment    |
+|                              |              | - [ ] Users can leave likes on blog posts.                                                                                        |                       |
+| **Abandoned Cart Email Reminders** | Won't Have | - [ ] Customers receive an email reminder after leaving items in their shopping cart for 24 hours.                               | Future Deployment    |
+|                              |              | - [ ] The email contains a link back to the shopping cart.                                                                        |                       |
+| **Multicurrency Support**    | Won't Have   | - [ ] Customers can select their preferred currency from a dropdown.                                                              | Future Deployment    |
+|                              |              | - [ ] Prices update dynamically based on the selected currency.                                                                   |                       |
+| **Quick View on Products**   | Won't Have   | - [ ] A "Quick View" button is available on the product catalog page.                                                             | Future Deployment    |
+|                              |              | - [ ] The "Quick View" popup shows the product image, price, and a brief description.                                             |                       |
+| **Wishlist to Cart Functionality** | Won't Have | - [ ] Customers can add wishlist items to the shopping cart with a single click.                                                 | Future Deployment    |
+|                              |              | - [ ] Product quantities and options are retained when moving from wishlist to cart.                                              |                       |
+| **Newsletter Email**         | Won't Have   | - [ ] Newsletter emails are sent to customers who subscribed to the mailing list.                                                 | Future Deployment    |
+|                              |              | - [ ] The email includes links to the latest products and promotions.                                                             |                       |
+
+---
+
+This project follows Agile development principles, focusing on delivering core functionalities first to establish a Minimum Viable Product (MVP) for initial deployment. Lower-priority features were either postponed or scheduled for later iterations. The project board reflects this Agile approach, showing stories shifted between milestones as development needs evolved. For example, stories marked as milestone 2 (M2) were, in some cases, moved to milestone 3, highlighting the project's adaptive lifecycle and ensuring the most valuable features were prioritized and delivered within the timeline.
 
 ## Test Cases - by Features
 
