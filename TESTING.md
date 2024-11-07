@@ -19,8 +19,12 @@
   - [Code Validation](#code-validation)
     - [Validation Tests/Results](#validation-testsresults)
     - [CI Python Linter Results](#ci-python-linter-results)
-    - [JSLint Results](#jslint-results)
-    - [W3C Validator HTML/CSS Results](#w3c-validator-htmlcss-results)
+  - [JavaScript Linting with ESLint](#javascript-linting-with-eslint)
+    - [ESLint Setup and Configuration](#eslint-setup-and-configuration)
+    - [Results of ESLint Linting](#results-of-eslint-linting)
+    - [Future Reference and Additional Notes](#future-reference-and-additional-notes)
+  - [HTML Validation Results](#html-validation-results)
+  - [CSS Validation Results](#css-validation-results)
     - [Wave Accessibility Results](#wave-accessibility-results)
     - [PageSpeed Insights Results](#pagespeed-insights-results)
   - [Bugs](#bugs)
@@ -225,12 +229,141 @@ Summary of the tools used for code validation and any results.
 ### CI Python Linter Results
 - **Flake8**: Verified PEP 8 compliance and error-free Python code.
 
-### JSLint Results
-- **JavaScript Code Quality**: Ensured JavaScript code follows best practices and is free of syntax errors.
+## JavaScript Linting with ESLint
 
-### W3C Validator HTML/CSS Results
-- **HTML**: Validated that HTML files are error-free and compliant with W3C standards.
-- **CSS**: Checked CSS for syntax errors and compliance with W3C standards.
+This project uses **ESLint** to maintain code quality and consistency across JavaScript files, covering both standalone `.js` files and inline JavaScript within HTML files. This setup ensures modern JavaScript standards (ES6+) and custom project requirements are met.
+
+### ESLint Setup and Configuration
+
+1. **Node.js and npm Installation**:
+   - **Node.js** and **npm** are required to install and use ESLint.
+   - Download and install **Node.js** from [nodejs.org](https://nodejs.org/), which includes **npm**.
+
+2. **Installing ESLint and Plugins**:
+   - ESLint was installed along with the `eslint-plugin-html` plugin to enable linting for both `.js` files and inline JavaScript within HTML files.
+   - Install these as development dependencies in your project:
+     ```bash
+     npm install eslint eslint-plugin-html --save-dev
+     ```
+
+3. **Configuring ESLint (`.eslintrc.json`)**:
+   - To support ES6 syntax, browser environment, and global variables, the following configurations were applied in `.eslintrc.json`:
+   
+     ```json
+     {
+       "parserOptions": {
+         "ecmaVersion": 2020           // Enables ES6+ syntax support.
+       },
+       "env": {
+         "browser": true                // Sets up browser-specific globals (e.g., `window`, `document`).
+       },
+       "globals": {
+         "$": "readonly",               // Declares `$` (for jQuery) as a global variable, read-only.
+         "Stripe": "readonly"           // Declares `Stripe` as a global variable, read-only.
+       },
+       "plugins": ["html"]              // Enables the `eslint-plugin-html` plugin to parse inline JavaScript in HTML files.
+     }
+     ```
+
+   - **Configuration Breakdown**:
+     - **`parserOptions.ecmaVersion`**: Set to `2020` to enable ES6+ syntax. This supports features like `const`, `let`, and arrow functions.
+     - **`env.browser`**: Specifies that the code will run in a browser environment, making ESLint aware of browser-specific global variables like `window` and `document`.
+     - **`globals`**:
+       - **`$`** (jQuery) and **`Stripe`** were declared as global variables with `"readonly"` to avoid ESLint’s `no-undef` warnings. Declaring them as read-only prevents accidental modification.
+     - **`plugins`**: The `html` plugin is included to enable ESLint to parse and lint inline JavaScript within HTML files.
+
+4. **Running ESLint Commands**:
+   - **Standard Run**:
+     ```bash
+     npx eslint .
+     ```
+     - Runs ESLint across the entire project. If there are no issues, no output is displayed.
+   
+   - **Quiet Mode**:
+     ```bash
+     npx eslint . --quiet
+     ```
+     - Runs ESLint in quiet mode, which suppresses non-error messages, only outputting actual errors (useful for streamlined checks).
+
+   - **Debug Mode**:
+     ```bash
+     npx eslint . --debug
+     ```
+     - Provides verbose output about the files ESLint processes, the rules it applies, and the configuration loaded. This helps verify that all desired files (including HTML) are being linted.
+
+### Results of ESLint Linting
+
+1. **Standalone JavaScript Files**:
+   - Running `npx eslint .` successfully identified and checked all `.js` files in the project.
+   - Since no issues were found, ESLint returned no output, indicating that the JavaScript code conforms to configured rules.
+
+2. **Inline JavaScript in HTML Files**:
+   - After installing `eslint-plugin-html` and updating the `.eslintrc.json` configuration, ESLint successfully parsed and linted JavaScript embedded in HTML files.
+   - `npx eslint .` with `eslint-plugin-html` found no issues, indicating that inline JavaScript met all linting requirements.
+   - Running in debug mode confirmed that ESLint processed HTML files and applied the JavaScript rules to inline scripts.
+
+3. **Summary of No Output**:
+   - ESLint returned no output in both standard and quiet mode, meaning no errors or warnings were found in the project’s JavaScript (including inline HTML).
+   - Debug mode (`npx eslint . --debug`) confirmed that ESLint loaded the correct configuration and linted all intended files without errors.
+
+### Future Reference and Additional Notes
+
+- **Re-running ESLint**: Use `npx eslint .` any time to check both standalone `.js` and inline JavaScript in HTML files.
+- **Modifying Configuration**:
+  - If additional global variables are needed, they can be added under the `globals` section in `.eslintrc.json` as `"variableName": "readonly"`.
+  - The `parserOptions.ecmaVersion` can be updated if the project requires newer ECMAScript features.
+  - Adding more plugins or rules can further customize linting to meet evolving project requirements.
+- **Output and Quiet Mode**: A silent output in quiet mode (`--quiet`) generally indicates no errors or warnings, meaning your code meets ESLint rules.
+
+By following these setup and configuration steps, ESLint is fully prepared to maintain code quality across JavaScript files, whether standalone or inline, throughout the project’s lifecycle.
+
+
+## HTML Validation Results
+
+| Page                         | Validation Status                    | Screenshot                                                                                                 |
+|------------------------------|--------------------------------------|------------------------------------------------------------------------------------------------------------|
+| 400 Error Page               | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-400-val.png"></details> |
+| 403 Error Page               | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-403-val.png"></details> |
+| 404 Error Page               | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-404-val.png"></details> |
+| 500 Error Page               | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-500-val.png"></details> |
+| About Page                   | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-about-val.png"></details> |
+| Bag Page                     | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-bag-val.png"></details> |
+| Change Password Success Page | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-change-pass-success-val.png"></details> |
+| Change Password Page         | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-change-pass-val.png"></details> |
+| Checkout Success Page        | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-checkout-success-val.png"></details> |
+| Checkout Page                | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-checkout-val.png"></details> |
+| Confirm Email Verification   | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-confirm-email-verification-val.png"></details> |
+| Cookies Page                 | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-cookies-val.png"></details> |
+| Edit Product Page            | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-edit-product-val.png"></details> |
+| FAQ Page                     | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-faq-val.png"></details> |
+| Home Page                    | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-index-val.png"></details> |
+| Login Page                   | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-login-val.png"></details> |
+| Logout Page                  | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-logout-val.png"></details> |
+| Order Detail Page            | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-order-detail-val.png"></details> |
+| Password Reset Page          | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-pass-reset-val.png"></details> |
+| Privacy Policy Page          | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-privacy-policy-val.png"></details> |
+| Product Detail Page          | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-product-detail-val.png"></details> |
+| Product Management Page      | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-product-management-val.png"></details> |
+| Products Page                | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-products-val.png"></details> |
+| Profile Page                 | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-profile-val.png"></details> |
+| Register Page                | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-register-val.png"></details> |
+| Submission Page              | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-submission-val.png"></details> |
+| Terms and Conditions Page    | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-tnc-val.png"></details> |
+| User Messages Page           | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-user-msgs-val.png"></details> |
+| Verify Email Request Page    | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-varify-email-req-val.png"></details> |
+| Wishlist Page                | No errors or warnings               | <details><summary>View</summary><img src="documentation/testing/code-validation/html-validation/html-wishlist-val.png"></details> |
+
+## CSS Validation Results
+
+| CSS File            | Validation Status                    | Warning Details                                                                                           | Screenshot                                                                                                 |
+|---------------------|--------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| About Styles          | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-about-val.png"></details> |
+| Base Styles         | Warning (non-critical)              | Imported Google Fonts. This warning does not affect functionality or styling compatibility.               | <details><summary>View Validation</summary><img src="documentation/testing/code-validation/css-validation/css-base-val.png"></details> <details><summary>View Warning</summary><img src="documentation/testing/code-validation/css-validation/css-base-warning.png"></details> |
+| Checkout Styles       | Warning (non-critical)              | Webkit transition is a vendor extension for browser-specific compatibility; does not impact overall CSS. | <details><summary>View Validation</summary><img src="documentation/testing/code-validation/css-validation/css-checkout-val.png"></details> <details><summary>View Warning</summary><img src="documentation/testing/code-validation/css-validation/css-checkout-warning.png"></details> |
+| FAQ Styles            | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-faq-val.png"></details> |
+| Messages Styles       | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-messages-val.png"></details> |
+| Profile Styles        | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-profile-val.png"></details> |
+| Submissions Styles    | No errors or warnings               | N/A                                                                                                      | <details><summary>View</summary><img src="documentation/testing/code-validation/css-validation/css-submissions-val.png"></details> |
 
 ### Wave Accessibility Results
 - **WCAG Compliance**: Confirmed that key pages meet accessibility standards for color contrast, ARIA roles, and screen reader compatibility.
