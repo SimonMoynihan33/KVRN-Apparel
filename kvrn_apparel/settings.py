@@ -34,7 +34,6 @@ DEBUG = "DEVELOPMENT" in os.environ
 ALLOWED_HOSTS = [
     "kvrn-apparel-4bc2d092ebd6.herokuapp.com",
     "8000-simonmoynih-kvrnapparel-hjhftj3lcph.ws.codeinstitute-ide.net",
-    "https://amiresponsive.co.uk/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [

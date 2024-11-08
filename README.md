@@ -171,13 +171,6 @@ The website uses Django Allauth to manage user authentication, providing a secur
 - **Email Verification**: New users receive a verification email to confirm their address, ensuring that only valid emails are registered.
 - **Password Reset**: Users can request password resets through a secure link sent to their registered email, adding a convenient recovery method if login details are forgotten.
 
-### Account Protection and Data Security
-
-To safeguard user accounts and data, KVRN Apparel follows industry best practices in data protection:
-- **Password Management**: Passwords are stored securely using Django’s hashing algorithms, making them unreadable in plain text.
-- **Environment-Based Email Configuration**: Email credentials and configurations for password reset and account notifications are stored in environment variables, protecting sensitive information from unauthorized access.
-- **HTTPS and SSL**: The site operates over HTTPS, encrypting data between the server and users, further ensuring that sensitive information such as login credentials cannot be intercepted.
-
 ### Authorization and Access Control
 
 Access control measures are implemented to ensure that only authorized users and administrators can access specific site functions:
@@ -638,7 +631,7 @@ Users can view their order history and rate individual items, providing feedback
 ![Order History](documentation/features/order-history.png)
 ![Per-Item Rating](documentation/features/per-item-rating.png)
 
-When a product is removed, to avoid, the review system is disabled while still showing a user their order. This was crucial to avoid database errors and keep the site functioning smoothly and to not confuse users.
+When a product is removed, the review system is disabled while still showing a user their order. This was crucial to avoid database errors and keep the site functioning smoothly and to not confuse users.
 
 ![Removed item unavailable for rating](documentation/features/removed-product-rating-unavailable.png)
 
@@ -679,7 +672,7 @@ The FAQ section uses an accordion format to keep content organized and easily na
 
 #### Privacy Policy, Terms and Conditions, and Cookie Consent
 
-KVRN provides a privacy policy, terms and conditions, and cookie consent notifications to keep users informed about data handling practices, building trust through transparency.
+KVRN provides a privacy policy, terms and conditions, and cookie policy (mockups, these are not legally binding) to keep users informed about data handling practices, building trust through transparency.
 
 ![Privacy Policy](documentation/features/privacy-policy.png)
 ![Terms and Conditions](documentation/features/terms-and-conditions.png)
@@ -829,74 +822,7 @@ In addition, AWS (Amazon Web Services) was used for media and static file storag
 
 ## 🗃️ Database Schema
 
-### Custom Models
-
-The following models are custom-built to enhance KVRN Apparel's functionality, focusing on user engagement, product interaction, and order management. Each model has distinct fields and relationships that enable unique features such as user wishlists, design submissions, contact messaging, and product reviews within orders.
-
-### 1. Wishlist Model
-
-The `Wishlist` model allows users to save products they are interested in for future purchases. Key characteristics include:
-- **Fields**:
-  - `user`: Foreign key linking to Django’s `AUTH_USER_MODEL`, indicating the user who added the product to their wishlist.
-  - `product`: Foreign key to the `Product` model, representing the specific item saved by the user.
-  - `added_at`: Date and time when the product was added to the wishlist, automatically set when created.
-- **Relationships**:
-  - **One-to-Many** between `User` and `Wishlist`: A user can have multiple wishlist entries, but each entry is unique per product due to the unique constraint.
-  - **One-to-Many** between `Product` and `Wishlist`: A single product can be added to wishlists by multiple users.
-- **Unique Constraint**: Ensures that each user can only add a specific product once to their wishlist.
-
-### 2. Contact Model
-
-The `Contact` model enables users to send messages or inquiries through the contact page.
-- **Fields**:
-  - `name`: User’s name, captured as a string.
-  - `email`: User’s email, validated as an email field.
-  - `subject`: Brief subject line for the message.
-  - `message`: The full message or inquiry text.
-  - `submitted_at`: Timestamp for when the message was submitted.
-- **Relationships**: 
-  - This model is standalone with no foreign key relationships, making it a simple, self-contained model.
-- **Purpose**: Captures and stores contact form submissions, aiding in customer communication and support.
-
-### 3. UserDesignSubmission Model
-
-The `UserDesignSubmission` model allows users to submit designs for potential use in apparel graphics, supporting engagement and creativity.
-- **Fields**:
-  - `user`: Foreign key linking to Django’s `User`, identifying the design creator.
-  - `email`: User’s email address.
-  - `title`: Title of the design submission.
-  - `description`: Optional description of the design.
-  - `image`: Image upload field for the design file.
-  - `status`: Status of the submission, with choices between "submitted," "processing," and "finalized."
-  - `created_at` and `updated_at`: Timestamps for creation and latest update.
-- **Relationships**:
-  - **One-to-Many** between `User` and `UserDesignSubmission`: Users can submit multiple designs.
-- **Status Choices**: Enables tracking of each design’s review stage, allowing administrators to manage submissions effectively.
-
-### 4. OrderReview Model
-
-The `OrderReview` model allows users to review products they have purchased, providing feedback and ratings within individual orders.
-- **Fields**:
-  - `user`: Foreign key to `AUTH_USER_MODEL`, identifying the reviewer.
-  - `product`: Foreign key to `Product`, representing the reviewed item.
-  - `order`: Foreign key to the `Order` model, linking the review to the specific purchase.
-  - `rating`: User’s rating for the product, from 1 to 5 stars.
-  - `created_at`: Timestamp for when the review was created.
-- **Relationships**:
-  - **One-to-Many** between `User` and `OrderReview`: Each user can leave multiple reviews, one per product in each order.
-  - **One-to-Many** between `Order` and `OrderReview`: Each order can have multiple reviews, corresponding to the products within it.
-  - **One-to-Many** between `Product` and `OrderReview`: Each product can receive reviews from different users and orders.
-- **Unique Constraint**: Ensures that a user can only review a specific product once per order, preventing duplicate reviews.
-
-### Reflection on Model Changes
-
-These custom models were essential in shaping KVRN Apparel's functionality and providing user-centered features. However, as the project evolved, certain navigation and layout elements, such as order and wishlist placement, as well as the initial idea of a sidebar navigation, were modified or removed due to time constraints and agile development choices. These models served as guides for feature implementation, though some divergence from initial designs in favor of improved functionality and user experience was both necessary and beneficial, helping the project achieve its MVP efficiently.
-
-### Full Schema Tables
-
 ### Database Schema Documentation
-
-## Tables
 
 ### Table: `Wishlist`
 | Column    | Data Type       | Description                                      |
@@ -1009,7 +935,64 @@ These custom models were essential in shaping KVRN Apparel's functionality and p
 | `rating`        | PositiveSmallIntegerField | User's rating (1-5) for the product. |
 | `created_at`    | DateTime        | Timestamp for when the review was created.           |
 
+### Custom Models
 
+The following models are custom-built to enhance KVRN Apparel's functionality, focusing on user engagement, product interaction, and order management. Each model has distinct fields and relationships that enable unique features such as user wishlists, design submissions, contact messaging, and product reviews within orders.
+
+### 1. Wishlist Model
+
+The `Wishlist` model allows users to save products they are interested in for future purchases. Key characteristics include:
+- **Fields**:
+  - `user`: Foreign key linking to Django’s `AUTH_USER_MODEL`, indicating the user who added the product to their wishlist.
+  - `product`: Foreign key to the `Product` model, representing the specific item saved by the user.
+  - `added_at`: Date and time when the product was added to the wishlist, automatically set when created.
+- **Relationships**:
+  - **One-to-Many** between `User` and `Wishlist`: A user can have multiple wishlist entries, but each entry is unique per product due to the unique constraint.
+  - **One-to-Many** between `Product` and `Wishlist`: A single product can be added to wishlists by multiple users.
+- **Unique Constraint**: Ensures that each user can only add a specific product once to their wishlist.
+
+### 2. Contact Model
+
+The `Contact` model enables users to send messages or inquiries through the contact page.
+- **Fields**:
+  - `name`: User’s name, captured as a string.
+  - `email`: User’s email, validated as an email field.
+  - `subject`: Brief subject line for the message.
+  - `message`: The full message or inquiry text.
+  - `submitted_at`: Timestamp for when the message was submitted.
+- **Relationships**: 
+  - This model is standalone with no foreign key relationships, making it a simple, self-contained model.
+- **Purpose**: Captures and stores contact form submissions, aiding in customer communication and support.
+
+### 3. UserDesignSubmission Model
+
+The `UserDesignSubmission` model allows users to submit designs for potential use in apparel graphics, supporting engagement and creativity.
+- **Fields**:
+  - `user`: Foreign key linking to Django’s `User`, identifying the design creator.
+  - `email`: User’s email address.
+  - `title`: Title of the design submission.
+  - `description`: Optional description of the design.
+  - `image`: Image upload field for the design file.
+  - `status`: Status of the submission, with choices between "submitted," "processing," and "finalized."
+  - `created_at` and `updated_at`: Timestamps for creation and latest update.
+- **Relationships**:
+  - **One-to-Many** between `User` and `UserDesignSubmission`: Users can submit multiple designs.
+- **Status Choices**: Enables tracking of each design’s review stage, allowing administrators to manage submissions effectively.
+
+### 4. OrderReview Model
+
+The `OrderReview` model allows users to review products they have purchased, providing feedback and ratings within individual orders.
+- **Fields**:
+  - `user`: Foreign key to `AUTH_USER_MODEL`, identifying the reviewer.
+  - `product`: Foreign key to `Product`, representing the reviewed item.
+  - `order`: Foreign key to the `Order` model, linking the review to the specific purchase.
+  - `rating`: User’s rating for the product, from 1 to 5 stars.
+  - `created_at`: Timestamp for when the review was created.
+- **Relationships**:
+  - **One-to-Many** between `User` and `OrderReview`: Each user can leave multiple reviews, one per product in each order.
+  - **One-to-Many** between `Order` and `OrderReview`: Each order can have multiple reviews, corresponding to the products within it.
+  - **One-to-Many** between `Product` and `OrderReview`: Each product can receive reviews from different users and orders.
+- **Unique Constraint**: Ensures that a user can only review a specific product once per order, preventing duplicate reviews.
 
 [⬆️Back to top](<#KVRN-Apparel>)
 
@@ -1019,14 +1002,14 @@ These custom models were essential in shaping KVRN Apparel's functionality and p
 
 ### Project Deployment: Heroku
 
-1. **Initial Setup on Heroku:**
+**Initial Setup on Heroku:**
 
 - Sign up or log in to [Heroku](https://www.heroku.com/).
 - On the main Heroku Dashboard, click 'New' > 'Create New App'.
 - Name your project (e.g., `kvrnapparel`). Remember, the app name must be unique.
 - Choose a suitable region and then click 'Create app'.
 
-1. **Setting Up the Database:**
+**Setting Up the Database:**
 
 - Navigate to the settings tab of the app dashboard.
 - Click reveal config vars.
@@ -1034,7 +1017,7 @@ These custom models were essential in shaping KVRN Apparel's functionality and p
 - Add your database url to the value.
 - Click add.
 
-3. **Configuring Django App for Heroku:**
+**Configuring Django App for Heroku:**
 
 - Create a `.env` file at the root of your Django project.
   - Add `DATABASE_URL=<your_database_url_from_heroku>`
@@ -1045,6 +1028,8 @@ These custom models were essential in shaping KVRN Apparel's functionality and p
 
 Add this file to `.gitignore`
 
+**Note**: Your .env/env.py file should be set up at project inception, never commit these files to a public repository.
+
 - Add these variables to the Heroku 'Config Vars'.
 - Modify `settings.py` in your Django app:
   - Add `AWS_ACCESS_KEY_ID=<your_key_id>`
@@ -1054,31 +1039,14 @@ Add this file to `.gitignore`
   - Add `DEFAULT_FROM_EMAIL=<your_default_from_email_name>`
   - Add `EMAIL_HOST_PASS=<your_email_host_pass>`
   - Add `EMAIL_HOST_USER=<your_email_host_user>`
-  
-- For email configuration to use SMPT in production and django email backend in development add these to your settings.py file:
-  
-```
-if "DEVELOPMENT" in os.environ:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-    DEFAULT_FROM_EMAIL = "kvrnapparel@gmail.com"
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_USE_TLS = False
-    EMAIL_USE_SSL = True
-    EMAIL_PORT = 465
-    EMAIL_HOST = "smtp.gmail.com"
-    EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
-    DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
-```
 
-To use sqlite in development and your databse in production add these to your settings.py:
+To use sqlite in development and your database in production add these to your settings.py:
 
-```
+```python
 if "DATABASE_URL" in os.environ:
     DATABASES = {
         "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
-        }
+    }
 else:
     DATABASES = {
         "default": {
@@ -1087,17 +1055,217 @@ else:
         }
     }
 ```
+## Google Mail Setup
 
-4. **Setting Up AWS S3:**
+To be able to receive emails upon registration, checkout, and from the contact form, you need to set up an app password in your Gmail.
 
-- Visit [AWS S3](https://aws.amazon.com/s3/) and either sign in or create an account.
-- Create a new S3 bucket and note down the necessary configurations like `AWS_S3_ENDPOINT_URL` and `AWS_STORAGE_BUCKET_NAME`.
-- Add these configurations to your `.env` file.
-- Add these variables to Heroku 'Config Vars'.
-- Modify `settings.py` to configure AWS S3:
-  - Add AWS configurations for static and media files.
+- Set up a Gmail account that will be used to manage emails for your project.
+- Log in and navigate to **Settings** -> **Other Google Account Settings** -> **Accounts** -> **Import** -> **Other Account Settings**.
+- Activate 2-Step Verification.
+- Once verified, access **App Passwords** -> **Other**, and enter a name for the password (e.g., KVRN Apparel).
+- Click **Create** and copy the 16-digit password that is generated.
+- In your `settings.py`, configure SMTP for production and the Django email backend for development with the following email settings:
 
-5. **Final Configurations:**
+    ```python
+    if "DEVELOPMENT" in os.environ:
+        EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+        DEFAULT_FROM_EMAIL = "kvrnapparel@gmail.com"
+    else:
+        EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+        EMAIL_USE_TLS = False
+        EMAIL_USE_SSL = True
+        EMAIL_PORT = 465
+        EMAIL_HOST = "smtp.gmail.com"
+        EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+        EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASS")
+        DEFAULT_FROM_EMAIL = os.environ.get("EMAIL_HOST_USER")
+    ```
+
+- Add `EMAIL_HOST_PASS`, `EMAIL_HOST_USER` keys, and password and email values to your Heroku Config Vars.
+
+## AWS Config
+
+[AWS](https://aws.amazon.com) is used to store the media and static files for KVRN Apparel. To set it up, follow the steps below:
+
+- Set up an AWS account and log in.
+- Create a new S3 Bucket, name it to match your Heroku App name, and choose the closest region.
+- Allow **Click All Public Access**, then tick 'Bucket will be public' to enable the connection to Heroku.
+- In **Object Ownership** -> **ACLS Enabled** -> **Bucket Owner Preferred**.
+- Under **Properties** -> enable static web hosting and add 'index.html' and 'error.html' into the relevant fields, then click **Save**.
+- In the **Permissions** tab, paste the following CORS configuration:
+
+    ```json
+    [
+        {
+            "AllowedHeaders": [
+                "Authorization"
+            ],
+            "AllowedMethods": [
+                "GET"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": []
+        }
+    ]
+    ```
+
+- Copy your **ARN** string.
+- From the **Bucket Policy** tab, select the **Policy Generator** link and follow these steps:
+    - Policy Type: **S3 Bucket Policy**
+    - Effect: **Allow**
+    - Principal: `*`
+    - Actions: **GetObject**
+    - Amazon Resource Name (ARN): **paste-your-ARN-here**
+    - Click **Add Statement**
+    - Click **Generate Policy**
+    - Copy the entire Policy and paste it into the **Bucket Policy Editor**.
+
+    ```json
+    {
+        "Id": "Policy1234567890",
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "Stmt1234567890",
+                "Action": [
+                    "s3:GetObject"
+                ],
+                "Effect": "Allow",
+                "Resource": "arn:aws:s3:::bucket-name/*",
+                "Principal": "*"
+            }
+        ]
+    }
+    ```
+
+- Before saving, add `/*` to the end of the Resource key in the Bucket Policy Editor.
+- Click **Save**.
+- In the **ACL - Access Control List** -> **Edit** -> enable **List** for **Everyone (Public Access)** -> Accept the warning.
+
+### AWS - IAM Setup
+
+- In the AWS Services Menu, click **Create New Group** and name it (e.g., 'kvrnapparel-group').
+- Navigate to **Review Policy** page -> **User Groups** -> Select your newly named group.
+- Go to **Permissions** -> **Add Permissions** -> **Attach Policies**.
+- Select **AmazonS3FullAccess** policy -> **Import**.
+- Copy the ARN from your S3 Bucket and add it as follows.
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "s3:*",
+                "Resource": [
+                    "arn:aws:s3:::bucket-name",
+                    "arn:aws:s3:::bucket-name/*"
+                ]
+            }
+        ]
+    }
+    ```
+
+- Review the policy, name it (e.g., 'KVRN Apparel Policy'), and click **Create Policy**.
+- Search for your new policy and click on it to **Attach Policy**.
+- **User Groups** -> **Add User** -> name (e.g., 'kvrnapparel-user').
+- For **Select AWS Access Type** -> select **Programmatic Access** -> Add group to 'kvrnapparel-user' -> **Review User** -> **Create User**.
+- Find **Download .csv** to download credentials and save a copy (this file can be downloaded only once).
+  - The file contains **Access key ID** and **Secret access key**:
+    - `AWS_ACCESS_KEY_ID` = **Access key ID**
+    - `AWS_SECRET_ACCESS_KEY` = **Secret access key**
+- Add these variables into your env.py and Heroku Config Vars.
+
+### Media Folder Setup
+
+1. In Heroku Config Vars, remove `DISABLE_COLLECTSTATIC` (after at least one image has been added).
+2. In AWS S3, create a new folder -> **media** -> Add project images -> **Manage Public Permissions** -> **Grant public read access to the objects** -> **Upload**.
+
+### Django AWS Connect
+
+- Install the following packages to use AWS S3 Buckets in Django: `boto3` and `django-storages`.
+
+- Check if AWS variables are present in env.py and if environment variable paths are set in settings.py.
+
+    ```python
+    import os
+    from pathlib import Path
+    import dj_database_url
+
+    if os.path.isfile('env.py'):
+        import env
+    ```
+
+Check if DATABASES are set up to connect with Heroku Postgres server in production vs SQLite3 when in local development.
+
+    ```python
+    if "DATABASE_URL" in os.environ:
+        DATABASES = {
+            "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        }
+    else:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            }
+        }
+    ```
+
+Set up media and static file storage in settings.py.
+
+    ```python
+    STATIC_URL = "/static/"
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    ```
+
+Set up S3 Bucket config in settings.py.
+
+    ```python
+    if 'USE_AWS' in os.environ:
+        # Cache control
+        AWS_S3_OBJECT_PARAMETERS = {
+            'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+            'CacheControl': 'max-age=94608000',
+        }
+
+        # Bucket Config
+        AWS_STORAGE_BUCKET_NAME = 'bucket-name'
+        AWS_S3_REGION_NAME = 'your-region'
+        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+        AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+        # Static and media files
+        STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+        STATICFILES_LOCATION = 'static'
+        DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+        MEDIAFILES_LOCATION = 'media'
+
+        # Override static and media URLs in production
+        STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+        MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    ```
+
+Create a 'custom_storages.py' file in the root directory:
+
+    ```python
+    from django.conf import settings
+    from storages.backends.s3boto3 import S3Boto3Storage
+
+    class StaticStorage(S3Boto3Storage):
+        location = settings.STATICFILES_LOCATION
+
+    class MediaStorage(S3Boto3Storage):
+        location = settings.MEDIAFILES_LOCATION
+    ```
+
+1. **Final Configurations:**
 
 - Link your templates directory in Heroku: `TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')`.
 - Update the templates directory to `TEMPLATES_DIR`: `'DIRS': [TEMPLATES_DIR]`.
