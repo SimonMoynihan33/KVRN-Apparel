@@ -1198,7 +1198,7 @@ To be able to receive emails upon registration, checkout, and from the contact f
         import env
     ```
 
-Check if DATABASES are set up to connect with Heroku Postgres server in production vs SQLite3 when in local development.
+- Check if DATABASES are set up to connect with Heroku Postgres server in production vs SQLite3 when in local development.
 
     ```py
     if "DATABASE_URL" in os.environ:
@@ -1214,7 +1214,7 @@ Check if DATABASES are set up to connect with Heroku Postgres server in producti
         }
     ```
 
-Set up media and static file storage in settings.py.
+- Set up media and static file storage in settings.py.
 
     ```py
     STATIC_URL = "/static/"
@@ -1224,7 +1224,7 @@ Set up media and static file storage in settings.py.
     MEDIA_ROOT = os.path.join(BASE_DIR, "media")
     ```
 
-Set up S3 Bucket config in settings.py.
+- Set up S3 Bucket config in settings.py.
 
     ```py
     if 'USE_AWS' in os.environ:
@@ -1252,7 +1252,7 @@ Set up S3 Bucket config in settings.py.
         MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
     ```
 
-Create a 'custom_storages.py' file in the root directory:
+- Create a 'custom_storages.py' file in the root directory:
 
     ```py
     from django.conf import settings
