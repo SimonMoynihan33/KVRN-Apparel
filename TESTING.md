@@ -60,11 +60,11 @@ This document details the testing conducted for **KVRN Apparel**, an e-commerce 
 Our testing strategy included a combination of manual and user acceptance testing. The goal was to validate functionality, performance, and accessibility across devices and browsers, ensuring a consistent experience for users.
 
 ## Types of Testing Conducted
-1. **Unit Testing**: Validation of individual components, particularly models and views. Tests focused on verifying database interactions, model relationships, and view behaviors.
-2. **Integration Testing**: Tested interactions between key components (e.g., Cart, Wishlist, Checkout) to confirm smooth functionality across the full shopping flow.
-3. **System Testing**: End-to-end testing covering workflows from browsing to checkout, ensuring users can navigate the site, add products to the cart, and complete purchases.
+1. **Integration Testing**: Tested interactions between key components (e.g., Cart, Wishlist, Checkout) to confirm smooth functionality across the full shopping flow.
+2. **System Testing**: End-to-end testing covering workflows from browsing to checkout, ensuring users can navigate the site, add products to the cart, and complete purchases.
+3. **Extensive Manual Testing**: Extensive manual testing was carried out and documented in this file.
 4. **User Acceptance Testing (UAT)**: Real-world scenario testing to confirm that the application meets user expectations and requirements.
-6. **Cross-Browser Testing**: Tested compatibility across major browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile devices.
+5. **Cross-Browser Testing**: Tested compatibility across major browsers (Chrome, Firefox, Safari, Edge) on desktop and mobile devices.
 
 ## Test Cases
 
