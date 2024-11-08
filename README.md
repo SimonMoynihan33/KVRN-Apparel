@@ -829,6 +829,8 @@ In addition, AWS (Amazon Web Services) was used for media and static file storag
 
 ## 🗃️ Database Schema
 
+### Custom Models
+
 The following models are custom-built to enhance KVRN Apparel's functionality, focusing on user engagement, product interaction, and order management. Each model has distinct fields and relationships that enable unique features such as user wishlists, design submissions, contact messaging, and product reviews within orders.
 
 ### 1. Wishlist Model
