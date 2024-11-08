@@ -22,6 +22,7 @@ Copy code
 - [Target Audience](#target-audience)
 - [Problem Being Solved](#problem-being-solved)
 - [Scope](#scope)
+- [Authentication, Protection, and Authorization](#authentication-protection-and-authorization)
 - [📊 Business and Marketing Plan](#-business-and-marketing-plan)
 - [🛠️ Development Plan](#️-development-plan)
 - [🎨 UX/UI Design Plan](#-uxui-design-plan)
@@ -159,6 +160,34 @@ Through these solutions, KVRN Apparel addresses both common e-commerce pain poin
 The KVRN Apparel project follows Agile development principles, focusing on delivering an MVP with core features prioritized first. Non-essential features were shifted to future iterations based on project needs, ensuring timely deployment while maintaining quality. The project board reflects this adaptive approach, with some stories moved between milestones, showcasing the flexibility and iterative nature of the development lifecycle.
 
 [⬆️Back to top](<#KVRN-Apparel>)
+
+## Authentication, Protection, and Authorization
+
+KVRN Apparel prioritizes secure access and data protection, leveraging Django Allauth for robust user authentication, along with comprehensive measures for account protection and access control. These systems ensure that user data remains safe, and only authorized individuals have the appropriate access to sensitive site functionalities.
+
+### User Authentication with Django Allauth
+
+The website uses Django Allauth to manage user authentication, providing a secure, streamlined experience for account creation, login, and password management. Key features of Django Allauth in KVRN Apparel include:
+- **Secure Login and Registration**: Users can create accounts, log in, and securely reset passwords if necessary.
+- **Email Verification**: New users receive a verification email to confirm their address, ensuring that only valid emails are registered.
+- **Password Reset**: Users can request password resets through a secure link sent to their registered email, adding a convenient recovery method if login details are forgotten.
+
+### Account Protection and Data Security
+
+To safeguard user accounts and data, KVRN Apparel follows industry best practices in data protection:
+- **Password Management**: Passwords are stored securely using Django’s hashing algorithms, making them unreadable in plain text.
+- **Environment-Based Email Configuration**: Email credentials and configurations for password reset and account notifications are stored in environment variables, protecting sensitive information from unauthorized access.
+- **HTTPS and SSL**: The site operates over HTTPS, encrypting data between the server and users, further ensuring that sensitive information such as login credentials cannot be intercepted.
+
+### Authorization and Access Control
+
+Access control measures are implemented to ensure that only authorized users and administrators can access specific site functions:
+- **User-Specific Access**: Logged-in users can view and update their profiles, manage wishlists, view order history, and submit designs while keeping other users’ data inaccessible.
+- **Admin Controls**: Administrators have the ability to edit and delete product listings, approve design submissions, and handle site management directly from the front end, ensuring that only authorized personnel maintain catalog accuracy and user engagement.
+- **Restricted Update Access for Design Submissions**: Design submissions become locked from user editing once they reach "processing" or "finalized" status, preventing unauthorized modifications during the review process.
+
+These measures collectively help ensure that KVRN Apparel provides a safe and secure shopping experience, protecting user data and managing access to sensitive site features.
+
 
 ## 📊 Business and Marketing Plan
 
