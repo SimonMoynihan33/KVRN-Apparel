@@ -33,6 +33,10 @@ footer h5 {
     margin-top: 50px;
 }
 
+.navbar-expand-lg {
+    height: 50px;
+}
+
 /* from Bulma */
 .icon {
     align-items: center;
