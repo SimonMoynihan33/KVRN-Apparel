@@ -1189,7 +1189,7 @@ To be able to receive emails upon registration, checkout, and from the contact f
 
 - Check if AWS variables are present in env.py and if environment variable paths are set in settings.py.
 
-    ```python
+    ```py
     import os
     from pathlib import Path
     import dj_database_url
@@ -1200,7 +1200,7 @@ To be able to receive emails upon registration, checkout, and from the contact f
 
 Check if DATABASES are set up to connect with Heroku Postgres server in production vs SQLite3 when in local development.
 
-    ```python
+    ```py
     if "DATABASE_URL" in os.environ:
         DATABASES = {
             "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -1216,7 +1216,7 @@ Check if DATABASES are set up to connect with Heroku Postgres server in producti
 
 Set up media and static file storage in settings.py.
 
-    ```python
+    ```py
     STATIC_URL = "/static/"
     STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
@@ -1226,7 +1226,7 @@ Set up media and static file storage in settings.py.
 
 Set up S3 Bucket config in settings.py.
 
-    ```python
+    ```py
     if 'USE_AWS' in os.environ:
         # Cache control
         AWS_S3_OBJECT_PARAMETERS = {
@@ -1254,7 +1254,7 @@ Set up S3 Bucket config in settings.py.
 
 Create a 'custom_storages.py' file in the root directory:
 
-    ```python
+    ```py
     from django.conf import settings
     from storages.backends.s3boto3 import S3Boto3Storage
 
