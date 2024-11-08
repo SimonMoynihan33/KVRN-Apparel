@@ -1,96 +1,37 @@
-# KVRN Apparel - README
+# KVRN Apparel
 
-## Index
-- [KVRN Apparel - README](#kvrn-apparel---readme)
-  - [Index](#index)
-  - [Introduction](#introduction)
-  - [Objectives](#objectives)
-  - [Target Audience](#target-audience)
-  - [Problem Being Solved](#problem-being-solved)
-  - [Scope](#scope)
-    - [1. Project Overview](#1-project-overview)
-    - [2. Core Features and Functionality](#2-core-features-and-functionality)
-      - [Product Display and Filtering](#product-display-and-filtering)
-      - [Product Management](#product-management)
-      - [Shopping Cart and Checkout](#shopping-cart-and-checkout)
-      - [User Profiles and Authentication](#user-profiles-and-authentication)
-      - [Wishlist](#wishlist)
-      - [Notifications and Feedback](#notifications-and-feedback)
-      - [Design Submission and Community Engagement](#design-submission-and-community-engagement)
-    - [3. Optional Features for Future Iterations](#3-optional-features-for-future-iterations)
-    - [4. User Experience and Accessibility](#4-user-experience-and-accessibility)
-    - [5. Testing and Documentation](#5-testing-and-documentation)
-    - [6. Deployment and Marketing Strategy](#6-deployment-and-marketing-strategy)
-  - [📊 Business and Marketing Plan](#-business-and-marketing-plan)
-    - [Business Goals](#business-goals)
-    - [Marketing Strategy](#marketing-strategy)
-      - [1. In-Site Marketing Strategies for Engagement](#1-in-site-marketing-strategies-for-engagement)
-      - [2. Social Media Marketing Channels](#2-social-media-marketing-channels)
-        - [Instagram](#instagram)
-        - [Facebook](#facebook)
-      - [3. Content Creator Collaborations](#3-content-creator-collaborations)
-      - [4. Organic and Paid Engagement Strategy](#4-organic-and-paid-engagement-strategy)
-    - [Proof of Marketing Strategy](#proof-of-marketing-strategy)
-    - [Target Market](#target-market)
-    - [Revenue Model](#revenue-model)
-    - [Key Performance Indicators (KPIs)](#key-performance-indicators-kpis)
-    - [Risks and Mitigation Strategies](#risks-and-mitigation-strategies)
-    - [B2C (Business-to-Consumer) Strategy](#b2c-business-to-consumer-strategy)
-      - [Key Elements of the B2C Strategy](#key-elements-of-the-b2c-strategy)
-      - [B2C Advantages for KVRN Apparel](#b2c-advantages-for-kvrn-apparel)
-  - [🛠️ Development Plan](#️-development-plan)
-    - [Research and Initial Decisions](#research-and-initial-decisions)
-  - [Wireframes and ERD](#wireframes-and-erd)
-    - [Desktop Wireframes](#desktop-wireframes)
-    - [Mobile Wireframes](#mobile-wireframes)
-    - [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
-      - [Reflection on Wireframes and ERD](#reflection-on-wireframes-and-erd)
-    - [Agile Methodology](#agile-methodology)
-    - [Project Board](#project-board)
-    - [Sprints](#sprints)
-    - [Acceptance Criteria](#acceptance-criteria)
-    - [Epics](#epics)
-    - [MoSCoW](#moscow)
-  - [🎨 UX/UI Design Plan](#-uxui-design-plan)
-    - [The Strategy Plane](#the-strategy-plane)
-    - [The Scope Plane](#the-scope-plane)
-    - [The Structure Plane](#the-structure-plane)
-    - [The Skeleton Plane](#the-skeleton-plane)
-    - [The Surface Plane](#the-surface-plane)
-  - [🚀 Features](#-features)
-  - [🔮 Future Enhancements](#-future-enhancements)
-    - [1. Blog Integration](#1-blog-integration)
-    - [2. Abandoned Cart Email Reminders](#2-abandoned-cart-email-reminders)
-    - [3. Multicurrency Support](#3-multicurrency-support)
-    - [4. Quick View for Products](#4-quick-view-for-products)
-    - [5. Wishlist to Cart Functionality](#5-wishlist-to-cart-functionality)
-    - [6. Enhanced User Profile Features](#6-enhanced-user-profile-features)
-    - [7. Subscription-Based Exclusive Access](#7-subscription-based-exclusive-access)
-    - [8. Personalized Recommendations](#8-personalized-recommendations)
-    - [9. Virtual Fitting Room](#9-virtual-fitting-room)
-    - [10. Social Media Sharing for Products](#10-social-media-sharing-for-products)
-  - [🧪 Testing](#-testing)
-  - [🖥️ Technologies Used](#️-technologies-used)
-  - [🗃️ Custom Models Breakdown](#️-custom-models-breakdown)
-    - [1. Wishlist Model](#1-wishlist-model)
-    - [2. Contact Model](#2-contact-model)
-    - [3. UserDesignSubmission Model](#3-userdesignsubmission-model)
-    - [4. OrderReview Model](#4-orderreview-model)
-    - [Reflection on Model Changes](#reflection-on-model-changes)
-  - [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
-    - [Project Deployment: Heroku](#project-deployment-heroku)
-      - [Forking the Repository](#forking-the-repository)
-      - [Cloning the Repository](#cloning-the-repository)
-  - [👥 Credits \& Acknowledgements](#-credits--acknowledgements)
-    - [Images](#images)
-    - [Mockups and Design Creation](#mockups-and-design-creation)
-    - [Favicon and Documentation Support](#favicon-and-documentation-support)
-    - [Scrolling Navigation Banner](#scrolling-navigation-banner)
-    - [Dependencies and Community Support](#dependencies-and-community-support)
-    - [Design Inspiration](#design-inspiration)
-    - [Documentation](#documentation)
+KVRN Apparel is a custom-designed e-commerce platform that combines sleek aesthetics with a user-centric shopping experience. The project leverages Django and integrated services such as AWS and Stripe to deliver a fully functional online store tailored for fashion-forward individuals. From product browsing and wishlist functionality to secure checkout and design submission, KVRN Apparel offers an engaging, community-driven approach to online apparel shopping. The platform is designed to be highly responsive, optimized for performance, and scalable, making it suitable for continuous growth and feature expansion.
+
+![Project Overview](documentation/amiresponsive/introimage.png)
+
+The project was developed using agile principles, focusing on building a Minimum Viable Product (MVP) while allowing flexibility for future enhancements. KVRN's core features include account creation, order history tracking, user-submitted design competitions, and an accessible, visually engaging layout. Below is an example of the platform’s responsive design, demonstrating how KVRN adapts across different devices to maintain a consistent and user-friendly experience.
+
+![AmIResponsive](documentation/amiresponsive/amiresponsive-kvrn.png)
 
 ---
+
+Here’s the Table of Contents with the top-level headings and emojis:
+
+markdown
+Copy code
+## Table of Contents
+
+- [KVRN Apparel](#kvrn-apparel)
+- [Introduction](#introduction)
+- [Objectives](#objectives)
+- [Target Audience](#target-audience)
+- [Problem Being Solved](#problem-being-solved)
+- [Scope](#scope)
+- [📊 Business and Marketing Plan](#-business-and-marketing-plan)
+- [🛠️ Development Plan](#️-development-plan)
+- [🎨 UX/UI Design Plan](#-uxui-design-plan)
+- [🚀 Features](#-features)
+- [🔮 Future Enhancements](#-future-enhancements)
+- [🧪 Testing](#-testing)
+- [🖥️ Technologies Used](#️-technologies-used)
+- [🗃️ Custom Models Breakdown](#️-custom-models-breakdown)
+- [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
+- [👥 Credits & Acknowledgements](#-credits--acknowledgements)
 
 ## Introduction
 **Disclaimer**: *None of these items are for sale. This store is a mockup for portfolio purposes only. If you wish to test the functionality please use the stripe developer card 4242 4242 4242 4242.*
@@ -103,7 +44,7 @@ The project’s aim is to create a responsive and visually appealing online stor
 
 KVRN Apparel was developed with attention to both business and technical goals, ensuring that users have a smooth, engaging experience across devices while meeting essential requirements for scalability, maintainability, and e-commerce best practices.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## Objectives
 
@@ -123,7 +64,7 @@ The primary objectives for **KVRN Apparel**- are:
 
 These objectives guide the project development, ensuring that KVRN Apparel meets user expectations while fulfilling business requirements and delivering a lasting impact in the apparel e-commerce market.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## Target Audience
 
@@ -135,7 +76,7 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 3. **Tech-Savvy Shoppers:**- Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## Problem Being Solved
 
@@ -149,7 +90,7 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 Through these solutions, KVRN Apparel addresses both common e-commerce pain points and unique challenges related to community engagement, encouraging a lasting connection with users.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## Scope
 
@@ -217,7 +158,7 @@ Through these solutions, KVRN Apparel addresses both common e-commerce pain poin
 
 The KVRN Apparel project follows Agile development principles, focusing on delivering an MVP with core features prioritized first. Non-essential features were shifted to future iterations based on project needs, ensuring timely deployment while maintaining quality. The project board reflects this adaptive approach, with some stories moved between milestones, showcasing the flexibility and iterative nature of the development lifecycle.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 📊 Business and Marketing Plan
 
@@ -355,7 +296,7 @@ KVRN Apparel's primary approach is rooted in a B2C (Business-to-Consumer) model,
 
 The B2C strategy gives KVRN control over its brand narrative and allows for a high level of personalization, responsiveness, and community engagement. By selling directly to consumers, KVRN maximizes customer relationships, maintains flexibility in pricing and promotions, and builds a loyal customer base that will contribute to long-term brand growth. Through a combination of direct sales, personalized marketing, and engagement-focused strategies, KVRN is positioned to effectively capture and retain its target market in a highly competitive industry.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🛠️ Development Plan
 
@@ -503,7 +444,7 @@ To prioritize features effectively, the MoSCoW method (Must have, Should have, C
 <img src="documentation/agile-development/labe&smoscow.png" alt="MoSCoW Prioritization">
 </details>
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🎨 UX/UI Design Plan
 
@@ -529,11 +470,233 @@ The Skeleton Plane details the layout, including the placement of buttons, image
 
 The Surface Plane focuses on the visual design, including colors, typography, and imagery. KVRN Apparel's aesthetic is sleek and modern, reflecting the brand’s identity through a minimalistic color palette, high-quality product images, and clean typography. Key colors include a blend of neutrals and accents, chosen for visual appeal and readability. Icons and images maintain a consistent look, enhancing the user experience without overwhelming the content. The final design prioritizes clarity and brand alignment, creating an attractive and engaging user interface.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
-## 🚀 Features
+## 🚀 Feature
 
-[⬆️Back to top](<#index>)
+### Home Page
+
+The homepage introduces KVRN’s brand, featuring custom graphics and visually inviting elements like banners and "Shop Now" cards, which guide users to specific sections. Each graphic on the homepage is uniquely created to reflect the brand's modern aesthetic.
+
+![Home Page](documentation/features/home-page.png)
+![Home Page - Mobile View](documentation/features/home-page-mobile-view.png)
+
+#### Scrolling Banner and Promotions
+
+The scrolling banner showcases ongoing promotions, encouraging users to explore seasonal collections and special offers. This adds dynamism to the homepage while highlighting current deals.
+
+![Scrolling Banner](documentation/features/scrolling-banner.png)
+
+### Navigation and Footer
+
+#### Responsive Navigation
+
+KVRN’s navigation is fully responsive, adapting seamlessly to different screen sizes. On mobile, the navigation collapses into a menu icon, allowing users to easily access key areas like products, account settings, and shopping bag.
+
+![Responsive Navigation - Desktop](documentation/features/responsive-nav-d.png)
+![Responsive Navigation - Mobile](documentation/features/responsive-nav-m.png)
+
+#### Footer with Social Links, Newsletter Signup, and Policies
+
+The footer includes links to KVRN’s social media platforms, a Mailchimp-powered email signup, and essential policies, supporting user engagement and transparency.
+
+![Footer](documentation/features/footer.png)
+![Footer Social Media Links](documentation/features/footer-social-media-links.png)
+![Footer Email Signup](documentation/features/footer-email-signup.png)
+
+#### Email Signup Popup
+
+A popup form powered by Mailchimp invites users to join the KVRN newsletter, helping build a direct communication channel for updates and promotions.
+
+![Mailchimp Popup](documentation/features/mailchimp-popup.png)
+
+### Custom Shop Now Cards and Product Graphics
+
+#### Custom "Shop Now" Cards
+
+The custom "Shop Now" cards are a prominent feature on the homepage, designed with Canva and Placeit. Each card guides users to specific product categories, providing a visually engaging entry point into KVRN’s collections.
+
+![Custom Shop Now Cards](documentation/features/custom-shop-now-cards.png)
+![Custom Shop Now Cards Anime](documentation/features/graphics-card-anime.png)
+
+#### Custom-Made Graphics
+
+All product graphics on KVRN Apparel are uniquely created with multiple elements to bring designs to life. Each product graphic is crafted using Canva and Placeit, showcasing KVRN’s dedication to quality and creativity.
+
+![Custom Made Graphics](documentation/features/custom-made-graphics.png)
+![Custom Made Graphics 2](documentation/features/custom-made-graphics-2.png)
+![Custom Made Graphics 3](documentation/features/custom-made-graphics-3.png)
+
+### Product Display and Sorting
+
+#### Product Catalog with Sorting and Filtering
+
+KVRN’s product catalog is organized and easy to navigate, with filtering options that allow users to view products by categories, price and alphabetically. These features provide a tailored browsing experience.
+
+![Graphics Sorting](documentation/features/graphics-sorting.png)
+![Sorting Dropdown](documentation/features/sorting-dropdown.png)
+![Sorting Buttons](documentation/features/sorting-buttons.png)
+
+#### Product Carousel for Graphic Items
+
+The product carousel highlights graphic apparel from both the front and the back, showcasing the products in various poses.
+
+![Carousel - Image 1](documentation/features/carousel-1.png)
+![Carousel - Image 2](documentation/features/carousel-2.png)
+
+### Shopping Bag and Checkout
+
+#### Shopping Bag with Updateable Quantity and Toast Notifications
+
+The shopping bag allows users to view, update, and manage their items. Quantity adjustments can be made within the shopping bag, with toast notifications confirming updates, providing real-time feedback.
+
+![Bag Update Quantity](documentation/features/bag-update-quantity.png)
+![Bag View with Toast](documentation/features/bag-view-toast.png)
+
+#### Secure Checkout Process
+
+The checkout process is user-friendly and secure, with Stripe integration to handle payments. Users can review order details, add shipping information, and confirm their purchase in a streamlined environment.
+
+![Order View in Checkout](documentation/features/order-view-in-checkout.png)
+![Stripe Loading Screen](documentation/features/stripe-loading-screen.png)
+
+#### Order Confirmation and Success Notifications
+
+Upon successful checkout, users receive order confirmation through a toast notification and an email. This instant feedback reassures users that their transaction was successful.
+
+![Order Confirmation Toast](documentation/features/order-confirmation-toast.png)
+![Order Confirmation Email](documentation/features/order-confirmation-email.png)
+![Order Confirmation](documentation/features/order-confirmation.png)
+
+### About Us and Contact
+
+#### About Us Page
+
+The "About Us" page shares KVRN’s mission, helping to build a connection with users and fostering trust in the brand.
+
+![About Us](documentation/features/about-us.png)
+
+#### Contact Form
+
+A contact form enables users to reach out with inquiries or feedback, enhancing customer support.
+
+![Contact Form](documentation/features/contact-form.png)
+
+#### Shipping and Returns Information
+
+The shipping and returns sections provide users with clear information on policies, improving transparency and setting clear expectations.
+
+![Shipping Info](documentation/features/shipping-info.png)
+![Returns Info](documentation/features/returns-info.png)
+
+### User Account and Profile Management
+
+#### Order History and Per-Item Rating
+
+Users can view their order history and rate individual items, providing feedback on each purchase.
+
+![Order History](documentation/features/order-history.png)
+![Per-Item Rating](documentation/features/per-item-rating.png)
+
+When a product is removed, to avoid, the review system is disabled while still showing a user their order. This was crucial to avoid database errors and keep the site functioning smoothly and to not confuse users.
+
+![Removed item unavailable for rating](documentation/features/removed-product-rating-unavailable.png)
+
+#### Wishlist Functionality
+
+Users can save favorite products to their wishlist from both the product catalog and detail pages, allowing for easy tracking of preferred items.
+
+![Wishlist view](documentation/features/wishlist-view.png)
+
+![Product Detail Wishlist Toggle](documentation/features/product-detail-wishlist-toggle.png)
+![Products View Wishlist Toggle](documentation/features/custom-made-graphics-3.png)
+
+#### Updateable Profile Information
+
+Users can manage their profile details directly from their account, enabling a personalized shopping experience.
+
+![Updateable Profile Info](documentation/features/updateable-profile-info.png)
+
+### Design Submission and Community Engagement
+
+#### Design Submission Form and Status Tracking
+
+Users can submit their own designs for potential inclusion in KVRN’s collections. The form allows users to track their submission status (e.g., submitted, processing, finalized), with submissions becoming uneditable once they reach "processing" or "finalized."
+
+![Design Submission Form](documentation/features/design-submission-form.png)
+![Design Submitted View](documentation/features/design-submitted-view.png)
+![Status - Submitted](documentation/features/status-submitted.png)
+![Status - Processing](documentation/features/status-processing.png)
+![Cannot Edit Processing or Finalized](documentation/features/cannot-edit-processing-or-finalized.png)
+
+### Policies and Legal Information
+
+#### FAQ Accordion
+
+The FAQ section uses an accordion format to keep content organized and easily navigable, allowing users to quickly find answers to common questions.
+
+![FAQ Accordion](documentation/features/faq-accordian.png)
+
+#### Privacy Policy, Terms and Conditions, and Cookie Consent
+
+KVRN provides a privacy policy, terms and conditions, and cookie consent notifications to keep users informed about data handling practices, building trust through transparency.
+
+![Privacy Policy](documentation/features/privacy-policy.png)
+![Terms and Conditions](documentation/features/terms-and-conditions.png)
+![Cookie Policy](documentation/features/cookie-policy.png)
+
+### Admin Tools and Front-End Management
+
+#### Admin Product Management
+
+Admins can manage products directly from the front end, with options to edit, update, or delete listings in real-time, streamlining catalog management.
+
+![Admin Front-End Product Management](documentation/features/admin-front-end-product-management.png)
+
+#### Admin Messages and Notifications
+
+Admins can receive and manage messages through the contact form and can be notified of necessary actions in future iterations, such as stock updates or design approvals.
+
+![Admin Front-End Messages](documentation/features/admin-front-end-messages.png)
+
+#### Edit and Delete Controls for Admins
+
+Admins have full control over editing and deleting products, both from the admin panel and the front end, allowing them to maintain an accurate and up-to-date catalog.
+
+![Admin Edit Delete](documentation/features/admin-edit-delete.png)
+
+### Additional Features
+
+#### Order Status and Processing Information
+
+Users can track the status of their orders and view order details from their profile, with the option to rate each item. Orders that include removed products show that ratings are unavailable for those specific items.
+
+![Removed Product Rating Unavailable](documentation/features/removed-product-rating-unavailable.png)
+![Rating Modal](documentation/features/rating-modal.png)
+
+#### Free Delivery Indicator
+
+A free delivery banner informs users of the minimum purchase required to qualify for free delivery, encouraging users to add more items to their cart to reach this threshold.
+
+![Free Delivery Delta](documentation/features/free-delivery-delta.png)
+
+#### Advanced Search Input
+
+A search input at the top of the site enables users to quickly find specific products, improving the overall navigation and accessibility of the site.
+
+![Search Input](documentation/features/search-input.png)
+
+#### Back to Top Button
+
+A back to top button on both the products page and the wishlist page allows users to reach the beginning of the page quickly, without scrolling. This is is crucial for sites with many products, which over a shops life cycle is inevitable.
+
+![Back to Top](documentation/features/back-to-top.png)
+
+---
+
+These features collectively demonstrate KVRN Apparel’s commitment to a high-quality, engaging, and visually appealing user experience. Each component has been thoughtfully designed to enhance usability, foster customer interaction, and showcase the brand’s unique aesthetic.
+
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🔮 Future Enhancements
 
@@ -581,13 +744,13 @@ Allowing users to share their favorite products directly to social media could i
 
 These future features align with KVRN Apparel’s goals of improving user engagement, expanding accessibility, and enhancing the overall shopping experience. Each feature would be phased into development as time and resources allow, focusing on providing valuable additions to the platform.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🧪 Testing
 
 Testing for this project has been carried out in a seperate file. It can be found [here](/TESTING.md)
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🖥️ Technologies Used
 This project was built with a combination of Django, Python, JavaScript, JQuery, Bootstrap, HTML5, CSS3 and the following dependancies:
@@ -622,7 +785,7 @@ stripe==11.1.1
 
 In addition, AWS (Amazon Web Services) was used for media and static file storage, while Heroku was leveraged for app deployment.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 🗃️ Custom Models Breakdown
 
@@ -687,7 +850,7 @@ The `OrderReview` model allows users to review products they have purchased, pro
 
 These custom models were essential in shaping KVRN Apparel's functionality and providing user-centered features. However, as the project evolved, certain navigation and layout elements, such as order and wishlist placement, as well as the initial idea of a sidebar navigation, were modified or removed due to time constraints and agile development choices. These models served as guides for feature implementation, though some divergence from initial designs in favor of improved functionality and user experience was both necessary and beneficial, helping the project achieve its MVP efficiently.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ## 📦 Setup and Installation (GitHub and Heroku)
 
@@ -815,7 +978,7 @@ To clone the repository:
 6. Type `git clone`, then paste the URL you copied.
 7. Press `Enter`, and the repository will be cloned to your specified directory.
 
-[⬆️Back to top](<#index>)
+[⬆️Back to top](<#KVRN-Apparel>)
 
 ---
 

@@ -20,18 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from django.contrib.sitemaps.views import sitemap
-from .sitemaps import (
-    StaticViewSitemap,
-    ProductSitemap,
-    GeneralProductsSitemap,
-)
 
-sitemaps = {
-    "static": StaticViewSitemap,
-    "products": ProductSitemap,
-    "general_products": GeneralProductsSitemap,
-}
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -58,11 +47,5 @@ urlpatterns = [
         "terms-and-conditions/",
         TemplateView.as_view(template_name="terms_and_conditions.html"),
         name="terms_and_conditions",
-    ),
-    path(
-        "sitemap.xml",
-        sitemap,
-        {"sitemaps": sitemaps},
-        name="django.contrib.sitemaps.views.sitemap",
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
