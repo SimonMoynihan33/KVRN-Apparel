@@ -10,10 +10,6 @@ The project was developed using agile principles, focusing on building a Minimum
 
 ---
 
-Here’s the Table of Contents with the top-level headings and emojis:
-
-markdown
-Copy code
 ## Table of Contents
 
 - [KVRN Apparel](#kvrn-apparel)
@@ -25,12 +21,13 @@ Copy code
 - [Authentication, Protection, and Authorization](#authentication-protection-and-authorization)
 - [📊 Business and Marketing Plan](#-business-and-marketing-plan)
 - [🛠️ Development Plan](#️-development-plan)
+- [Site Design](#site-design)
 - [🎨 UX/UI Design Plan](#-uxui-design-plan)
 - [🚀 Features](#-features)
 - [🔮 Future Enhancements](#-future-enhancements)
 - [🧪 Testing](#-testing)
 - [🖥️ Technologies Used](#️-technologies-used)
-- [🗃️ Custom Models Breakdown](#️-custom-models-breakdown)
+- [🗃️ 🗃️ Database Schema](#️-database-schema)
 - [📦 Setup and Installation (GitHub and Heroku)](#-setup-and-installation-github-and-heroku)
 - [👥 Credits & Acknowledgements](#-credits--acknowledgements)
 
@@ -45,23 +42,25 @@ The project’s aim is to create a responsive and visually appealing online stor
 
 KVRN Apparel was developed with attention to both business and technical goals, ensuring that users have a smooth, engaging experience across devices while meeting essential requirements for scalability, maintainability, and e-commerce best practices.
 
+[Visit the Site!](https://kvrn-apparel-4bc2d092ebd6.herokuapp.com/)
+
 [⬆️Back to top](<#KVRN-Apparel>)
 
 ## Objectives
 
-The primary objectives for **KVRN Apparel**- are:
+The primary objectives for **KVRN Apparel** are:
 
-1. **User-Centric Shopping Experience:**- Provide an intuitive, seamless shopping experience with essential features like Wishlist, product reviews, and personalized user profiles. 
+1. **User-Centric Shopping Experience:** Provide an intuitive, seamless shopping experience with essential features like Wishlist, product reviews, and personalized user profiles. 
 
-2. **Visual Appeal and Brand Consistency:**- Ensure a bold, sleek aesthetic that aligns with KVRN's brand identity, resonating with modern consumers and differentiating the brand in the e-commerce space.
+2. **Visual Appeal and Brand Consistency:** Ensure a bold, sleek aesthetic that aligns with KVRN's brand identity, resonating with modern consumers and differentiating the brand in the e-commerce space.
 
-3. **Responsive Design:**- Develop a fully responsive site that delivers a smooth browsing experience across desktops, tablets, and mobile devices.
+3. **Responsive Design:** Develop a fully responsive site that delivers a smooth browsing experience across desktops, tablets, and mobile devices.
 
-4. **Secure and Efficient Checkout:**- Integrate Stripe for secure payments and customized delivery options, including multi-currency support for flexibility with international buyers.
+4. **Secure and Efficient Checkout:** Integrate Stripe for secure payments and customized delivery options.
 
-5. **Community Engagement:**- Introduce a user-driven competition feature allowing users to submit graphic designs for apparel, fostering engagement and brand loyalty. Creators of selected designs receive royalties.
+5. **Community Engagement:** Introduce a user-driven competition feature allowing users to submit graphic designs for apparel, fostering engagement and brand loyalty. Creators of selected designs receive royalties.
 
-6. **Scalability and Maintainability:**- Build a robust, scalable application that adheres to best practices in code quality, SEO, and security, preparing the store for future growth.
+6. **Scalability and Maintainability:** Build a robust, scalable application that adheres to best practices in code quality, SEO, and security, preparing the store for future growth.
 
 These objectives guide the project development, ensuring that KVRN Apparel meets user expectations while fulfilling business requirements and delivering a lasting impact in the apparel e-commerce market.
 
@@ -69,25 +68,25 @@ These objectives guide the project development, ensuring that KVRN Apparel meets
 
 ## Target Audience
 
-**KVRN Apparel**- is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
+**KVRN Apparel** is designed for style-conscious individuals looking for unique, high-quality apparel that combines bold design with a sleek, modern aesthetic. The target audience includes:
 
-1. **Young Adults (Ages 18-35):**- Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
+1. **Young Adults (Ages 18-35):** Primarily targeting a demographic interested in contemporary fashion, self-expression, and unique designs that stand out.
 
-2. **Creative Individuals:**- People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
+2. **Creative Individuals:** People with an interest in art and design, especially those who might participate in KVRN’s design submission competition to have their artwork featured on apparel.
 
-3. **Tech-Savvy Shoppers:**- Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
+3. **Tech-Savvy Shoppers:** Online shoppers who expect a seamless, mobile-friendly experience and appreciate features like Wishlist, product reviews, and quick, secure checkouts.
 
 [⬆️Back to top](<#KVRN-Apparel>)
 
 ## Problem Being Solved
 
-**KVRN Apparel**- addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
+**KVRN Apparel** addresses several key challenges in the online apparel shopping space, aiming to enhance user experience, brand loyalty, and operational efficiency. The problems being solved include:
 
-1. **Streamlining the Shopping Experience:**- Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and price, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
+1. **Streamlining the Shopping Experience:** Many online stores lack intuitive navigation and product filtering, which can frustrate users. KVRN tackles this by offering responsive product filtering by gender and price, a Wishlist feature for favorites, and an organized catalog for quick product discovery.
 
-2. **Enhancing Post-Purchase Engagement:**- Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
+2. **Enhancing Post-Purchase Engagement:** Traditional e-commerce stores often lack effective ways for users to interact with their orders post-purchase. KVRN’s per-item rating system within orders encourages users to provide feedback, helping improve the shopping experience while gathering valuable product insights. The rating is managed through a convenient Bootstrap modal that can be updated, while automatically disabling ratings for products that have been removed from the store. This ensures a seamless user experience and data accuracy.
 
-3. **Building Community and Brand Loyalty:**- By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
+3. **Building Community and Brand Loyalty:** By enabling users to submit their own designs in a competition format, KVRN fosters community involvement and deepens brand loyalty. Competition entries are managed dynamically, allowing users to update submissions and engage with KVRN’s brand in a creative way, with the added incentive of royalties for winning entries.
 
 Through these solutions, KVRN Apparel addresses both common e-commerce pain points and unique challenges related to community engagement, encouraging a lasting connection with users.
 
@@ -475,6 +474,18 @@ To prioritize features effectively, the MoSCoW method (Must have, Should have, C
 
 [⬆️Back to top](<#KVRN-Apparel>)
 
+## Site Design
+
+### Custom Creation of Products
+
+Each product on KVRN Apparel is crafted with a high level of attention to detail and creative effort. All graphics are designed from scratch using multiple elements combined thoughtfully to convey the brand’s unique theme. Utilizing tools like Canva and Placeit, every design reflects a distinct style and aligns with KVRN’s commitment to quality and originality. These graphics are more than simple images; they are layered compositions, carefully assembled to capture the essence of KVRN’s aesthetic and ensure that each item stands out as a true original in the marketplace.
+
+### Design Inspiration and Theme
+
+The design of KVRN Apparel draws inspiration from modern, trendsetting sites like Mars the Label and ASOS, aiming to create a sleek and immersive shopping experience. Key elements like the #000 (black) footer with accents of #ffd700 (gold) and a main background color of #f2eadf (light cream/beige) set a refined and sophisticated tone for the site. These colors, along with minimalist layout choices and bold, custom graphics, give KVRN Apparel a distinctive look that’s both inviting and stylish. The site’s overall aesthetic focuses on clean lines and a well-coordinated color scheme that echoes the quality and exclusivity of KVRN’s custom apparel.
+
+[⬆️Back to top](<#KVRN-Apparel>)
+
 ## 🎨 UX/UI Design Plan
 
 The UX/UI Design Plan for KVRN Apparel is structured around the five planes of user experience design. Each plane represents a layer of the design process, building from strategic decisions to the final visual aesthetics. This structured approach ensures a seamless, user-friendly experience that aligns with business goals and user needs.
@@ -816,7 +827,7 @@ In addition, AWS (Amazon Web Services) was used for media and static file storag
 
 [⬆️Back to top](<#KVRN-Apparel>)
 
-## 🗃️ Custom Models Breakdown
+## 🗃️ Database Schema
 
 The following models are custom-built to enhance KVRN Apparel's functionality, focusing on user engagement, product interaction, and order management. Each model has distinct fields and relationships that enable unique features such as user wishlists, design submissions, contact messaging, and product reviews within orders.
 
@@ -878,6 +889,125 @@ The `OrderReview` model allows users to review products they have purchased, pro
 ### Reflection on Model Changes
 
 These custom models were essential in shaping KVRN Apparel's functionality and providing user-centered features. However, as the project evolved, certain navigation and layout elements, such as order and wishlist placement, as well as the initial idea of a sidebar navigation, were modified or removed due to time constraints and agile development choices. These models served as guides for feature implementation, though some divergence from initial designs in favor of improved functionality and user experience was both necessary and beneficial, helping the project achieve its MVP efficiently.
+
+### Full Schema Tables
+
+### Database Schema Documentation
+
+## Tables
+
+### Table: `Wishlist`
+| Column    | Data Type       | Description                                      |
+|-----------|-----------------|--------------------------------------------------|
+| `id`      | Integer (PK)    | Primary key for each wishlist item.              |
+| `user`    | ForeignKey      | Foreign key linking to the `User` model.         |
+| `product` | ForeignKey      | Foreign key linking to the `Product` model.      |
+| `added_at`| DateTime        | Timestamp for when the item was added to wishlist.|
+
+### Table: `UserProfile`
+| Column                   | Data Type       | Description                                         |
+|--------------------------|-----------------|-----------------------------------------------------|
+| `id`                     | Integer (PK)    | Primary key for each user profile.                  |
+| `user`                   | OneToOneField   | One-to-one link to the `User` model.                |
+| `default_phone_number`   | CharField       | User's default phone number for delivery.           |
+| `default_street_address1`| CharField       | Primary address line.                               |
+| `default_street_address2`| CharField       | Secondary address line (optional).                  |
+| `default_town_or_city`   | CharField       | City or town of the user.                           |
+| `default_county`         | CharField       | County of the user.                                 |
+| `default_country`        | CountryField    | User's country.                                     |
+| `default_postcode`       | CharField       | Postcode of the user.                               |
+
+### Table: `Category`
+| Column         | Data Type       | Description                                        |
+|----------------|-----------------|----------------------------------------------------|
+| `id`           | Integer (PK)    | Primary key for each category.                     |
+| `name`         | CharField       | Name of the category.                              |
+| `friendly_name`| CharField       | Human-friendly name for display.                   |
+| `gender`       | CharField       | Indicates if the category is for men or women.     |
+
+### Table: `Product`
+| Column       | Data Type       | Description                                        |
+|--------------|-----------------|----------------------------------------------------|
+| `id`         | Integer (PK)    | Primary key for each product.                      |
+| `categories` | ManyToManyField | Many-to-many relationship with `Category`.         |
+| `gender`     | CharField       | Indicates if the product is for men or women.      |
+| `sku`        | CharField       | SKU (stock keeping unit) for the product.          |
+| `name`       | CharField       | Name of the product.                               |
+| `description`| TextField       | Product description.                               |
+| `has_sizes`  | BooleanField    | Indicates if the product has size options.         |
+| `price`      | DecimalField    | Product price.                                     |
+| `rating`     | DecimalField    | Product rating.                                    |
+| `image_url`  | URLField        | URL for product image.                             |
+| `image`      | ImageField      | Primary product image.                             |
+| `image2`     | ImageField      | Secondary product image.                           |
+
+### Table: `Contact`
+| Column        | Data Type       | Description                                          |
+|---------------|-----------------|------------------------------------------------------|
+| `id`          | Integer (PK)    | Primary key for each contact entry.                  |
+| `name`        | CharField       | Name of the person contacting.                       |
+| `email`       | EmailField      | Email address of the contact.                        |
+| `subject`     | CharField       | Subject of the contact message.                      |
+| `message`     | TextField       | The message content.                                 |
+| `submitted_at`| DateTime        | Timestamp for when the message was submitted.        |
+
+### Table: `UserDesignSubmission`
+| Column       | Data Type       | Description                                          |
+|--------------|-----------------|------------------------------------------------------|
+| `id`         | Integer (PK)    | Primary key for each design submission.              |
+| `user`       | ForeignKey      | Foreign key linking to the `User` model.             |
+| `email`      | EmailField      | User's email for the submission.                     |
+| `title`      | CharField       | Title of the design submission.                      |
+| `description`| TextField       | Description of the design (optional).                |
+| `image`      | ImageField      | Image of the design submission.                      |
+| `status`     | CharField       | Status of the submission (e.g., submitted, processing, finalized).|
+| `created_at` | DateTime        | Timestamp for when the design was submitted.         |
+| `updated_at` | DateTime        | Timestamp for last update to the submission.         |
+
+### Table: `Order`
+| Column          | Data Type       | Description                                       |
+|-----------------|-----------------|---------------------------------------------------|
+| `id`            | Integer (PK)    | Primary key for each order.                       |
+| `order_number`  | CharField       | Unique order number.                              |
+| `user_profile`  | ForeignKey      | Foreign key linking to the `UserProfile` model.   |
+| `full_name`     | CharField       | Full name of the order recipient.                 |
+| `email`         | EmailField      | Email of the order recipient.                     |
+| `phone_number`  | CharField       | Phone number of the order recipient.              |
+| `country`       | CountryField    | Country of the recipient.                         |
+| `postcode`      | CharField       | Postcode of the recipient.                        |
+| `town_or_city`  | CharField       | City or town of the recipient.                    |
+| `street_address1` | CharField     | Primary street address.                           |
+| `street_address2` | CharField     | Secondary street address (optional).              |
+| `county`        | CharField       | County of the recipient.                          |
+| `date`          | DateTime        | Date of the order.                                |
+| `delivery_cost` | DecimalField    | Cost of delivery for the order.                   |
+| `order_total`   | DecimalField    | Total of the order before delivery.               |
+| `grand_total`   | DecimalField    | Grand total after delivery costs.                 |
+| `original_bag`  | TextField       | Original cart contents at checkout.               |
+| `stripe_pid`    | CharField       | Stripe payment ID for the order.                  |
+
+### Table: `OrderLineItem`
+| Column          | Data Type       | Description                                          |
+|-----------------|-----------------|------------------------------------------------------|
+| `id`            | Integer (PK)    | Primary key for each order line item.                |
+| `order`         | ForeignKey      | Foreign key linking to the `Order` model.            |
+| `product`       | ForeignKey      | Foreign key linking to the `Product` model.          |
+| `price_at_purchase` | DecimalField | Price of the product at purchase time.              |
+| `product_size`  | CharField       | Size of the product (if applicable).                 |
+| `quantity`      | Integer         | Quantity of the product ordered.                     |
+| `lineitem_total`| DecimalField    | Total cost for the line item (price * quantity).     |
+
+### Table: `OrderReview`
+| Column          | Data Type       | Description                                          |
+|-----------------|-----------------|------------------------------------------------------|
+| `id`            | Integer (PK)    | Primary key for each review.                         |
+| `user`          | ForeignKey      | Foreign key linking to the `User` model.             |
+| `product`       | ForeignKey      | Foreign key linking to the `Product` model.          |
+| `order`         | ForeignKey      | Foreign key linking to the `Order` model.            |
+| `rating`        | PositiveSmallIntegerField | User's rating (1-5) for the product. |
+| `created_at`    | DateTime        | Timestamp for when the review was created.           |
+
+
 
 [⬆️Back to top](<#KVRN-Apparel>)
 
@@ -1023,7 +1153,7 @@ To clone the repository:
 ### Favicon and Documentation Support
 - **[ChatGPT](https://openai.com/chatgpt)**: 
   - Assisted in creating the favicon.
-  - Provided detailed support for writing docstrings, structuring documentation tables, code breakdown, and troubleshooting tips.
+  - Provided detailed support for writing docstrings, structuring documentation tables, README formatting due to project time constraints, code breakdown, and troubleshooting tips.
 
 ### Scrolling Navigation Banner
 - **[Stack Overflow](https://stackoverflow.com/questions/72092797/make-content-infinite-scroll-left-to-right)**: Resource for the CSS code to enable the infinite scrolling left-to-right animation.
