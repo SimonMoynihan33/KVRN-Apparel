@@ -33,10 +33,6 @@ footer h5 {
     margin-top: 50px;
 }
 
-.navbar-expand-lg {
-    height: 50px;
-}
-
 /* from Bulma */
 .icon {
     align-items: center;
@@ -635,7 +631,11 @@ footer {
 /* fixed top navbar only on medium and up */
 @media (min-width: 991px) {
     .header-container {
-        padding-top: 170px !important;
+        padding-top: 140px !important;
+    }
+
+    .navbar-expand-lg {
+        height: 50px;
     }
 
     #account-nav {
